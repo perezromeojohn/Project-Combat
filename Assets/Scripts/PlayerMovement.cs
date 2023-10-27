@@ -30,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Movement();
+        // Dash();
+    }
+
+    void FixedUpdate() {
         Dash();
     }
 
@@ -56,10 +60,10 @@ public class PlayerMovement : MonoBehaviour
         moveInput.y = Input.GetAxisRaw("Vertical");
 
         moveInput.Normalize();
+        rb.velocity = moveInput * activeMoveSpeed;
+        
         if (Input.GetKeyDown(KeyCode.Space)) {
 
-            rb.velocity = Vector2.zero; // Set velocity to zero before applying dash velocity
-            rb.velocity = moveInput * activeMoveSpeed;
             if (dashCooldownCounter <= 0 && dashCounter <= 0) {
                 activeMoveSpeed = dashSpeed;
                 dashCounter = dashLength;
