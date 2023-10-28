@@ -42,8 +42,10 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        // move the player based on the input
-        transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * movementSpeed * Time.deltaTime);
+        var moveVector = new Vector3(horizontalInput, verticalInput, 0f);
+        
+        rb.MovePosition(new Vector2((transform.position.x + moveVector.x * movementSpeed * Time.deltaTime), transform.position.y + moveVector.y * movementSpeed * Time.deltaTime));
+
         // flip the sprite based on the input
         if (horizontalInput < 0) {
             GetComponent<SpriteRenderer>().flipX = true;
