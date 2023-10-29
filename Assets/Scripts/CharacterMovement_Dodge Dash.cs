@@ -29,6 +29,16 @@ public class CharacterMovement : MonoBehaviour
     private float rollCooldown = 1f; // Cooldown for Dodge Roll
     private float rollTimer;
 
+    [Header("Player Animations")]
+
+    [SerializeField] private Animator playerAnimator;
+    [SerializeField] private Animator hairAnimator;
+    
+    [Header("Player Attacking")]
+
+    [SerializeField] private GameObject hand;
+
+
     void Start()
     {
         blinkTimer = 3f; // Initialize the Blink cooldown timer
@@ -53,6 +63,20 @@ public class CharacterMovement : MonoBehaviour
         {
             case State.Normal:
                 rb.velocity = moveDirection * moveSpeed;
+                // set animation of player and hair to run, if not moving, set it both to idle
+                if (moveDirection.x != 0 || moveDirection.y != 0)
+                {
+                    playerAnimator.SetBool("isRunning", true);
+                    hairAnimator.SetBool("isRunning", true);
+                }
+                else
+                {
+                    playerAnimator.SetBool("isRunning", false);
+                    hairAnimator.SetBool("isRunning", false);
+                }
+
+                playerAnimator.SetBool("isRolling", false);
+                hairAnimator.SetBool("isRolling", false);
 
                 if (isDashButtonDown && blinkTimer <= 0)
                 {
@@ -61,9 +85,15 @@ public class CharacterMovement : MonoBehaviour
                     blinkTimer = blinkCooldown; // Set the Blink cooldown timer
                 }
 
+                // set hand gameobject to active
+                hand.SetActive(true);
+
                 break;
             case State.Rolling:
                 rb.velocity = rollDirection * rollSpeed;
+                playerAnimator.SetBool("isRolling", true);
+                hairAnimator.SetBool("isRolling", true);
+                hand.SetActive(false);
                 break;
         }
 
@@ -110,6 +140,7 @@ public class CharacterMovement : MonoBehaviour
             case State.Rolling:
                 float rollSpeedDropMultiplier = 5f;
                 rollSpeed -= rollSpeed * rollSpeedDropMultiplier * Time.deltaTime;
+                // set animation of player and hair to roll, if not moving, set it both to idle
 
                 float rollSpeedMinimum = 1f;
                 if (rollSpeed < rollSpeedMinimum)
