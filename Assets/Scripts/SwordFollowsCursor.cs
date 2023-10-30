@@ -37,11 +37,11 @@ public class SwordFollowsCursor : MonoBehaviour
             if (cursorPos.x < transform.position.x) {
                 playerSprite.flipX = true;
                 hairSprite.flipX = true;
-                handSprite.transform.localScale = new Vector3(1f, -1f, 1f);
+                // handSprite.transform.localScale = new Vector3(1f, -1f, 1f);
             } else {
                 playerSprite.flipX = false;
                 hairSprite.flipX = false;
-                handSprite.transform.localScale = new Vector3(1f, 1f, 1f);
+                // handSprite.transform.localScale = new Vector3(1f, 1f, 1f);
             }
 
             if (transform.eulerAngles.z > 0 && transform.eulerAngles.z < 180) {
