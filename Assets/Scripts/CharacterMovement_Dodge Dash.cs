@@ -37,6 +37,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Player Attacking")]
 
     [SerializeField] private GameObject hand;
+    [SerializeField] private Animator swordAnimator;
 
 
     void Start()
@@ -55,6 +56,7 @@ public class CharacterMovement : MonoBehaviour
     {
         GetInput();
         Blink();
+        Attack();
     }
 
     void FixedUpdate()
@@ -106,6 +108,17 @@ public class CharacterMovement : MonoBehaviour
         if (rollTimer > 0)
         {
             rollTimer -= Time.deltaTime;
+        }
+    }
+
+    void Attack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (swordAnimator.GetBool("isAttacking") == false)
+            {
+                swordAnimator.SetBool("isAttacking", true);
+            }
         }
     }
 
