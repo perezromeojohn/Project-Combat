@@ -364,6 +364,7 @@ MonoBehaviour:
   playerSprite: {fileID: 798174914}
   hairSprite: {fileID: 265667140}
   handSprite: {fileID: 0}
+  swordAnimator: {fileID: 0}
 --- !u!95 &321504873
 Animator:
   serializedVersion: 5
@@ -776,7 +777,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.068845555, y: 0.035059422}
+  m_Offset: {x: 0.09666692, y: 0.0335138}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -787,7 +788,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.33376417, y: 0.18922216}
+  m_Size: {x: 0.3894069, y: 0.18613091}
   m_EdgeRadius: 0
 --- !u!114 &668930559
 MonoBehaviour:
@@ -1135,6 +1136,7 @@ MonoBehaviour:
   blinkAmount: 3
   rollDirection: {x: 0, y: 0, z: 0}
   rollSpeed: 5
+  swordCollider: {fileID: 668930558}
   playerAnimator: {fileID: 798174916}
   hairAnimator: {fileID: 265667139}
   hand: {fileID: 2109503247}
@@ -1477,6 +1479,7 @@ MonoBehaviour:
   playerSprite: {fileID: 798174914}
   hairSprite: {fileID: 265667140}
   handSprite: {fileID: 668930556}
+  swordAnimator: {fileID: 668930557}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

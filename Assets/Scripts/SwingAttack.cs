@@ -18,7 +18,7 @@ public class SwingAttack : MonoBehaviour
         hitBox.enabled = true;
     }
 
-    void DIsableAttack() {
+    void DisableAttack() {
         Debug.Log("Disable");
         // set animator paramters isAttacking to False
         swordAnimator.SetBool("isAttacking", false);

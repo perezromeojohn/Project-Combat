@@ -25,6 +25,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Player Dodge Roll")]
     [SerializeField] private Vector3 rollDirection;
     [SerializeField] private float rollSpeed = 7f;
+    [SerializeField] private BoxCollider2D swordCollider;
     private State state;
     private float rollCooldown = 1f; // Cooldown for Dodge Roll
     private float rollTimer;
@@ -96,6 +97,7 @@ public class CharacterMovement : MonoBehaviour
                 playerAnimator.SetBool("isRolling", true);
                 hairAnimator.SetBool("isRolling", true);
                 hand.SetActive(false);
+                swordCollider.enabled = false;
                 break;
         }
 
