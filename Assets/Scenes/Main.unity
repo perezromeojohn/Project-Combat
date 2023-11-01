@@ -1120,12 +1120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1ef1c2f3834b34088ab2a2e22e6eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
-  moveSpeed: 1
-  blinkAmount: 3
   rollDirection: {x: 0, y: 0, z: 0}
-  rollSpeed: 5
   swordCollider: {fileID: 668930560}
   playerAnimator: {fileID: 798174916}
   hairAnimator: {fileID: 265667139}
@@ -1144,7 +1141,7 @@ GameObject:
   - component: {fileID: 831571283}
   - component: {fileID: 831571282}
   - component: {fileID: 831571281}
-  - component: {fileID: 831571280}
+  - component: {fileID: 831571286}
   m_Layer: 0
   m_Name: Gobbie
   m_TagString: Enemy
@@ -1152,20 +1149,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &831571280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831571279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d2a53b426f91545b2e56d00b7d49d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 0.2
-  detectionRange: 0
 --- !u!61 &831571281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1326,6 +1309,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &831571286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831571279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15f0d9f94ec047499262287961db3b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: 992ad4a8b6552794a8119b33f5062859, type: 2}
 --- !u!1 &898135012
 GameObject:
   m_ObjectHideFlags: 3
@@ -1698,11 +1694,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1318234210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d2a53b426f91545b2e56d00b7d49d7, type: 3}
+  m_Script: {fileID: 11500000, guid: e15f0d9f94ec047499262287961db3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.2
-  detectionRange: 0
+  enemy: {fileID: 11400000, guid: 36ac2d40af7a41049961c3fa1ab963ce, type: 2}
 --- !u!1 &2109503247
 GameObject:
   m_ObjectHideFlags: 0

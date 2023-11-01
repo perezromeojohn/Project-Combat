@@ -11,23 +11,22 @@ public class CharacterMovement : MonoBehaviour
         Rolling
     }
 
+    [Header("Player Stats")]
+    public PlayerStats playerStats;
+
     [Header("Player Movement")]
-    [SerializeField] private Rigidbody2D rb;
+    private Rigidbody2D rb;
     [SerializeField] private Vector3 moveDirection;
-    [SerializeField] private float moveSpeed = 2f;
 
     [Header("Player Blink")]
-    [SerializeField] private float blinkAmount = 3f;
     private bool isDashButtonDown;
-    private float blinkCooldown = 2f; // Cooldown for Blink
     private float blinkTimer;
 
     [Header("Player Dodge Roll")]
-    [SerializeField] private Vector3 rollDirection;
-    [SerializeField] private float rollSpeed = 7f;
+    private Vector3 rollDirection;
+    private float rollSpeed;
     [SerializeField] private CircleCollider2D swordCollider;
     private State state;
-    private float rollCooldown = 1f; // Cooldown for Dodge Roll
     private float rollTimer;
 
     [Header("Player Animations")]
@@ -43,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Start()
     {
-        blinkTimer = 3f; // Initialize the Blink cooldown timer
+        blinkTimer = 1f; // Initialize the Blink cooldown timer
         rollTimer = 1f; // Initialize the Dodge Roll cooldown timer
     }
 
@@ -65,7 +64,7 @@ public class CharacterMovement : MonoBehaviour
         switch (state)
         {
             case State.Normal:
-                rb.velocity = moveDirection * moveSpeed;
+                rb.velocity = moveDirection * playerStats.movementSpeed;
                 // set animation of player and hair to run, if not moving, set it both to idle
                 if (moveDirection.x != 0 || moveDirection.y != 0)
                 {
@@ -83,9 +82,9 @@ public class CharacterMovement : MonoBehaviour
 
                 if (isDashButtonDown && blinkTimer <= 0)
                 {
-                    rb.MovePosition(transform.position + moveDirection * blinkAmount);
+                    rb.MovePosition(transform.position + moveDirection * playerStats.blinkAmount);
                     isDashButtonDown = false;
-                    blinkTimer = blinkCooldown; // Set the Blink cooldown timer
+                    blinkTimer = playerStats.blinkCooldown; // Set the Blink cooldown timer
                 }
 
                 // set hand gameobject to active
@@ -179,9 +178,9 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && rollTimer <= 0)
         {
             rollDirection = moveDirection;
-            rollSpeed = 5;
+            rollSpeed = playerStats.rollSpeed;
             state = State.Rolling;
-            rollTimer = rollCooldown; // Set the Dodge Roll cooldown timer
+            rollTimer = playerStats.rollCooldown; // Set the Dodge Roll cooldown timer
         }
     }
 }

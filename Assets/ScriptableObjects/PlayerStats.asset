@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babe4eda6b6ef6345a9f772287e62708, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  movementSpeed: 1
+  health: 15
+  maxHealth: 15
+  damage: 5
+  critChance: 20
+  critMultiplier: 5
+  critDamage: 12
+  attackSpeed: 1
+  rollSpeed: 5
+  rollCooldown: 1
+  blinkAmount: 3
+  blinkCooldown: 3
