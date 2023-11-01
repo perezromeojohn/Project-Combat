@@ -1122,7 +1122,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
-  rollDirection: {x: 0, y: 0, z: 0}
   swordCollider: {fileID: 668930560}
   playerAnimator: {fileID: 798174916}
   hairAnimator: {fileID: 265667139}
