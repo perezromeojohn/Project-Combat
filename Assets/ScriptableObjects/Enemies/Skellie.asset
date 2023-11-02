@@ -16,5 +16,5 @@ MonoBehaviour:
   movementSpeed: 0.2
   minDistanceToPlayer: 0.2
   damage: 5
-  health: 50
-  maxHealth: 50
+  health: 13
+  maxHealth: 13

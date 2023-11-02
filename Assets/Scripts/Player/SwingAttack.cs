@@ -5,9 +5,13 @@ using UnityEngine;
 public class SwingAttack : MonoBehaviour
 {
 
+    [Header("Player Stats")]
+    public PlayerStats playerStats;
     [Header("Sword Properties")]
     [SerializeField] private Animator swordAnimator;
     [SerializeField] private CircleCollider2D hitBox;
+    private List<Collider2D> hitEnemies = new List<Collider2D>();
+    private float damage = 0f;
 
     void Awake() {
         hitBox.enabled = false;
@@ -19,16 +23,20 @@ public class SwingAttack : MonoBehaviour
     }
 
     void DisableAttack() {
-        // Debug.Log("Disable");
-        // set animator paramters isAttacking to False
         swordAnimator.SetBool("isAttacking", false);
         // disable hitbox
         hitBox.enabled = false;
+        // clear list of hit enemies
+        hitEnemies.Clear();
     }
 
-    // detect if CircleCollider2D overlaps with enemy collider
-    // if so, print the collider's name
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.name);
+        if (!hitEnemies.Contains(other)) {
+            hitEnemies.Add(other);
+            Debug.Log(other.name);
+            other.GetComponent<EnemyBehaviour>().isAttacked = true;
+            damage = playerStats.damage;
+            other.GetComponent<EnemyBehaviour>().damageTaken = damage;
+        }
     }
 }
