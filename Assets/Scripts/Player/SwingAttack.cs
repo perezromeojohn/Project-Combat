@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 public class SwingAttack : MonoBehaviour
 {
+    [Header("MM Feedbacks")]
+    public MMFeedbacks feedbacks;
 
     [Header("Player Stats")]
     public PlayerStats playerStats;
@@ -34,9 +37,10 @@ public class SwingAttack : MonoBehaviour
         if (!hitEnemies.Contains(other)) {
             hitEnemies.Add(other);
             Debug.Log(other.name);
-            other.GetComponent<EnemyBehaviour>().isAttacked = true;
             damage = playerStats.damage;
+            other.GetComponent<EnemyBehaviour>().isAttacked = true;
             other.GetComponent<EnemyBehaviour>().damageTaken = damage;
+            feedbacks.PlayFeedbacks();
         }
     }
 }
