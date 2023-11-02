@@ -25,6 +25,9 @@ public class EnemyBehaviour : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
 
+    public FlashHit flashHit;
+
+
     void Start()
     {
         int randomIndex = UnityEngine.Random.Range(0, enemyList.Count);
@@ -111,6 +114,7 @@ public class EnemyBehaviour : MonoBehaviour
         health -= damageTaken;
         health = Mathf.Clamp(health, 0f, maxHealth);
         SetHealthUI();
+        flashHit.Flash();
         if (health <= 0f)
         {
             // get the animtor's bool value of isHealthZero and set it to true
@@ -132,7 +136,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             isHit = true; 
             TakeDamage(damageTaken);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             isAttacked = false;
             damageTaken = 0f;
             isHit = false;
