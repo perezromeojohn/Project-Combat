@@ -122,6 +122,8 @@ public class EnemyBehaviour : MonoBehaviour
             enemyAnimator.SetBool("isHealthZero", true);
             enemyHealthBarUI.enabled = false;
             enemyHealthBar.GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().simulated = false;
         }
     }
 
