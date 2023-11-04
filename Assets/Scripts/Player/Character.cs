@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
 
     [Header("Player Stats")]
     public PlayerStats playerStats;
+    public PlayerHealthGUI playerHealthGUI;
 
     [Header("Player Movement")]
     private Rigidbody2D rb;
@@ -40,6 +41,10 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Animator swordAnimator;
 
 
+    public bool isAttacked = false;
+    private bool isHit = false;
+    public float damageTaken = 0f;
+
     void Start()
     {
         blinkTimer = 1f; // Initialize the Blink cooldown timer
@@ -57,6 +62,9 @@ public class CharacterMovement : MonoBehaviour
         GetInput();
         Blink();
         Attack();
+
+        // takeDamage
+        StartCoroutine(PlayerHit());
     }
 
     void FixedUpdate()
@@ -181,6 +189,19 @@ public class CharacterMovement : MonoBehaviour
             rollSpeed = playerStats.rollSpeed;
             state = State.Rolling;
             rollTimer = playerStats.rollCooldown; // Set the Dodge Roll cooldown timer
+        }
+    }
+
+    IEnumerator PlayerHit()
+    {
+        if (isAttacked && !isHit)
+        {
+            isHit = true;
+            playerHealthGUI.TakeDamage(damageTaken);
+            yield return new WaitForSeconds(1f);
+            isAttacked = false;
+            damageTaken = 0f;
+            isHit = false;
         }
     }
 }

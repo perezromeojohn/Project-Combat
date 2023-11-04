@@ -7,6 +7,11 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    // player stuff
+    [Header("Player Stuff")]
+    public PlayerStats playerStats;
+    private GameObject playerGameObject;
+
     [Header("Enemy Stats")]
     public List<Enemy> enemyList;
     private Enemy selectedEnemy;
@@ -18,6 +23,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool isAttacked = false;
     private bool isHit = false;
     public float damageTaken = 0f;
+    private float damage;
 
     [Header("Enemy UI")]
     public SpriteRenderer enemyHealthBarUI;
@@ -37,9 +43,11 @@ public class EnemyBehaviour : MonoBehaviour
         // set stats
         health = selectedEnemy.health;
         maxHealth = selectedEnemy.maxHealth;
+        damage = selectedEnemy.damage;
 
         SetHealthUI();
 
+        playerGameObject = GameObject.FindWithTag("Player");
         player = GameObject.FindWithTag("Player").transform; // we are referencing the player's transform, not the last position of the player
         // get animator
         string animatorPath = "Assets/Animations/EnemyOverrides/" + selectedEnemy.enemyName + ".overrideController";
@@ -78,6 +86,9 @@ public class EnemyBehaviour : MonoBehaviour
                 transform.Translate(direction * selectedEnemy.movementSpeed * Time.deltaTime);
             } else {
                 // Debug.Log("Attack the player");
+                playerGameObject.GetComponent<CharacterMovement>().damageTaken = damage; // This script is somehowcalled CharacterMovement even though its only named Character
+                playerGameObject.GetComponent<CharacterMovement>().isAttacked = true;
+
             }
 
             // Check if the enemy is moving left and flip the sprite accordingly

@@ -15,7 +15,6 @@ public class Knockback : MonoBehaviour
     {
         StopAllCoroutines();
         OnBegin?.Invoke();
-        Debug.Log("I was here");
         Vector2 direction = (transform.position - player.position).normalized;
         rb.AddForce(direction * strength, ForceMode2D.Impulse);
         StartCoroutine(Reset());
