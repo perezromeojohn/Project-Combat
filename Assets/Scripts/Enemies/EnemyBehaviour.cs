@@ -26,6 +26,7 @@ public class EnemyBehaviour : MonoBehaviour
 
 
     public FlashHit flashHit;
+    public Knockback knockback;
 
 
     void Start()
@@ -39,7 +40,6 @@ public class EnemyBehaviour : MonoBehaviour
 
         SetHealthUI();
 
-        // Find the player GameObject by tag ("Player")
         player = GameObject.FindWithTag("Player").transform; // we are referencing the player's transform, not the last position of the player
         // get animator
         string animatorPath = "Assets/Animations/EnemyOverrides/" + selectedEnemy.enemyName + ".overrideController";
@@ -72,7 +72,7 @@ public class EnemyBehaviour : MonoBehaviour
             // Calculate the distance to the player
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            if (distanceToPlayer > selectedEnemy.minDistanceToPlayer && health > 0f)
+            if (distanceToPlayer > selectedEnemy.minDistanceToPlayer && health > 0f && !isHit)
             {
                 // Move the enemy towards the player's current position
                 transform.Translate(direction * selectedEnemy.movementSpeed * Time.deltaTime);
@@ -138,6 +138,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             isHit = true; 
             TakeDamage(damageTaken);
+            knockback.AddForce(player);
             yield return new WaitForSeconds(0.3f);
             isAttacked = false;
             damageTaken = 0f;
