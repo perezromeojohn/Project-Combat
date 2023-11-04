@@ -10,6 +10,7 @@ public class SwingAttack : MonoBehaviour
 
     [Header("Player Stats")]
     public PlayerStats playerStats;
+    public Rigidbody2D rb;
     [Header("Sword Properties")]
     [SerializeField] private Animator swordAnimator;
     [SerializeField] private CapsuleCollider2D hitBox;

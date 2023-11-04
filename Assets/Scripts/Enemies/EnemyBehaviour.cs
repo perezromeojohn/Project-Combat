@@ -117,7 +117,7 @@ public class EnemyBehaviour : MonoBehaviour
         float scaleFactor = Mathf.Clamp01(health / maxHealth);
         Vector3 newScale = enemyHealthBar.transform.localScale;
         newScale.x = scaleFactor;
-        enemyHealthBar.transform.localScale = newScale;
+        LeanTween.scaleX(enemyHealthBar, scaleFactor, 0.3f).setEase(LeanTweenType.easeOutQuart);
     }
 
     public void TakeDamage(float damage)
