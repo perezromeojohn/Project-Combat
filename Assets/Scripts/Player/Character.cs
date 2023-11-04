@@ -25,7 +25,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Player Dodge Roll")]
     private Vector3 rollDirection;
     private float rollSpeed;
-    [SerializeField] private CircleCollider2D swordCollider;
+    [SerializeField] private CapsuleCollider2D swordCollider;
     private State state;
     private float rollTimer;
 

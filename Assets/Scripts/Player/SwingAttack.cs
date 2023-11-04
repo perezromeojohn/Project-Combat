@@ -12,7 +12,7 @@ public class SwingAttack : MonoBehaviour
     public PlayerStats playerStats;
     [Header("Sword Properties")]
     [SerializeField] private Animator swordAnimator;
-    [SerializeField] private CircleCollider2D hitBox;
+    [SerializeField] private CapsuleCollider2D hitBox;
     private List<Collider2D> hitEnemies = new List<Collider2D>();
     private float damage = 0f;
 
@@ -26,11 +26,14 @@ public class SwingAttack : MonoBehaviour
     }
 
     void DisableAttack() {
-        swordAnimator.SetBool("isAttacking", false);
         // disable hitbox
         hitBox.enabled = false;
         // clear list of hit enemies
         hitEnemies.Clear();
+    }
+
+    void ResetAttacking() {
+        swordAnimator.SetBool("isAttacking", false);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

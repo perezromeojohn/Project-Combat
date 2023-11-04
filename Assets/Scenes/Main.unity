@@ -1276,7 +1276,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1196815215
   m_SortingOrder: 0
@@ -1331,7 +1331,7 @@ Transform:
   m_GameObject: {fileID: 668930554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1378,7 +1378,7 @@ SpriteRenderer:
   m_SortingLayerID: -2007558131
   m_SortingLayer: 2
   m_SortingOrder: 13
-  m_Sprite: {fileID: 282891937, guid: 3eb4215cde90ab249a092b469a6dd120, type: 3}
+  m_Sprite: {fileID: -1985899028, guid: f598b230126fdfd45b193afa0a836561, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1426,14 +1426,14 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
   swordAnimator: {fileID: 668930557}
   hitBox: {fileID: 668930560}
---- !u!58 &668930560
-CircleCollider2D:
+--- !u!70 &668930560
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668930554}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1455,12 +1455,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009396213, y: 0.09552833}
-  serializedVersion: 2
-  m_Radius: 0.15583023
+  m_Offset: {x: -0.0052427044, y: 0.008738963}
+  m_Size: {x: 0.4601439, y: 0.46014395}
+  m_Direction: 0
 --- !u!1 &676112818
 GameObject:
   m_ObjectHideFlags: 0
@@ -3670,7 +3670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78039217}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
