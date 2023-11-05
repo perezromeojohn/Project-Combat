@@ -15,6 +15,7 @@ public class PlayerStats : ScriptableObject
     public float critMultiplier;
     public float critDamage;
     public float attackSpeed;
+    public float knockbackStrength;
     [Header("Player Mobility")]
     public float rollSpeed;
     public float rollCooldown;

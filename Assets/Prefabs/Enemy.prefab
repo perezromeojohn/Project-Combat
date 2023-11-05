@@ -198,6 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2165725734134133681}
+  strength: 0
+  delay: 0.15
+  playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
   OnBegin:
     m_PersistentCalls:
       m_Calls: []

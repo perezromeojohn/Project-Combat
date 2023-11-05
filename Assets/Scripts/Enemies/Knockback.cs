@@ -7,9 +7,15 @@ public class Knockback : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
 
-    private float strength = 16f, delay = 0.15f;
+    public float strength = 0, delay = 0.15f;
+    public PlayerStats playerStats;
 
     public UnityEvent OnBegin, OnDone;
+
+    private void Start()
+    {
+        strength = playerStats.knockbackStrength;
+    }
 
     public void AddForce(Transform player)
     {
