@@ -17,6 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Enemy selectedEnemy;
     private Transform player;
     private Color color;
+    private Vector3 healthBarUIOffset;
     private SpriteRenderer enemySprite;
     [SerializeField] private float health;
     private float maxHealth;
@@ -30,11 +31,13 @@ public class EnemyBehaviour : MonoBehaviour
     [Header("Enemy UI")]
     public SpriteRenderer enemyHealthBarUI;
     public GameObject enemyHealthBar;
+    public GameObject mainEnemyHealthBar;
     public SpriteRenderer spriteRenderer;
 
 
     public FlashHit flashHit;
     public Knockback knockback;
+    private bool hasDied = false;
 
 
     void Start()
@@ -68,6 +71,8 @@ public class EnemyBehaviour : MonoBehaviour
         enemySprite.color = color;
 
         gameObject.name = selectedEnemy.enemyName;
+        // set mainEnemyHealthBar position to the healthbarUIOffset
+        mainEnemyHealthBar.transform.position = transform.position + healthBarUIOffset;
     }
 
     void Update()
@@ -89,7 +94,7 @@ public class EnemyBehaviour : MonoBehaviour
                 transform.Translate(direction * selectedEnemy.movementSpeed * Time.deltaTime);
             } else if (distanceToPlayer <= selectedEnemy.minDistanceToPlayer) {
                 // Debug.Log("Attack the player");
-                if (playerGameObject.GetComponent<CharacterMovement>().isInvincible == false)
+                if (playerGameObject.GetComponent<CharacterMovement>().isInvincible == false && !hasDied)
                 {
                     playerGameObject.GetComponent<CharacterMovement>().damageTaken = damage; // This script is somehowcalled CharacterMovement even though its only named Character
                     playerGameObject.GetComponent<CharacterMovement>().isAttacked = true;
@@ -113,6 +118,7 @@ public class EnemyBehaviour : MonoBehaviour
         maxHealth = selectedEnemy.maxHealth;
         damage = selectedEnemy.damage;
         color = selectedEnemy.spriteColor;
+        healthBarUIOffset = selectedEnemy.healthBarUIOffset;
     }
 
     void SetHealthUI() {
@@ -144,6 +150,7 @@ public class EnemyBehaviour : MonoBehaviour
             Animator enemyAnimator = GetComponent<Animator>();
             enemyAnimator.SetBool("isHealthZero", true);
             enemyHealthBarUI.enabled = false;
+            hasDied = true;
             enemyHealthBar.GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Rigidbody2D>().simulated = false;

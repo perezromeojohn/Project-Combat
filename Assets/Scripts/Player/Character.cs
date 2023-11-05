@@ -187,6 +187,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && rollTimer <= 0)
         {
+            if (moveDirection == Vector3.zero) return; // If moveDirection is zero, return
             rollDirection = moveDirection;
             rollSpeed = playerStats.rollSpeed;
             state = State.Rolling;

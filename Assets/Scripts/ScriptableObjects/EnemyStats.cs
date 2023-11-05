@@ -12,4 +12,5 @@ public class Enemy : ScriptableObject
     public float health;
     public float maxHealth;
     public Color spriteColor;
+    public Vector3 healthBarUIOffset;
 }

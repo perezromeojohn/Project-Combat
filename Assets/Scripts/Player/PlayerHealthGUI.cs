@@ -29,6 +29,8 @@ public class PlayerHealthGUI : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("Player is dead");
+            // value set here for the cronies
+            // set value to 10
         }
     }
 
