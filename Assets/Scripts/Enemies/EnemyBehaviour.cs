@@ -84,11 +84,10 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 // Move the enemy towards the player's current position
                 transform.Translate(direction * selectedEnemy.movementSpeed * Time.deltaTime);
-            } else {
+            } else if (distanceToPlayer <= selectedEnemy.minDistanceToPlayer) {
                 // Debug.Log("Attack the player");
                 playerGameObject.GetComponent<CharacterMovement>().damageTaken = damage; // This script is somehowcalled CharacterMovement even though its only named Character
                 playerGameObject.GetComponent<CharacterMovement>().isAttacked = true;
-
             }
 
             // Check if the enemy is moving left and flip the sprite accordingly

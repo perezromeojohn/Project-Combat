@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 public class PlayerHealthGUI : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerHealthGUI : MonoBehaviour
     public GameObject healthBar;
     private float health;
     private float maxHealth;
+
+    [Header("MM Feedbacks")]
+    public MMFeedbacks feedbacks;
     void Start()
     {
         health = playerStats.health;
@@ -21,6 +25,7 @@ public class PlayerHealthGUI : MonoBehaviour
     {
         health -= damage;
         UpdateHealthUI();
+        feedbacks.PlayFeedbacks();
     }
 
     void UpdateHealthUI()
@@ -28,6 +33,6 @@ public class PlayerHealthGUI : MonoBehaviour
         float scaleFactor = Mathf.Clamp01(health / maxHealth);
         Vector3 newScale = healthBar.transform.localScale;
         newScale.x = scaleFactor;
-        healthBar.transform.localScale = newScale;
+        LeanTween.scale(healthBar, newScale, 0.5f).setEaseOutQuart();
     }
 }
