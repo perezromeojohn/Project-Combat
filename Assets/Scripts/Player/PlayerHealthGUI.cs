@@ -26,6 +26,10 @@ public class PlayerHealthGUI : MonoBehaviour
         health -= damage;
         UpdateHealthUI();
         feedbacks.PlayFeedbacks();
+        if (health <= 0)
+        {
+            Debug.Log("Player is dead");
+        }
     }
 
     void UpdateHealthUI()

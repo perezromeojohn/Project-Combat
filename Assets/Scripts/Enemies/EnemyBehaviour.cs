@@ -16,6 +16,8 @@ public class EnemyBehaviour : MonoBehaviour
     public List<Enemy> enemyList;
     private Enemy selectedEnemy;
     private Transform player;
+    private Color color;
+    private SpriteRenderer enemySprite;
     [SerializeField] private float health;
     private float maxHealth;
     
@@ -41,9 +43,7 @@ public class EnemyBehaviour : MonoBehaviour
         selectedEnemy = enemyList[randomIndex];
 
         // set stats
-        health = selectedEnemy.health;
-        maxHealth = selectedEnemy.maxHealth;
-        damage = selectedEnemy.damage;
+        SetStats();
 
         SetHealthUI();
 
@@ -63,6 +63,9 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Debug.LogWarning("Animator not found for enemy: " + selectedEnemy.enemyName);
         }
+
+        enemySprite = GetComponent<SpriteRenderer>();
+        enemySprite.color = color;
 
         gameObject.name = selectedEnemy.enemyName;
     }
@@ -86,8 +89,11 @@ public class EnemyBehaviour : MonoBehaviour
                 transform.Translate(direction * selectedEnemy.movementSpeed * Time.deltaTime);
             } else if (distanceToPlayer <= selectedEnemy.minDistanceToPlayer) {
                 // Debug.Log("Attack the player");
-                playerGameObject.GetComponent<CharacterMovement>().damageTaken = damage; // This script is somehowcalled CharacterMovement even though its only named Character
-                playerGameObject.GetComponent<CharacterMovement>().isAttacked = true;
+                if (playerGameObject.GetComponent<CharacterMovement>().isInvincible == false)
+                {
+                    playerGameObject.GetComponent<CharacterMovement>().damageTaken = damage; // This script is somehowcalled CharacterMovement even though its only named Character
+                    playerGameObject.GetComponent<CharacterMovement>().isAttacked = true;
+                }
             }
 
             // Check if the enemy is moving left and flip the sprite accordingly
@@ -100,6 +106,13 @@ public class EnemyBehaviour : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
+    }
+
+    void SetStats() {
+        health = selectedEnemy.health;
+        maxHealth = selectedEnemy.maxHealth;
+        damage = selectedEnemy.damage;
+        color = selectedEnemy.spriteColor;
     }
 
     void SetHealthUI() {

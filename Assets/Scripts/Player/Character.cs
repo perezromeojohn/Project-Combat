@@ -27,6 +27,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 rollDirection;
     private float rollSpeed;
     [SerializeField] private CapsuleCollider2D swordCollider;
+    public bool isInvincible = false;
     private State state;
     private float rollTimer;
 
@@ -156,6 +157,7 @@ public class CharacterMovement : MonoBehaviour
                     moveX = 1f;
                 }
 
+                isInvincible = false;
                 moveDirection = new Vector3(moveX, moveY).normalized;
                 DodgeRoll();
                 break;
@@ -189,6 +191,7 @@ public class CharacterMovement : MonoBehaviour
             rollSpeed = playerStats.rollSpeed;
             state = State.Rolling;
             rollTimer = playerStats.rollCooldown; // Set the Dodge Roll cooldown timer
+            isInvincible = true;
         }
     }
 
@@ -198,7 +201,7 @@ public class CharacterMovement : MonoBehaviour
         {
             isHit = true;
             playerHealthGUI.TakeDamage(damageTaken);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.5f);
             isAttacked = false;
             damageTaken = 0f;
             isHit = false;
