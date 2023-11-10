@@ -1,0 +1,101 @@
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LevelManager : MonoBehaviour
+{
+    [SerializeField] private int soulsCollected = 0;
+    [SerializeField] private int totalSoulsCollected;
+    private int soulsRequiredForLevelUp = 15;
+    private readonly float levelMultiplier = 1.2f; // Adjust this multiplier as needed
+
+    public GameObject progressBar;
+
+    // can you make me a button that will add 1 to soulsCollected?
+    
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Check if the player has collected enough souls to level up
+        if (soulsCollected > soulsRequiredForLevelUp)
+        {
+            LevelUp();
+        }
+
+        UpdateProgressBarUI();
+    }
+    
+
+    void LevelUp()
+    {
+        // Print "Level up" to the console
+        Debug.Log("Level up!");
+
+        // Add the souls collected to the total
+        totalSoulsCollected += soulsCollected;
+
+        // Calculate the new amount of souls required for the next level
+        soulsRequiredForLevelUp = Mathf.RoundToInt(soulsRequiredForLevelUp * levelMultiplier);
+
+        // Reset souls collected for the next level
+        soulsCollected = 0;
+
+        // Update UI or provide feedback
+        // ...
+
+        // Optionally, you can adjust other aspects of the game, like enemy difficulty
+        // ...
+
+        // Log the total souls collected and the new required souls for debugging or analytics
+        Debug.Log("Total Souls Collected: " + totalSoulsCollected);
+        Debug.Log("Souls Required for Next Level: " + soulsRequiredForLevelUp);
+    }
+
+    // void UpdateUI()
+    // {
+    //     // Update the level text
+    //     levelText.text = "Level: " + totalSoulsCollected;
+
+    //     // Update the progress bar
+    //     progressBar.value = (float)soulsCollected / soulsRequiredForLevelUp;
+    // }
+
+    #if UNITY_EDITOR
+    [CustomEditor(typeof(LevelManager))]
+    public class LevelManagerEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            LevelManager myScript = (LevelManager)target;
+
+            if (GUILayout.Button("Add Souls"))
+            {
+                myScript.AddSouls(1); // You can adjust the amount as needed
+            }
+        }
+    }
+    #endif
+
+    public void AddSouls(int amount)
+    {
+        soulsCollected += amount;
+        Debug.Log("Added " + amount + " souls. Total souls collected: " + soulsCollected);
+    }
+
+    void UpdateProgressBarUI()
+    {
+        float progress = (float)soulsCollected / soulsRequiredForLevelUp;
+
+        // Use LeanTween or another tweening library to animate the progress bar directly
+        // Example using LeanTween:
+        // overlapping tweening problem fixed by using LeanTween.cancel(progressBar);
+        LeanTween.scaleX(progressBar, progress, .1f).setEaseLinear();
+    }
+
+}
