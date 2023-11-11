@@ -4,6 +4,7 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int totalSoulsCollected;
     private int soulsRequiredForLevelUp = 15;
     private readonly float levelMultiplier = 1.2f; // Adjust this multiplier as needed
+    public MMFeedbacks levelUpFeedback;
 
     public GameObject progressBar;
 
@@ -85,6 +87,7 @@ public class LevelManager : MonoBehaviour
     public void AddSouls(int amount)
     {
         soulsCollected += amount;
+        levelUpFeedback.PlayFeedbacks();
         Debug.Log("Added " + amount + " souls. Total souls collected: " + soulsCollected);
     }
 
@@ -92,9 +95,6 @@ public class LevelManager : MonoBehaviour
     {
         float progress = (float)soulsCollected / soulsRequiredForLevelUp;
 
-        // Use LeanTween or another tweening library to animate the progress bar directly
-        // Example using LeanTween:
-        // overlapping tweening problem fixed by using LeanTween.cancel(progressBar);
         LeanTween.scaleX(progressBar, progress, .1f).setEaseLinear();
     }
 
