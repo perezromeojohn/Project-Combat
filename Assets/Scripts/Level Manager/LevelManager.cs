@@ -5,16 +5,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private int soulsCollected = 0;
     [SerializeField] private int totalSoulsCollected;
+    [SerializeField] private int worldLevel = 1;
     private int soulsRequiredForLevelUp = 15;
     private readonly float levelMultiplier = 1.2f; // Adjust this multiplier as needed
     public MMFeedbacks levelUpFeedback;
 
     public GameObject progressBar;
+    // get textmeshpro
+    public TextMeshProUGUI levelText;
 
     // can you make me a button that will add 1 to soulsCollected?
     
@@ -40,11 +44,17 @@ public class LevelManager : MonoBehaviour
         // Add the souls collected to the total
         totalSoulsCollected += soulsCollected;
 
+        // level up the world level
+        worldLevel++;
+
         // Calculate the new amount of souls required for the next level
         soulsRequiredForLevelUp = Mathf.RoundToInt(soulsRequiredForLevelUp * levelMultiplier);
 
         // Reset souls collected for the next level
         soulsCollected = 0;
+        // convert to string and set textmeshpro to World Level concatenate with the converted string worldLevel
+        levelText.text = "World Level " + worldLevel.ToString();
+        
 
         // Update UI or provide feedback
         // ...
