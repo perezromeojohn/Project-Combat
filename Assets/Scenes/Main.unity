@@ -2086,7 +2086,7 @@ MonoBehaviour:
   m_Follow: {fileID: 798174911}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 1.5
+    OrthographicSize: 1.2
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2619,7 +2619,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.5
+  orthographic size: 1.2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4271,8 +4271,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -72.19995, y: 161}
-  m_SizeDelta: {x: 386.2, y: 1760}
+  m_AnchoredPosition: {x: -53.9, y: 161}
+  m_SizeDelta: {x: 349.6, y: 1760}
   m_Pivot: {x: 0.50000006, y: 0.49999997}
 --- !u!114 &1020668017
 MonoBehaviour:
@@ -9858,7 +9858,7 @@ RectTransform:
   m_GameObject: {fileID: 1322660131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.05, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 701257693}
@@ -9867,7 +9867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 72, y: 87}
+  m_AnchoredPosition: {x: 95, y: 43}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1322660134
@@ -31796,11 +31796,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 564654157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -341, y: -4.3599854}
-  m_SizeDelta: {x: 330.80005, y: 88.2}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0.000061035156, y: 28}
+  m_SizeDelta: {x: 330.80005, y: 88.20001}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &2042096689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31915,7 +31915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2076138994
 RectTransform:
   m_ObjectHideFlags: 0
