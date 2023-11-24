@@ -33,11 +33,12 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject enemyHealthBar;
     public GameObject mainEnemyHealthBar;
     public SpriteRenderer spriteRenderer;
-
-
     public FlashHit flashHit;
     public Knockback knockback;
     private bool hasDied = false;
+
+    // class LevelManager
+    public LevelManager levelManager;
 
 
     void Start()
@@ -147,6 +148,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (health <= 0f)
         {
             // get the animtor's bool value of isHealthZero and set it to true
+            levelManager.IncrementSoulsCollected();
             Animator enemyAnimator = GetComponent<Animator>();
             enemyAnimator.SetBool("isHealthZero", true);
             enemyHealthBarUI.enabled = false;

@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int soulsCollected = 0;
     [SerializeField] private int totalSoulsCollected;
     [SerializeField] private int worldLevel = 1;
-    private int soulsRequiredForLevelUp = 15;
+    public int soulsRequiredForLevelUp = 15;
     private readonly float levelMultiplier = 1.2f; // Adjust this multiplier as needed
     public MMFeedbacks levelUpFeedback;
 
@@ -34,6 +34,11 @@ public class LevelManager : MonoBehaviour
 
         UpdateProgressBarUI();
     }
+
+    public void IncrementSoulsCollected()
+    {
+        soulsCollected++;
+    }
     
 
     void LevelUp()
@@ -53,7 +58,7 @@ public class LevelManager : MonoBehaviour
         // Reset souls collected for the next level
         soulsCollected = 0;
         // convert to string and set textmeshpro to World Level concatenate with the converted string worldLevel
-        levelText.text = "World Level " + worldLevel.ToString();
+        levelText.text = worldLevel.ToString();
         
 
         // Update UI or provide feedback

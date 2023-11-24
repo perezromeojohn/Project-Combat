@@ -235,6 +235,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1795704836419125094}
   flashHit: {fileID: 6157635902362930771}
   knockback: {fileID: 3997863541382829452}
+  levelManager: {fileID: 0}
 --- !u!114 &6157635902362930771
 MonoBehaviour:
   m_ObjectHideFlags: 0
