@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public int soulsRequiredForLevelUp = 15;
     private readonly float levelMultiplier = 1.2f; // Adjust this multiplier as needed
     public MMFeedbacks levelUpFeedback;
+    public PerksManager perksManager;
 
     public GameObject progressBar;
     // get textmeshpro
@@ -43,6 +44,8 @@ public class LevelManager : MonoBehaviour
 
     void LevelUp()
     {
+        // Open the level up window
+        perksManager.OpenLevelUpWindow();
         // Print "Level up" to the console
         Debug.Log("Level up!");
 
@@ -108,6 +111,11 @@ public class LevelManager : MonoBehaviour
 
     void UpdateProgressBarUI()
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+
         float progress = (float)soulsCollected / soulsRequiredForLevelUp;
 
         LeanTween.scaleX(progressBar, progress, .1f).setEaseLinear();
