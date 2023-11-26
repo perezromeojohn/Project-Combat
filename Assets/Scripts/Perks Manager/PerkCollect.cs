@@ -8,7 +8,6 @@ public class PerkCollect : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
         levelUpWindow.SetActive(false);
         // get this game object's name and Debug.Log it
         Debug.Log(gameObject.name);
