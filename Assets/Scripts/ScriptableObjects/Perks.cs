@@ -1,0 +1,15 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "Scriptable Objects", menuName = "Perks")]
+
+public class Perks : ScriptableObject
+{
+    public string perkName;
+    public string perkDescription;
+    public bool isSkill; // if true, then it's a skill, if false, then it's a buff
+
+    public float perkCooldown;
+}
