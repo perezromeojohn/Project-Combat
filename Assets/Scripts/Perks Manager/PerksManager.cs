@@ -137,8 +137,6 @@ public class PerksManager : MonoBehaviour
                 });
             }
         }
-        
-        Time.timeScale = 0;
     }
 
     public void GUIAnimations()

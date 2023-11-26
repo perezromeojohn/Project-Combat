@@ -98,9 +98,15 @@ public class LevelManager : MonoBehaviour
             {
                 myScript.AddSouls(1); // You can adjust the amount as needed
             }
+
+            if (GUILayout.Button("Level Up"))
+            {
+                myScript.LevelUp();
+            }
         }
     }
     #endif
+
 
     public void AddSouls(int amount)
     {
