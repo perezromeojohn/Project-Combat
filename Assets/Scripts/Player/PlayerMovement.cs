@@ -15,6 +15,7 @@ public class CharMove : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Vector3 moveDirection;
     [SerializeField] private float moveSpeed = 2f;
+    public bool playerStop = false;
 
     [Header("Player Blink")]
     [SerializeField] private float blinkAmount = 3f;
@@ -55,9 +56,22 @@ public class CharMove : MonoBehaviour
 
     void Update()
     {
-        GetInput();
-        Blink();
-        Attack();
+        if (!playerStop)
+        {
+            GetInput();
+            Blink();
+            Attack();
+            swordAnimator.enabled = false;
+            playerAnimator.enabled = false;
+            swordCollider.enabled = false;
+            GetComponent<BoxCollider2D>().enabled = true;
+        } else {
+            // get the swing animator and the player animator as well as the box collider
+            swordAnimator.enabled = false;
+            playerAnimator.enabled = false;
+            swordCollider.enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 
     void FixedUpdate()

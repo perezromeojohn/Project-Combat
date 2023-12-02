@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &60039557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60039559}
+  - component: {fileID: 60039558}
+  m_Layer: 0
+  m_Name: ~LeanTween
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &60039558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60039557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f4b27196f84954b44753aaac214bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &60039559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60039557}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &112008525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,6 +1661,7 @@ Transform:
   - {fileID: 1328301123}
   - {fileID: 1983635096}
   - {fileID: 1773679503}
+  - {fileID: 1263194728}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &229788686
@@ -1676,7 +1721,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Throwing Axe I
+  m_text: Fissure
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a2157e1f9c4c4d38841fbb92558f587, type: 2}
   m_sharedMaterial: {fileID: -6360588970910393389, guid: 9a2157e1f9c4c4d38841fbb92558f587, type: 2}
@@ -1769,7 +1814,7 @@ GameObject:
   - component: {fileID: 242354440}
   - component: {fileID: 242354442}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1846,9 +1891,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 242354441}
-        m_TargetAssemblyTypeName: PerkCollect, Assembly-CSharp
-        m_MethodName: ResumeGame
+      - m_Target: {fileID: 1263194727}
+        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
+        m_MethodName: resumeAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2000,7 +2045,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Further increase the burn damage you inflict to the enemies by <b><color="red">3%</b>
+  m_text: Throw an electroshield every 5 seconds on the current cursor's position
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e8124be060794d47bbc8685aee847c1, type: 2}
   m_sharedMaterial: {fileID: -4720767239326078244, guid: 0e8124be060794d47bbc8685aee847c1, type: 2}
@@ -2240,8 +2285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: An enchanted shield would rotate around you damaging the enemies it hit
-    along the way
+  m_text: Flame goes burr
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e8124be060794d47bbc8685aee847c1, type: 2}
   m_sharedMaterial: {fileID: -4720767239326078244, guid: 0e8124be060794d47bbc8685aee847c1, type: 2}
@@ -7255,6 +7299,7 @@ MonoBehaviour:
   hairSprite: {fileID: 265667140}
   handSprite: {fileID: 0}
   swordAnimator: {fileID: 0}
+  playerStop: 0
 --- !u!95 &321504873
 Animator:
   serializedVersion: 5
@@ -7385,7 +7430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5f6a3d38d9609b349b718eaf79f2dc37, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d02c790a08203ab43a7cdcf4b41e874e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18063,7 +18108,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enchanted Shield I
+  m_text: Fireball
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a2157e1f9c4c4d38841fbb92558f587, type: 2}
   m_sharedMaterial: {fileID: -6360588970910393389, guid: 9a2157e1f9c4c4d38841fbb92558f587, type: 2}
@@ -18927,7 +18972,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a56f5045a74117545802c2940920ef05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb4f69b371f82124b8086f8f5d086277, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19118,7 +19163,7 @@ GameObject:
   - component: {fileID: 676112819}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19442,6 +19487,7 @@ MonoBehaviour:
   hand: {fileID: 2109503247}
   swordAnimator: {fileID: 668930557}
   isAttacked: 0
+  playerStop: 1
   damageTaken: 0
 --- !u!1 &877423216
 GameObject:
@@ -19813,7 +19859,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fdfb8440cf096034dbe656fc394c1cf6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9dc471e43c42e5e4388d82ab68bf2441, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24764,7 +24810,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Flaming Sword II
+  m_text: Electro Shield
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a2157e1f9c4c4d38841fbb92558f587, type: 2}
   m_sharedMaterial: {fileID: -6360588970910393389, guid: 9a2157e1f9c4c4d38841fbb92558f587, type: 2}
@@ -29558,6 +29604,16 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7065588388674501701, guid: f82fa022e3eac4c189cdc8dfec43365b, type: 3}
   m_PrefabInstance: {fileID: 1152322818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1187737070 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1472525521017576717, guid: 983722b454b46c040912962aa90722e0, type: 3}
+  m_PrefabInstance: {fileID: 8193526330837671233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1187737072 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7330740739784972520, guid: 983722b454b46c040912962aa90722e0, type: 3}
+  m_PrefabInstance: {fileID: 8193526330837671233}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1211204385
 GameObject:
@@ -34523,6 +34579,50 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1263194726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1263194728}
+  - component: {fileID: 1263194727}
+  m_Layer: 0
+  m_Name: Time Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1263194727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263194726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4408ed7ef76e14da16f99dd1072151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1263194728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263194726}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 215408064}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1268689988
 GameObject:
   m_ObjectHideFlags: 0
@@ -34889,7 +34989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Every 3 seconds throw an Axe to a random enemy near the player
+  m_text: Spawns spikes around the player every 4 seconds
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e8124be060794d47bbc8685aee847c1, type: 2}
   m_sharedMaterial: {fileID: -4720767239326078244, guid: 0e8124be060794d47bbc8685aee847c1, type: 2}
@@ -39979,7 +40079,7 @@ GameObject:
   - component: {fileID: 1588017292}
   - component: {fileID: 1588017294}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Electro Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40056,9 +40156,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1588017293}
-        m_TargetAssemblyTypeName: PerkCollect, Assembly-CSharp
-        m_MethodName: ResumeGame
+      - m_Target: {fileID: 1263194727}
+        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
+        m_MethodName: resumeAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -40183,6 +40283,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 112008527}
+  - {fileID: 1952317243}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1631909694
@@ -40838,17 +40939,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelUpWindow: {fileID: 1211204385}
   perksList:
-  - {fileID: 11400000, guid: 9458315d33599874ba535dde0f0579da, type: 2}
-  - {fileID: 11400000, guid: 28be0e690aa301d41b6f220765219cdd, type: 2}
-  - {fileID: 11400000, guid: 92cfad8aac3b400469024172abf684f3, type: 2}
-  - {fileID: 11400000, guid: 2b499f6180e50024fb3f899431619c9a, type: 2}
-  - {fileID: 11400000, guid: e26d6e62f7a10f342b9e09773637d584, type: 2}
-  - {fileID: 11400000, guid: 71e0483636cf7ec4ca6d0c315fe33704, type: 2}
-  - {fileID: 11400000, guid: f4252ecc3340ed745add2c19e94ecbc5, type: 2}
   - {fileID: 11400000, guid: 1b724a672e7875e438fac11b2a995e58, type: 2}
+  - {fileID: 11400000, guid: e26d6e62f7a10f342b9e09773637d584, type: 2}
+  - {fileID: 11400000, guid: f4252ecc3340ed745add2c19e94ecbc5, type: 2}
+  - {fileID: 11400000, guid: 2b499f6180e50024fb3f899431619c9a, type: 2}
   - {fileID: 11400000, guid: 887fbcb647ccba24e8e39b39a6f5d721, type: 2}
+  - {fileID: 11400000, guid: 71e0483636cf7ec4ca6d0c315fe33704, type: 2}
   - {fileID: 11400000, guid: b68858fdabefb084c92c30076b5086e1, type: 2}
+  - {fileID: 11400000, guid: 28be0e690aa301d41b6f220765219cdd, type: 2}
   - {fileID: 11400000, guid: dc59ff8601cea1849b3800296773e331, type: 2}
+  - {fileID: 11400000, guid: 92cfad8aac3b400469024172abf684f3, type: 2}
+  - {fileID: 11400000, guid: 9458315d33599874ba535dde0f0579da, type: 2}
   buttons:
   - {fileID: 1781935679}
   - {fileID: 1588017287}
@@ -40947,7 +41048,7 @@ GameObject:
   - component: {fileID: 1781935684}
   - component: {fileID: 1781935686}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Fissure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41024,9 +41125,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781935685}
-        m_TargetAssemblyTypeName: PerkCollect, Assembly-CSharp
-        m_MethodName: ResumeGame
+      - m_Target: {fileID: 1263194727}
+        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
+        m_MethodName: resumeAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -60503,6 +60604,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1952317242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1952317243}
+  m_Layer: 0
+  m_Name: Enemy Layer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1952317243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952317242}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1187737072}
+  m_Father: {fileID: 1607966243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1983635095
 GameObject:
   m_ObjectHideFlags: 0
@@ -60550,10 +60683,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soulsCollected: 0
   totalSoulsCollected: 0
-  worldLevel: 1
-  soulsRequiredForLevelUp: 15
+  worldLevel: 2
+  soulsRequiredForLevelUp: 18
   levelUpFeedback: {fileID: 1983635099}
   perksManager: {fileID: 1773679505}
+  timeManager: {fileID: 1263194727}
   progressBar: {fileID: 7614582442437043865}
   levelText: {fileID: 7614582441846160956}
 --- !u!114 &1983635099
@@ -65967,6 +66101,7 @@ MonoBehaviour:
   hairSprite: {fileID: 265667140}
   handSprite: {fileID: 668930556}
   swordAnimator: {fileID: 668930557}
+  playerStop: 1
 --- !u!1 &784873250809002533
 GameObject:
   m_ObjectHideFlags: 0
@@ -81200,7 +81335,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50c12c23294124aa48490c44ac65a9e4, type: 2}
   m_sharedMaterial: {fileID: 7746803525459343344, guid: 50c12c23294124aa48490c44ac65a9e4, type: 2}
@@ -81644,7 +81779,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1952317243}
     m_Modifications:
     - target: {fileID: 1869672086303235217, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: m_Name
@@ -81652,23 +81787,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1869672086303235217, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3795414475122003371, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 1983635097}
+    - target: {fileID: 3795414475122003371, guid: 983722b454b46c040912962aa90722e0, type: 3}
+      propertyPath: enemyAnimator
+      value: 
+      objectReference: {fileID: 1187737070}
     - target: {fileID: 7330740739784972520, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.09
+      value: -3.486
       objectReference: {fileID: 0}
     - target: {fileID: 7330740739784972520, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3
+      value: 2.189
       objectReference: {fileID: 0}
     - target: {fileID: 7330740739784972520, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.00395445
       objectReference: {fileID: 0}
     - target: {fileID: 7330740739784972520, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -81676,15 +81815,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7330740739784972520, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7330740739784972520, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7330740739784972520, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7330740739784972520, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -86600,5 +86739,5 @@ SceneRoots:
   - {fileID: 1471945102}
   - {fileID: 676112821}
   - {fileID: 321504871}
-  - {fileID: 8193526330837671233}
   - {fileID: 1949504560}
+  - {fileID: 60039559}

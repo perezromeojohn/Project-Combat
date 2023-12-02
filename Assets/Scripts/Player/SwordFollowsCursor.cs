@@ -12,6 +12,7 @@ public class SwordFollowsCursor : MonoBehaviour
     [SerializeField] private SpriteRenderer hairSprite;
     [SerializeField] private SpriteRenderer handSprite;
     [SerializeField] private Animator swordAnimator;
+    public bool playerStop = false;
     void Start()
     {
         // Cursor.visible = false;
@@ -26,7 +27,7 @@ public class SwordFollowsCursor : MonoBehaviour
     private void RotateAtCursor() {
         // make this object rotate towards the cursor's position, we are working with 2d
         // so we only need to worry about the z axis
-        if (swordAnimator.GetBool("isAttacking") == false) {
+        if (swordAnimator.GetBool("isAttacking") == false && !playerStop) {
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);

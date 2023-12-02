@@ -19,8 +19,10 @@ public class EnemyBehaviour : MonoBehaviour
     private Color color;
     private Vector3 healthBarUIOffset;
     private SpriteRenderer enemySprite;
+    public Animator enemyAnimator;
     [SerializeField] private float health;
     private float maxHealth;
+    public bool enemyStop = false;
     
     [Header("Attack Settings")]
     public bool isAttacked = false;
@@ -81,10 +83,14 @@ public class EnemyBehaviour : MonoBehaviour
         StartCoroutine(EnemyHit());
 
 
-        if (player != null)
+        if (player != null && !enemyStop)
         {
             // Calculate the direction to the player
             Vector3 direction = (player.position - transform.position).normalized;
+
+            // enable the Animator
+            enemyAnimator.enabled = true;
+            GetComponent<Collider2D>().enabled = true;
             
             // Calculate the distance to the player
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
@@ -111,6 +117,10 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 spriteRenderer.flipX = false;
             }
+        } else {
+            // disable the Animator
+            enemyAnimator.enabled = false;
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 

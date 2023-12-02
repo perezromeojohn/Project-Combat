@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     private readonly float levelMultiplier = 1.2f; // Adjust this multiplier as needed
     public MMFeedbacks levelUpFeedback;
     public PerksManager perksManager;
+    public TimeManager timeManager;
 
     public GameObject progressBar;
     // get textmeshpro
@@ -40,7 +41,6 @@ public class LevelManager : MonoBehaviour
     {
         soulsCollected++;
     }
-    
 
     void LevelUp()
     {
@@ -48,10 +48,12 @@ public class LevelManager : MonoBehaviour
         perksManager.OpenLevelUpWindow();
         // Print "Level up" to the console
         Debug.Log("Level up!");
+        timeManager.playerStop();
+        timeManager.enemyStop();
 
         // Add the souls collected to the total
         totalSoulsCollected += soulsCollected;
-
+        
         // level up the world level
         worldLevel++;
 
