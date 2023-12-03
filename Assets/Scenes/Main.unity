@@ -1803,7 +1803,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 533.05, y: 0}
-  m_SizeDelta: {x: -1445.064, y: 0}
+  m_SizeDelta: {x: -1445.064, y: -253.73682}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &242354437
 MonoBehaviour:
@@ -1849,9 +1849,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1263194727}
-        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
-        m_MethodName: resumeAll
+      - m_Target: {fileID: 1773679505}
+        m_TargetAssemblyTypeName: PerksManager, Assembly-CSharp
+        m_MethodName: EndGUIAnims
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7475,6 +7475,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328746752}
   m_CullTransparentMesh: 1
+--- !u!1 &340581587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 340581589}
+  - component: {fileID: 340581588}
+  m_Layer: 0
+  m_Name: ~LeanTween
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &340581588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340581587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f4b27196f84954b44753aaac214bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &340581589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340581587}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &354113240
 GameObject:
   m_ObjectHideFlags: 0
@@ -29659,7 +29703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1211204386
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29696,7 +29740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.53333336}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5294118}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -40139,7 +40183,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.81396484, y: 0}
-  m_SizeDelta: {x: -1445.064, y: 0}
+  m_SizeDelta: {x: -1445.064, y: -253.73682}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588017289
 MonoBehaviour:
@@ -40185,9 +40229,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1263194727}
-        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
-        m_MethodName: resumeAll
+      - m_Target: {fileID: 1773679505}
+        m_TargetAssemblyTypeName: PerksManager, Assembly-CSharp
+        m_MethodName: EndGUIAnims
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41036,6 +41080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelUpWindow: {fileID: 1211204385}
+  levelUpWindowImage: {fileID: 1211204387}
   perksList:
   - {fileID: 11400000, guid: 1b724a672e7875e438fac11b2a995e58, type: 2}
   - {fileID: 11400000, guid: e26d6e62f7a10f342b9e09773637d584, type: 2}
@@ -41048,6 +41093,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc59ff8601cea1849b3800296773e331, type: 2}
   - {fileID: 11400000, guid: 92cfad8aac3b400469024172abf684f3, type: 2}
   - {fileID: 11400000, guid: 9458315d33599874ba535dde0f0579da, type: 2}
+  timeManager: {fileID: 1263194727}
   buttons:
   - {fileID: 1781935679}
   - {fileID: 1588017287}
@@ -41179,7 +41225,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -531.4221, y: 0}
-  m_SizeDelta: {x: -1445.064, y: 0}
+  m_SizeDelta: {x: -1445.064, y: -253.73682}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781935681
 MonoBehaviour:
@@ -41225,9 +41271,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1263194727}
-        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
-        m_MethodName: resumeAll
+      - m_Target: {fileID: 1773679505}
+        m_TargetAssemblyTypeName: PerksManager, Assembly-CSharp
+        m_MethodName: EndGUIAnims
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -86864,3 +86910,4 @@ SceneRoots:
   - {fileID: 1471945102}
   - {fileID: 676112821}
   - {fileID: 321504871}
+  - {fileID: 340581589}

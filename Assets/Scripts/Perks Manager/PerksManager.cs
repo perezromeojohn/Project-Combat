@@ -9,7 +9,9 @@ using UnityEditor;
 public class PerksManager : MonoBehaviour
 {
     public GameObject levelUpWindow;
+    public Image levelUpWindowImage;
     public List<Perks> perksList;
+    public TimeManager timeManager;
 
     [Header("GUI Stuff")]
     public List<GameObject> buttons;
@@ -61,7 +63,7 @@ public class PerksManager : MonoBehaviour
             description.text = perk.perkDescription;
         }
 
-        GUIAnimations();
+        StartGUIAnims();
     }
 
     // Utility method to shuffle a list
@@ -78,7 +80,13 @@ public class PerksManager : MonoBehaviour
 
     private IEnumerator PlayAnims()
     {
-        // set rec transform of topFrame's Y to 150 and then tween it to 0
+        // enable the level up window
+        levelUpWindow.SetActive(true);
+        // get the levelUpWindowImage and tween its rgba to 0, 0, 0, 135 using value
+        LeanTween.value(levelUpWindowImage.gameObject, new Color(0, 0, 0, 0), new Color(0, 0, 0, .5f), 0.3f).setEaseOutQuad().setOnUpdate((Color val) =>
+        {
+            levelUpWindowImage.color = val;
+        });
         RectTransform topBarRectTransform = topBar.GetComponent<RectTransform>();
         topBarRectTransform.anchoredPosition = new Vector2(0, 150);
         LeanTween.moveY(topBarRectTransform, 0, 0.5f).setEaseOutQuad();
@@ -139,9 +147,66 @@ public class PerksManager : MonoBehaviour
         }
     }
 
-    public void GUIAnimations()
+    private IEnumerator EndAnims()
+    {
+        // set rec transform of topFrame's Y to 0 and then tween it to 150
+        RectTransform topBarRectTransform = topBar.GetComponent<RectTransform>();
+        topBarRectTransform.anchoredPosition = new Vector2(0, 0);
+        LeanTween.moveY(topBarRectTransform, 150, 0.5f).setEaseOutQuad();
+
+        // set rec transform of bottomFrame1's Y to 76.5 and then tween it to -315
+        RectTransform bottomBar1RectTransform = bottomBar1.GetComponent<RectTransform>();
+        bottomBar1RectTransform.anchoredPosition = new Vector2(0, 76.5f);
+        LeanTween.moveY(bottomBar1RectTransform, -300, 0.8f).setEaseOutQuad();
+
+        // set rec transform of bottomFrame2's Y to 165.5 and then tween it to -315
+        RectTransform bottomBar2RectTransform = bottomBar2.GetComponent<RectTransform>();
+        bottomBar2RectTransform.anchoredPosition = new Vector2(0, 165.5f);
+        LeanTween.moveY(bottomBar2RectTransform, -315, 0.5f).setEaseOutQuad();
+
+        // now tween the alpha to 1, set the rect transform of the button's y to -44 with a delay of 0.5 seconds for each button
+        foreach (GameObject button in buttons)
+        {
+            yield return new WaitForSeconds(.1f);
+            RectTransform buttonRectTransform = button.GetComponent<RectTransform>();
+            LeanTween.moveY(buttonRectTransform, 44, 0.5f).setEaseOutQuad();
+            // get all Image components in the buttons' children, set their alpha to zero. get all text mesh pro components in the buttons, set their vertexcolor alpha to 0
+            Image[] images = button.GetComponentsInChildren<Image>();
+            foreach (Image image in images)
+            {
+                LeanTween.alpha(image.rectTransform, 0, 0.5f).setEaseOutQuad();
+            }
+
+            TextMeshProUGUI[] texts = button.GetComponentsInChildren<TextMeshProUGUI>();
+            foreach (TextMeshProUGUI text in texts)
+            {
+                LeanTween.value(text.gameObject, 1, 0, 0.5f).setEaseOutQuad().setOnUpdate((float val) =>
+                {
+                    text.color = new Color(text.color.r, text.color.g, text.color.b, val);
+                });
+            }
+        }
+
+        // get the levelUpWindow image component and tween its alpha to 0
+       LeanTween.value(levelUpWindowImage.gameObject, new Color(0, 0, 0, .5f), new Color(0, 0, 0, 0), 0.3f).setEaseOutQuad().setOnUpdate((Color val) =>
+        {
+            levelUpWindowImage.color = val;
+        });
+
+        yield return new WaitForSeconds(.3f);
+        // disable the level up window
+        levelUpWindow.SetActive(false);
+        timeManager.resumeAll();
+    }
+
+    public void StartGUIAnims()
     {
         StartCoroutine(PlayAnims());
+    }
+
+    public void EndGUIAnims()
+    {
+        StartCoroutine(EndAnims());
     }
 
 
@@ -154,7 +219,13 @@ public class PerksManager : MonoBehaviour
             if (GUILayout.Button("GUI Animations"))
             {
                 PerksManager perksManager = (PerksManager)target;
-                perksManager.GUIAnimations();
+                perksManager.StartGUIAnims();
+            }
+
+            if (GUILayout.Button("End GUI Animations"))
+            {
+                PerksManager perksManager = (PerksManager)target;
+                perksManager.EndGUIAnims();
             }
         }
     }

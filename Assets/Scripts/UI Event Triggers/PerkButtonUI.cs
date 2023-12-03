@@ -7,7 +7,7 @@ public class PerkButtonUI : MonoBehaviour
     private Vector3 scale;
     void Start() {
         // get gameObject vector3 scale
-        scale = gameObject.transform.localScale;
+        scale = new Vector3(.9f, .9f, .9f);
     }
     public void hoverPerkButton()
     {
