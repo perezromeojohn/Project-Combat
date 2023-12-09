@@ -45,4 +45,8 @@ public class TimeManager : MonoBehaviour
         playerResume();
         enemyResume();
     }
+
+    public void Start(){
+        resumeAll();
+    }
 }

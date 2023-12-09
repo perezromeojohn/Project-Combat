@@ -61,7 +61,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if (!playerStop)
+        if (playerStop == false)
         {
             GetInput();
             Blink();
