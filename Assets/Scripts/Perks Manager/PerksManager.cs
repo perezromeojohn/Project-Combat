@@ -80,6 +80,11 @@ public class PerksManager : MonoBehaviour
 
     private IEnumerator PlayAnims()
     {
+        // for loop the button, and enable the Button component
+        foreach (GameObject button in buttons)
+        {
+            button.GetComponent<Button>().enabled = true;
+        }
         // enable the level up window
         levelUpWindow.SetActive(true);
         // get the levelUpWindowImage and tween its rgba to 0, 0, 0, 135 using value
@@ -149,6 +154,11 @@ public class PerksManager : MonoBehaviour
 
     private IEnumerator EndAnims()
     {
+        // for loop the button, and disable the Button component
+        foreach (GameObject button in buttons)
+        {
+            button.GetComponent<Button>().enabled = false;
+        }
         // set rec transform of topFrame's Y to 0 and then tween it to 150
         RectTransform topBarRectTransform = topBar.GetComponent<RectTransform>();
         topBarRectTransform.anchoredPosition = new Vector2(0, 0);
