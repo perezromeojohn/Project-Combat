@@ -43,7 +43,6 @@ public class CharacterMovement : MonoBehaviour
 
 
     public bool isAttacked = false;
-    public bool playerStop = false;
     private bool isHit = false;
     public float damageTaken = 0f;
 
@@ -61,23 +60,13 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if (playerStop == false)
-        {
-            GetInput();
-            Blink();
-            Attack();
-            swordAnimator.enabled = true;
-            playerAnimator.enabled = true;
-            hairAnimator.enabled = true;
-            GetComponent<BoxCollider2D>().enabled = true;
-        } else {
-            // get the swing animator and the player animator as well as the box collider
-            swordAnimator.enabled = false;
-            playerAnimator.enabled = false;
-            swordCollider.enabled = false;
-            hairAnimator.enabled = false;
-            GetComponent<BoxCollider2D>().enabled = false;
-        }
+        GetInput();
+        Blink();
+        Attack();
+        swordAnimator.enabled = true;
+        playerAnimator.enabled = true;
+        hairAnimator.enabled = true;
+        GetComponent<BoxCollider2D>().enabled = true;
 
         // takeDamage
         StartCoroutine(PlayerHit());
