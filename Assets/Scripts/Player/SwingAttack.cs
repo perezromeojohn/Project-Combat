@@ -42,8 +42,8 @@ public class SwingAttack : MonoBehaviour
             hitEnemies.Add(other);
             Debug.Log(other.name);
             damage = playerStats.damage;
-            other.GetComponent<EnemyBehaviour>().isAttacked = true;
-            other.GetComponent<EnemyBehaviour>().damageTaken = damage;
+            other.GetComponent<Behavior>().isAttacked = true;
+            other.GetComponent<Behavior>().damageTaken = damage;
             feedbacks.PlayFeedbacks();
         }
     }

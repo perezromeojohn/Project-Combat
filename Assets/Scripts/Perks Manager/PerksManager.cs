@@ -11,7 +11,6 @@ public class PerksManager : MonoBehaviour
     public GameObject levelUpWindow;
     public Image levelUpWindowImage;
     public List<Perks> perksList;
-    public TimeManager timeManager;
 
     [Header("GUI Stuff")]
     public List<GameObject> buttons;
@@ -206,7 +205,6 @@ public class PerksManager : MonoBehaviour
         yield return new WaitForSeconds(.3f);
         // disable the level up window
         levelUpWindow.SetActive(false);
-        timeManager.resumeAll();
     }
 
     public void StartGUIAnims()

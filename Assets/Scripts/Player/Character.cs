@@ -43,9 +43,11 @@ public class CharacterMovement : MonoBehaviour
 
 
     public bool isAttacked = false;
-    public bool playerStop = false;
     private bool isHit = false;
     public float damageTaken = 0f;
+
+    public float attackCooldown = .1f;
+    private float lastAttackTime = 0f;
 
     void Start()
     {
@@ -61,23 +63,18 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if (playerStop == false)
+        if (Time.time - lastAttackTime >= attackCooldown)
         {
-            GetInput();
-            Blink();
             Attack();
-            swordAnimator.enabled = true;
-            playerAnimator.enabled = true;
-            hairAnimator.enabled = true;
-            GetComponent<BoxCollider2D>().enabled = true;
-        } else {
-            // get the swing animator and the player animator as well as the box collider
-            swordAnimator.enabled = false;
-            playerAnimator.enabled = false;
-            swordCollider.enabled = false;
-            hairAnimator.enabled = false;
-            GetComponent<BoxCollider2D>().enabled = false;
         }
+
+        GetInput();
+        Blink();
+
+        swordAnimator.enabled = true;
+        playerAnimator.enabled = true;
+        hairAnimator.enabled = true;
+        GetComponent<BoxCollider2D>().enabled = true;
 
         // takeDamage
         StartCoroutine(PlayerHit());
@@ -138,13 +135,15 @@ public class CharacterMovement : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (swordAnimator.GetBool("isAttacking") == false)
-            {
-                swordAnimator.SetBool("isAttacking", true);
-            }
-        }
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     if (swordAnimator.GetBool("isAttacking") == false)
+        //     {
+        //         swordAnimator.SetBool("isAttacking", true);
+        //     }
+        // }
+        swordAnimator.SetBool("isAttacking", true);
+        lastAttackTime = Time.time;
     }
 
     void GetInput()
