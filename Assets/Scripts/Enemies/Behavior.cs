@@ -9,7 +9,8 @@ using UnityEngine.Events;
 public class Behavior : MonoBehaviour
 {
     public UnityEvent onHit;
-    public UnityEvent onDeath;
+    public UnityEvent onDeathEnd;
+    public UnityEvent onDeathStart;
     public UnityEvent onSpawn;
 
     [Header("Enemy Stats")]
@@ -55,7 +56,7 @@ public class Behavior : MonoBehaviour
 
     private void Die()
     {
-        onDeath.Invoke();
+        onDeathEnd.Invoke();
         Destroy(gameObject);
     }
 
@@ -125,6 +126,7 @@ public class Behavior : MonoBehaviour
             Animator enemyAnimator = GetComponent<Animator>();
             enemyAnimator.SetBool("isHealthZero", true);
             enemyHealthBarUI.enabled = false;
+            onDeathStart.Invoke();
             enemyHealthBar.GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Rigidbody2D>().simulated = false;
