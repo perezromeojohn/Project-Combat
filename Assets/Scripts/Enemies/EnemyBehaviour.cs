@@ -83,45 +83,45 @@ public class EnemyBehaviour : MonoBehaviour
         StartCoroutine(EnemyHit());
 
 
-        if (player != null && !enemyStop)
-        {
-            // Calculate the direction to the player
-            Vector3 direction = (player.position - transform.position).normalized;
+        // if (player != null && !enemyStop)
+        // {
+        //     // Calculate the direction to the player
+        //     Vector3 direction = (player.position - transform.position).normalized;
 
-            // enable the Animator
-            enemyAnimator.enabled = true;
-            GetComponent<Collider2D>().enabled = true;
+        //     // enable the Animator
+        //     enemyAnimator.enabled = true;
+        //     GetComponent<Collider2D>().enabled = true;
             
-            // Calculate the distance to the player
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        //     // Calculate the distance to the player
+        //     float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            if (distanceToPlayer > selectedEnemy.minDistanceToPlayer && health > 0f && !isHit)
-            {
-                // Move the enemy towards the player's current position
-                transform.Translate(direction * selectedEnemy.movementSpeed * Time.deltaTime);
-            } else if (distanceToPlayer <= selectedEnemy.minDistanceToPlayer) {
-                // Debug.Log("Attack the player");
-                if (playerGameObject.GetComponent<CharacterMovement>().isInvincible == false && !hasDied)
-                {
-                    playerGameObject.GetComponent<CharacterMovement>().damageTaken = damage; // This script is somehowcalled CharacterMovement even though its only named Character
-                    playerGameObject.GetComponent<CharacterMovement>().isAttacked = true;
-                }
-            }
+        //     if (distanceToPlayer > selectedEnemy.minDistanceToPlayer && health > 0f && !isHit)
+        //     {
+        //         // Move the enemy towards the player's current position
+        //         transform.Translate(direction * selectedEnemy.movementSpeed * Time.deltaTime);
+        //     } else if (distanceToPlayer <= selectedEnemy.minDistanceToPlayer) {
+        //         // Debug.Log("Attack the player");
+        //         if (playerGameObject.GetComponent<CharacterMovement>().isInvincible == false && !hasDied)
+        //         {
+        //             playerGameObject.GetComponent<CharacterMovement>().damageTaken = damage; // This script is somehowcalled CharacterMovement even though its only named Character
+        //             playerGameObject.GetComponent<CharacterMovement>().isAttacked = true;
+        //         }
+        //     }
 
-            // Check if the enemy is moving left and flip the sprite accordingly
-            if (direction.x < 0 && health > 0f)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if (direction.x > 0 && health > 0f)
-            {
-                spriteRenderer.flipX = false;
-            }
-        } else {
-            // disable the Animator
-            enemyAnimator.enabled = false;
-            GetComponent<Collider2D>().enabled = false;
-        }
+        //     // Check if the enemy is moving left and flip the sprite accordingly
+        //     if (direction.x < 0 && health > 0f)
+        //     {
+        //         spriteRenderer.flipX = true;
+        //     }
+        //     else if (direction.x > 0 && health > 0f)
+        //     {
+        //         spriteRenderer.flipX = false;
+        //     }
+        // } else {
+        //     // disable the Animator
+        //     enemyAnimator.enabled = false;
+        //     GetComponent<Collider2D>().enabled = false;
+        // }
     }
 
     void SetStats() {
