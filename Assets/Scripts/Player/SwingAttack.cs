@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
+using UnityEditor;
 
 public class SwingAttack : MonoBehaviour
 {
     [Header("MM Feedbacks")]
-    public MMFeedbacks feedbacks;
+    public MMF_Player feedbacks;
+    private MMF_FloatingText floatingText;
 
     [Header("Player Stats")]
     public PlayerStats playerStats;
@@ -37,6 +39,14 @@ public class SwingAttack : MonoBehaviour
         swordAnimator.SetBool("isAttacking", false);
     }
 
+    void DamageNumbers(Transform hit)
+    {
+        floatingText = feedbacks.GetFeedbackOfType<MMF_FloatingText>();
+        floatingText.PositionMode = MMF_FloatingText.PositionModes.TargetTransform;
+        floatingText.TargetTransform = hit;
+        floatingText.Value = damage.ToString();
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if (!hitEnemies.Contains(other)) {
             hitEnemies.Add(other);
@@ -44,6 +54,7 @@ public class SwingAttack : MonoBehaviour
             damage = playerStats.damage;
             other.GetComponent<Behavior>().isAttacked = true;
             other.GetComponent<Behavior>().damageTaken = damage;
+            DamageNumbers(other.transform);
             feedbacks.PlayFeedbacks();
         }
     }
