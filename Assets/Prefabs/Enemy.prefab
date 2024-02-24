@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 8230423138775408561}
   - component: {fileID: 4771695106466282583}
   - component: {fileID: 8989651579868352108}
+  - component: {fileID: 113986127122982621}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -200,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7036863850017076770}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.391, y: 0.09, z: 0.00395445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -409,7 +410,19 @@ MonoBehaviour:
         m_CallState: 2
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 113986127122982621}
+        m_TargetAssemblyTypeName: DropDistribution, Assembly-CSharp
+        m_MethodName: DropItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onSpawn:
     m_PersistentCalls:
       m_Calls: []
@@ -437,6 +450,20 @@ MonoBehaviour:
   strength: 0
   delay: 0.15
   playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
+--- !u!114 &113986127122982621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036863850017076770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a58736aa0913d04ba8bc3d94528dad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xpDrop: {fileID: 6438402843256211946, guid: 22ffd913ec6966542a67a4a6b27712d5, type: 3}
+  drops: []
 --- !u!1 &7114711968034407830
 GameObject:
   m_ObjectHideFlags: 0

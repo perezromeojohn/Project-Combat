@@ -46,9 +46,6 @@ public class CharacterMovement : MonoBehaviour
     private bool isHit = false;
     public float damageTaken = 0f;
 
-    public float attackCooldown = .1f;
-    private float lastAttackTime = 0f;
-
     void Start()
     {
         blinkTimer = 1f; // Initialize the Blink cooldown timer
@@ -63,11 +60,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if (Time.time - lastAttackTime >= attackCooldown)
-        {
-            Attack();
-        }
-
+        Attack();
         GetInput();
         Blink();
 
@@ -135,15 +128,13 @@ public class CharacterMovement : MonoBehaviour
 
     void Attack()
     {
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     if (swordAnimator.GetBool("isAttacking") == false)
-        //     {
-        //         swordAnimator.SetBool("isAttacking", true);
-        //     }
-        // }
-        swordAnimator.SetBool("isAttacking", true);
-        lastAttackTime = Time.time;
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (swordAnimator.GetBool("isAttacking") == false)
+            {
+                swordAnimator.SetBool("isAttacking", true);
+            }
+        }
     }
 
     void GetInput()
