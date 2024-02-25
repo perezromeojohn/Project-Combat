@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.Events;
+using Unity.Mathematics;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthBar;
     private float maxHealth;
     private float health;
+
+    private bool isAttacked = false;
 
     // events
     public UnityEvent OnPlayerHit;
@@ -27,11 +30,23 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log(damage);
-        health -= damage;
-        Debug.Log(health);
-        OnPlayerHit.Invoke();
-        healthBar.DrawHearts(health, maxHealth);
+        if (!isAttacked)
+        {
+            Debug.Log("Taking damage: " + damage);
+            health -= damage;
+            Debug.Log("Current health: " + health);
+            OnPlayerHit.Invoke();
+            healthBar.DrawHearts(health, maxHealth);
+
+            isAttacked = true;
+            StartCoroutine(ResetIsAttacked());
+        }
+    }
+
+    IEnumerator ResetIsAttacked()
+    {
+        yield return new WaitForSeconds(0.5f); // Adjust this cooldown duration as needed
+        isAttacked = false;
     }
 
     void Die ()
