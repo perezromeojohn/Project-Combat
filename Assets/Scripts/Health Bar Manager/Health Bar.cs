@@ -36,7 +36,6 @@ public class HealthBar : MonoBehaviour
     {
         GameObject newHeart = Instantiate(heartPrefab);
         newHeart.transform.SetParent(transform);
-        newHeart.transform.localScale = new Vector3(1, 1, 1);
 
         HealthHeart heartComponent = newHeart.GetComponent<HealthHeart>();
         heartComponent.SetHeartImage(HeartState.Empty);
