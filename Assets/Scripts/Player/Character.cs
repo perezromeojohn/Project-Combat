@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class CharacterMovement : MonoBehaviour
 
     [Header("Player Stats")]
     public PlayerStats playerStats;
-    public PlayerHealthGUI playerHealthGUI;
 
     [Header("Player Movement")]
     private Rigidbody2D rb;
@@ -46,6 +46,11 @@ public class CharacterMovement : MonoBehaviour
     private bool isHit = false;
     public float damageTaken = 0f;
 
+    // events
+    public UnityEvent OnPlayerHit;
+    public UnityEvent OnPlayerDeath;
+
+
     void Start()
     {
         blinkTimer = 1f; // Initialize the Blink cooldown timer
@@ -70,7 +75,7 @@ public class CharacterMovement : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = true;
 
         // takeDamage
-        StartCoroutine(PlayerHit());
+        // StartCoroutine(PlayerHit());
     }
 
     void FixedUpdate()
@@ -206,11 +211,17 @@ public class CharacterMovement : MonoBehaviour
         if (isAttacked && !isHit)
         {
             isHit = true;
-            playerHealthGUI.TakeDamage(damageTaken);
+            OnPlayerHit.Invoke();
             yield return new WaitForSeconds(.5f);
             isAttacked = false;
             damageTaken = 0f;
             isHit = false;
         }
+    }
+
+    public void Die()
+    {
+        OnPlayerDeath.Invoke();
+        Debug.Log("Player Died");
     }
 }
