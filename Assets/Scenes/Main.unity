@@ -536,6 +536,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4771695106466282583, guid: 983722b454b46c040912962aa90722e0, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 11400000, guid: 992ad4a8b6552794a8119b33f5062859, type: 2}
+    - target: {fileID: 4771695106466282583, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 798174911}
@@ -46003,9 +46007,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1675495660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -791.8, y: -1}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 152, y: -1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1597559955
@@ -46191,6 +46195,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4771695106466282583, guid: 983722b454b46c040912962aa90722e0, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 11400000, guid: 992ad4a8b6552794a8119b33f5062859, type: 2}
     - target: {fileID: 4771695106466282583, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
@@ -97253,6 +97261,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4771695106466282583, guid: 983722b454b46c040912962aa90722e0, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 11400000, guid: 992ad4a8b6552794a8119b33f5062859, type: 2}
     - target: {fileID: 4771695106466282583, guid: 983722b454b46c040912962aa90722e0, type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
