@@ -6,6 +6,7 @@ public class Drops : MonoBehaviour
 {
     public BoxCollider2D boxCollider;
     public GameObject icon;
+    public GameObject collected;
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -24,6 +25,10 @@ public class Drops : MonoBehaviour
         {
             Debug.Log("Player hit the drop");
             Destroy(gameObject);
+            GameObject collectedAnim = Instantiate(collected, transform.position, Quaternion.identity);
+            // find a game object named Debris and parent the collectedAnim to that object
+            GameObject debris = GameObject.Find("Debris");
+            collectedAnim.transform.SetParent(debris.transform);
         }
     }
 }

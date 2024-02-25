@@ -312,3 +312,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
   icon: {fileID: 4864844331658091473}
+  collected: {fileID: 970641650035057823, guid: 6a3286e6286974543afff9cff73dba45, type: 3}
+  debris: {fileID: 0}
