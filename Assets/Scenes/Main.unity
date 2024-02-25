@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.90588236}
-  m_EffectDistance: {x: 4, y: -4}
+  m_EffectDistance: {x: 4, y: -3}
   m_UseGraphicAlpha: 1
 --- !u!114 &130458241
 MonoBehaviour:
@@ -20319,6 +20319,7 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
   playerCollider: {fileID: 798174912}
   healthBar: {fileID: 576200402}
+  feedbacks: {fileID: 589056929}
   OnPlayerHit:
     m_PersistentCalls:
       m_Calls: []
@@ -47745,7 +47746,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -299.99997}
+  m_AnchoredPosition: {x: 0, y: -299.99994}
   m_SizeDelta: {x: 0, y: 152.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1817088207
@@ -92213,7 +92214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 149.99997}
+  m_AnchoredPosition: {x: 0, y: 149.99994}
   m_SizeDelta: {x: 0, y: 150.1}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &3716883375014281289
@@ -102377,7 +102378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -314.99997}
+  m_AnchoredPosition: {x: 0, y: -314.99994}
   m_SizeDelta: {x: 0, y: 330.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &7330740738837225822 stripped

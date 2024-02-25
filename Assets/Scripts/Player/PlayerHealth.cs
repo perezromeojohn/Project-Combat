@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.Events;
 using Unity.Mathematics;
+using MoreMountains.Feedbacks;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthBar;
     private float maxHealth;
     private float health;
+    public MMF_Player feedbacks;
 
     private bool isAttacked = false;
 
@@ -35,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Taking damage: " + damage);
             health -= damage;
             Debug.Log("Current health: " + health);
+            feedbacks.PlayFeedbacks();
             OnPlayerHit.Invoke();
             healthBar.DrawHearts(health, maxHealth);
 
