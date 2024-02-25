@@ -5,16 +5,12 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
     public GameObject heartPrefab;
-    public float maxHealth = 13;
-    public float health = 13;
     List<HealthHeart> hearts = new List<HealthHeart>();
 
-    void Start()
-    {
-        DrawHearts();
-    }
+    private float maxHealth;
+    private float health;
 
-    public void DrawHearts()
+    public void DrawHearts(float health, float maxHealth)
     {
         ClearHearts();
 

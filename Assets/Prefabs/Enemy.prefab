@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1478579676946407930}
   - component: {fileID: 6049308155138574812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HealthUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8509571699862434411}
   - component: {fileID: 8608744270345735744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,12 +181,12 @@ GameObject:
   - component: {fileID: 9032308739251546744}
   - component: {fileID: 6824234989302739877}
   - component: {fileID: 4393342758630597875}
-  - component: {fileID: 2366959593662438033}
   - component: {fileID: 8230423138775408561}
   - component: {fileID: 4771695106466282583}
   - component: {fileID: 8989651579868352108}
   - component: {fileID: 113986127122982621}
-  m_Layer: 0
+  - component: {fileID: 952960403416879556}
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -310,51 +310,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &2366959593662438033
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7036863850017076770}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.008615375, y: -0.03505607}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.64}
-    newSize: {x: 0.96, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.12122965, y: 0.09974721}
-  m_EdgeRadius: 0
 --- !u!114 &8230423138775408561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +423,51 @@ MonoBehaviour:
   xpDrop: {fileID: 6438402843256211946, guid: 22ffd913ec6966542a67a4a6b27712d5, type: 3}
   drops: []
   dropLayer: {fileID: 0}
+--- !u!61 &952960403416879556
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036863850017076770}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.003212057, y: -0.03372675}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.64}
+    newSize: {x: 0.96, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.09419699, y: 0.11668149}
+  m_EdgeRadius: 0
 --- !u!1 &7114711968034407830
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5261127435707759134}
   - component: {fileID: 8037949662387084140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HealthFG
   m_TagString: Untagged
   m_Icon: {fileID: 0}

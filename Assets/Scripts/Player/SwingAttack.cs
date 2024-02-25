@@ -50,13 +50,16 @@ public class SwingAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         Debug.Log(other.name);
         if (!hitEnemies.Contains(other)) {
-            hitEnemies.Add(other);
-            Debug.Log(other.name);
-            damage = playerStats.damage;
-            other.GetComponent<Behavior>().isAttacked = true;
-            other.GetComponent<Behavior>().damageTaken = damage;
-            DamageNumbers(other.transform);
-            feedbacks.PlayFeedbacks();
+            // if tag is enemy
+            if (other.gameObject.CompareTag("Enemy")) {
+                hitEnemies.Add(other);
+                Debug.Log(other.name);
+                damage = playerStats.damage;
+                other.GetComponent<Behavior>().isAttacked = true;
+                other.GetComponent<Behavior>().damageTaken = damage;
+                DamageNumbers(other.transform);
+                feedbacks.PlayFeedbacks();
+            }
         }
     }
 }

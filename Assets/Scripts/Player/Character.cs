@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -45,10 +44,6 @@ public class CharacterMovement : MonoBehaviour
     public bool isAttacked = false;
     private bool isHit = false;
     public float damageTaken = 0f;
-
-    // events
-    public UnityEvent OnPlayerHit;
-    public UnityEvent OnPlayerDeath;
 
 
     void Start()
@@ -211,17 +206,10 @@ public class CharacterMovement : MonoBehaviour
         if (isAttacked && !isHit)
         {
             isHit = true;
-            OnPlayerHit.Invoke();
             yield return new WaitForSeconds(.5f);
             isAttacked = false;
             damageTaken = 0f;
             isHit = false;
         }
-    }
-
-    public void Die()
-    {
-        OnPlayerDeath.Invoke();
-        Debug.Log("Player Died");
     }
 }

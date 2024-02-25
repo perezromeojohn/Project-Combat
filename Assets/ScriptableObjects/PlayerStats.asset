@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  health: 15
-  maxHealth: 15
+  health: 10
+  maxHealth: 10
   damage: 5
   critChance: 20
   critMultiplier: 5

@@ -7,7 +7,6 @@ public class PlayerStats : ScriptableObject
 {
     [Header("Player Stats")]
     public float movementSpeed;
-    public float health;
     public float maxHealth;
     [Header("Player Attacking")]
     public float damage;

@@ -138,4 +138,17 @@ public class Behavior : MonoBehaviour
     {
         StartCoroutine(EnemyHit());
     }
+
+    // on collider with a Player tag debug log
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // get other PlayerHealth component
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            // take damage
+            playerHealth.TakeDamage(damage);
+            Debug.Log(damage);
+        }
+    }
 }
