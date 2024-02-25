@@ -10,36 +10,65 @@ public class HealthBar : MonoBehaviour
     private float maxHealth;
     private float health;
 
-    public void DrawHearts(float health, float maxHealth)
+    void Start()
     {
         ClearHearts();
+    }
 
-        // determine how many hearts to make total
-        // based off of max health
-        float maxHealthRemainder = maxHealth % 2;
-        Debug.Log(maxHealthRemainder);
-        int heartsToMake = (int)(maxHealth / 2 + maxHealthRemainder);
+    public float MaxHealth
+    {
+        get { return maxHealth; }
+        set
+        {
+            maxHealth = value;
+            DrawHearts(health, maxHealth); // Update the health bar when maxHealth changes
+        }
+    }
 
-        for (int i = 0; i < heartsToMake; i++)
+    public void DrawHearts(float health, float maxHealth)
+    {
+        this.health = health;
+        this.maxHealth = maxHealth;
+
+        if (hearts.Count == 0)
         {
             CreateEmptyHearts();
         }
 
-        for(int i = 0; i < hearts.Count; i++)
-        {
-            int heartStatusRemainder = (int)Mathf.Clamp(health - (i*2), 0, 2);
-            hearts[i].SetHeartImage((HeartState)heartStatusRemainder);
-        }
+        UpdateHeartStatus();
     }
 
     public void CreateEmptyHearts()
     {
-        GameObject newHeart = Instantiate(heartPrefab);
-        newHeart.transform.SetParent(transform);
+        float maxHealthRemainder = maxHealth % 2;
+        int heartsToMake = (int)(maxHealth / 2 + maxHealthRemainder);
 
-        HealthHeart heartComponent = newHeart.GetComponent<HealthHeart>();
-        heartComponent.SetHeartImage(HeartState.Empty);
-        hearts.Add(heartComponent);
+        for (int i = 0; i < heartsToMake; i++)
+        {
+            GameObject newHeart = Instantiate(heartPrefab);
+            newHeart.transform.SetParent(transform);
+
+            HealthHeart heartComponent = newHeart.GetComponent<HealthHeart>();
+            heartComponent.SetHeartImage(HeartState.Empty);
+            hearts.Add(heartComponent);
+
+            StartCoroutine(CreateHeartWithDelay(i));
+        }
+    }
+
+    IEnumerator CreateHeartWithDelay(int index)
+    {
+        yield return new WaitForSeconds(0.1f * index);
+        LeanTween.scale(hearts[index].gameObject, new Vector3(1, 1, 1), 0.3f).setEase(LeanTweenType.easeOutQuart);
+    }
+
+    public void UpdateHeartStatus()
+    {
+        for (int i = 0; i < hearts.Count; i++)
+        {
+            int heartStatusRemainder = (int)Mathf.Clamp(health - (i * 2), 0, 2);
+            hearts[i].SetHeartImage((HeartState)heartStatusRemainder);
+        }
     }
 
     public void ClearHearts()
