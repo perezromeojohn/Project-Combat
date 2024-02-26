@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
 using UnityEditor;
+using MoreMountains.FeedbacksForThirdParty;
+using Unity.VisualScripting;
 
 public class SwingAttack : MonoBehaviour
 {
     [Header("MM Feedbacks")]
     public MMF_Player feedbacks;
+    public MMF_Player cameraImpulse;
     private MMF_FloatingText floatingText;
+    private MMF_CinemachineImpulse impulse;
+    private bool isPlaying = false;
 
     [Header("Player Stats")]
     public PlayerStats playerStats;
@@ -21,6 +26,7 @@ public class SwingAttack : MonoBehaviour
 
     void Awake() {
         hitBox.enabled = false;
+        impulse = feedbacks.GetFeedbackOfType<MMF_CinemachineImpulse>();
     }
 
     void EnableAttack() {
@@ -53,13 +59,25 @@ public class SwingAttack : MonoBehaviour
             // if tag is enemy
             if (other.gameObject.CompareTag("Enemy")) {
                 hitEnemies.Add(other);
-                Debug.Log(other.name);
+                // Debug.Log(other.name);
                 damage = playerStats.damage;
                 other.GetComponent<Behavior>().isAttacked = true;
                 other.GetComponent<Behavior>().damageTaken = damage;
                 DamageNumbers(other.transform);
-                feedbacks.PlayFeedbacks();
+                StartCoroutine(Feedbacks());
             }
+        }
+    }
+
+    private IEnumerator Feedbacks()
+    {
+        feedbacks.PlayFeedbacks();
+        if (!isPlaying)
+        {
+            cameraImpulse.PlayFeedbacks();
+            isPlaying = true;
+            yield return new WaitForSeconds(0.3f);
+            isPlaying = false;
         }
     }
 }
