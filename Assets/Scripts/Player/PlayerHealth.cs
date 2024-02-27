@@ -40,9 +40,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!isAttacked)
         {
-            Debug.Log("Taking damage: " + damage);
+            // Debug.Log("Taking damage: " + damage);
             health -= damage;
-            Debug.Log("Current health: " + health);
+            // Debug.Log("Current health: " + health);
             feedbacks.PlayFeedbacks();
             OnPlayerHit.Invoke();
             healthBar.DrawHearts(health, maxHealth);
