@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void PlayFeedbacks()
     {
-        if (health <= 2)
+        if (health <= 1)
         {
             orthographicSize.Active = true;
             timescaleModifier.Active = true;

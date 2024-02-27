@@ -8,17 +8,20 @@ public class Knockback : MonoBehaviour
 
     public float strength = 0, delay = 0.15f;
     public PlayerStats playerStats;
+    private GameObject player;
 
     private void Start()
     {
         strength = playerStats.knockbackStrength;
         rb = GetComponent<Rigidbody2D>();
+        // find with tag
+        player = GameObject.FindWithTag("Player");
     }
 
-    public void AddForce(Transform player)
+    public void AddForce()
     {
         StopAllCoroutines();
-        Vector2 direction = (transform.position - player.position).normalized;
+        Vector2 direction = (transform.position - player.transform.position).normalized;
         rb.AddForce(direction * strength, ForceMode2D.Impulse);
         StartCoroutine(Reset());
     }

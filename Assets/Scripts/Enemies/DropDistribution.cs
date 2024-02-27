@@ -7,7 +7,12 @@ public class DropDistribution : MonoBehaviour
     public GameObject xpDrop;
     public GameObject[] drops;
 
-    public GameObject dropLayer;
+    private GameObject dropLayer;
+
+    void Start()
+    {
+        dropLayer = GameObject.Find("Drops Layer");
+    }
 
     public void DropItem()
     {

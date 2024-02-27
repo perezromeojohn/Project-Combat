@@ -21,9 +21,10 @@ public class Behavior : MonoBehaviour
     private Vector3 healthBarUIOffset;
     private SpriteRenderer enemySprite;
     public Animator enemyAnimator;
-    [SerializeField] private float health;
-    private float maxHealth;
-    private float damage;
+    public float health;
+    public float maxHealth;
+    public float damage;
+    public float movementSpeed;
     public float damageTaken = 0f;
     private bool isHit = false;
     public bool isAttacked = false;
@@ -96,6 +97,7 @@ public class Behavior : MonoBehaviour
         maxHealth = enemy.maxHealth;
         damage = enemy.damage;
         color = enemy.spriteColor;
+        movementSpeed = enemy.movementSpeed;
         healthBarUIOffset = enemy.healthBarUIOffset;
     }
     
@@ -144,11 +146,15 @@ public class Behavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // get other PlayerHealth component
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            // take damage
-            playerHealth.TakeDamage(damage);
-            Debug.Log(damage);
+            // take the other object isInvincible bool if false, deal damage
+            if (!other.GetComponent<CharacterMovement>().isInvincible)
+            {
+                // get other PlayerHealth component
+                PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+                // take damage
+                playerHealth.TakeDamage(damage);
+                // Debug.Log(damage);s
+            }
         }
     }
 }
