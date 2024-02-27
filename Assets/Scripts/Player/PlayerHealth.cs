@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
     private float maxHealth;
     private float health;
     public MMF_Player feedbacks;
+    private MMF_CameraOrthographicSize orthographicSize;
+    private MMF_TimescaleModifier timescaleModifier;
 
     private bool isAttacked = false;
 
@@ -28,6 +30,10 @@ public class PlayerHealth : MonoBehaviour
         maxHealth = playerStats.maxHealth;
         health = maxHealth;
         healthBar.DrawHearts(health, maxHealth);
+        orthographicSize = feedbacks.GetFeedbackOfType<MMF_CameraOrthographicSize>();
+        timescaleModifier = feedbacks.GetFeedbackOfType<MMF_TimescaleModifier>();
+        orthographicSize.Active = false;
+        timescaleModifier.Active = false;
     }
 
     public void TakeDamage(float damage)
@@ -40,10 +46,25 @@ public class PlayerHealth : MonoBehaviour
             feedbacks.PlayFeedbacks();
             OnPlayerHit.Invoke();
             healthBar.DrawHearts(health, maxHealth);
-
+            PlayFeedbacks();
             isAttacked = true;
             StartCoroutine(ResetIsAttacked());
         }
+    }
+
+    public void PlayFeedbacks()
+    {
+        if (health <= 2)
+        {
+            orthographicSize.Active = true;
+            timescaleModifier.Active = true;
+        }
+        else
+        {
+            orthographicSize.Active = false;
+            timescaleModifier.Active = false;
+        }
+        feedbacks.PlayFeedbacks();
     }
 
     IEnumerator ResetIsAttacked()
