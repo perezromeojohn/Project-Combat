@@ -11,18 +11,11 @@ public class SpawnManager : MonoBehaviour
     public GameObject instantiatedEnemiesParent;
     public float disableRadius = 5f;
 
-    // EntireSpawner
-    public void SpawnWave()
-    {
-        EnableNearbySpawnPoints();
-        DisableNearbySpawnPoints();
-        SpawnEnemies();
-    }
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        SpawnWave();
+        SpawnEnemies();
     }
 
     void DisableNearbySpawnPoints()
@@ -44,13 +37,11 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void SpawnEnemies()
+    public void SpawnEnemies()
     {
-        StartCoroutine(SpawnEnemiesCoroutine());
-    }
+        EnableNearbySpawnPoints();
+        DisableNearbySpawnPoints();
 
-    IEnumerator SpawnEnemiesCoroutine()
-    {
         List<Transform> activeSpawnPoints = new List<Transform>();
         foreach (Transform spawnPoint in spawnPoints)
         {
@@ -78,7 +69,6 @@ public class SpawnManager : MonoBehaviour
                 GameObject enemyPrefab = GetRandomEnemyPrefab();
                 Vector3 spawnPosition = GetRandomSpawnPosition(spawnPoint);
                 GameObject instantiatedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
-                yield return new WaitForSeconds(.3f);
             }
         }
     }

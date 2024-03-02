@@ -505,9 +505,9 @@ MonoBehaviour:
   - {fileID: 3974767406097663628, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
   - {fileID: 309615271693270592, guid: a4b2ee1cafea2ec47a35bb78fb1ed918, type: 3}
   - {fileID: 7036863850017076770, guid: 983722b454b46c040912962aa90722e0, type: 3}
-  totalEnemiesToSpawn: 20
+  totalEnemiesToSpawn: 90
   instantiatedEnemiesParent: {fileID: 1952317242}
-  disableRadius: 1
+  disableRadius: 2
 --- !u!114 &37897776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,14 +517,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 37897772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eb4623a68649f44d8895e350f0138fd, type: 3}
+  m_Script: {fileID: 11500000, guid: dd05d0de59d6eb74c9c6f638f6ba79b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - HpMultiplier: 0
-    WalkSpeedMultiplier: 0
-    XPMultiplier: 0
-    MinMobs: 0
 --- !u!1001 &58808180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69708,7 +69703,7 @@ MonoBehaviour:
   PoolerMode: 0
   PooledSimpleMMFloatingText: {fileID: 1589334502155643714, guid: 291be7c3d383e754b825a958d1a71028, type: 3}
   PooledMultipleMMFloatingText: []
-  PoolSize: 20
+  PoolSize: 50
   NestWaitingPool: 1
   MutualizeWaitingPools: 1
   PoolCanExpand: 1
