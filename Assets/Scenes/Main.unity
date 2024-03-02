@@ -490,8 +490,9 @@ MonoBehaviour:
   - {fileID: 3974767406097663628, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
   - {fileID: 309615271693270592, guid: a4b2ee1cafea2ec47a35bb78fb1ed918, type: 3}
   - {fileID: 7036863850017076770, guid: 983722b454b46c040912962aa90722e0, type: 3}
-  totalEnemiesToSpawn: 90
+  totalEnemiesToSpawn: 20
   instantiatedEnemiesParent: {fileID: 1952317242}
+  disableRadius: 1
 --- !u!1001 &58808180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10510,7 +10511,7 @@ Transform:
   m_GameObject: {fileID: 354113240}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.049741473, y: 0.08261867, z: -9.996045}
+  m_LocalPosition: {x: -2.607, y: 3.283, z: -9.996045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21352,7 +21353,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.049741473, y: 0.08261867, z: -9.996045}
+  m_LocalPosition: {x: -2.607, y: 3.283, z: -9.996045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23688,7 +23689,7 @@ Transform:
   m_GameObject: {fileID: 798174910}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.049741473, y: 0.08261867, z: 0.00395445}
+  m_LocalPosition: {x: -2.607, y: 3.283, z: 0.00395445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -6,20 +6,59 @@ public class SpawnManager : MonoBehaviour
 {
     public List<Transform> spawnPoints;
     public List<GameObject> enemyPrefabs;
+    private GameObject player;
     public int totalEnemiesToSpawn = 90;
     public GameObject instantiatedEnemiesParent;
+    public float disableRadius = 5f;
+
+    // EntireSpawner
+    public void SpawnWave()
+    {
+        EnableNearbySpawnPoints();
+        DisableNearbySpawnPoints();
+        SpawnEnemies();
+    }
 
     void Start()
     {
-        SpawnEnemies();
+        player = GameObject.FindGameObjectWithTag("Player");
+        SpawnWave();
+    }
+
+    void DisableNearbySpawnPoints()
+    {
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            if (Vector3.Distance(spawnPoint.position, player.transform.position) <= disableRadius)
+            {
+                spawnPoint.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void EnableNearbySpawnPoints()
+    {
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            spawnPoint.gameObject.SetActive(true);
+        }
     }
 
     void SpawnEnemies()
     {
-        int enemiesPerSpawnPoint = totalEnemiesToSpawn / spawnPoints.Count;
-        int remainingEnemies = totalEnemiesToSpawn % spawnPoints.Count;
-
+        List<Transform> activeSpawnPoints = new List<Transform>();
         foreach (Transform spawnPoint in spawnPoints)
+        {
+            if (spawnPoint.gameObject.activeSelf)
+            {
+                activeSpawnPoints.Add(spawnPoint);
+            }
+        }
+
+        int enemiesPerSpawnPoint = totalEnemiesToSpawn / activeSpawnPoints.Count;
+        int remainingEnemies = totalEnemiesToSpawn % activeSpawnPoints.Count;
+
+        foreach (Transform spawnPoint in activeSpawnPoints)
         {
             int enemiesToSpawn = enemiesPerSpawnPoint;
 
