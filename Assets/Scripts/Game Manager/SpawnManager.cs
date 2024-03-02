@@ -46,6 +46,11 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemies()
     {
+        StartCoroutine(SpawnEnemiesCoroutine());
+    }
+
+    IEnumerator SpawnEnemiesCoroutine()
+    {
         List<Transform> activeSpawnPoints = new List<Transform>();
         foreach (Transform spawnPoint in spawnPoints)
         {
@@ -73,6 +78,7 @@ public class SpawnManager : MonoBehaviour
                 GameObject enemyPrefab = GetRandomEnemyPrefab();
                 Vector3 spawnPosition = GetRandomSpawnPosition(spawnPoint);
                 GameObject instantiatedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
+                yield return new WaitForSeconds(.3f);
             }
         }
     }
