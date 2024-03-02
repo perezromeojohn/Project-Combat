@@ -28,7 +28,6 @@ public class DropDistribution : MonoBehaviour
             }
             else
             {
-                // randomize .1f to .1f using this gameobject's position
                 var randomPos = new Vector3(pos.x + randomX, pos.y + randomY, pos.z);
                 var cloneDrop = Instantiate(drops[Random.Range(0, drops.Length)], randomPos, Quaternion.identity, dropLayer.transform);
                 cloneDrop.transform.SetParent(dropLayer.transform);

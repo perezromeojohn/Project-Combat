@@ -46,7 +46,7 @@ public class PerksManager : MonoBehaviour
             TextMeshProUGUI title = buttons[i].transform.Find("Title").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI description = buttons[i].transform.Find("Description").GetComponent<TextMeshProUGUI>();
             Image icon = buttons[i].transform.Find("Image").GetComponent<Image>();
-            // Load the icon based on your asset structure
+            // Load the icon based on the asset structure
             string iconPath = "Assets/GUI/Skill Icons/Skills/" + perk.perkName + ".png"; // Adjust the path accordingly
             if (File.Exists(iconPath))
             {
@@ -65,7 +65,7 @@ public class PerksManager : MonoBehaviour
         StartGUIAnims();
     }
 
-    // Utility method to shuffle a list
+    // Utility stuff method to shuffle a list
     private void Shuffle<T>(List<T> list)
     {
         for (int i = 0; i < list.Count; i++)
