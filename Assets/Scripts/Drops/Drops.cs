@@ -23,7 +23,7 @@ public class Drops : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player hit the drop");
+            // Debug.Log("Player hit the drop");
             Destroy(gameObject);
             GameObject collectedAnim = Instantiate(collected, transform.position, Quaternion.identity);
             // find a game object named Debris and parent the collectedAnim to that object

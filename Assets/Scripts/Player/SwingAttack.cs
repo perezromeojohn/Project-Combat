@@ -54,7 +54,7 @@ public class SwingAttack : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.name);
+        // Debug.Log(other.name);
         if (!hitEnemies.Contains(other)) {
             // if tag is enemy
             if (other.gameObject.CompareTag("Enemy")) {

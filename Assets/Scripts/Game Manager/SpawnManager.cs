@@ -1,21 +1,132 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
     public List<Transform> spawnPoints;
     public List<GameObject> enemyPrefabs;
     private GameObject player;
-    public int totalEnemiesToSpawn = 90;
     public GameObject instantiatedEnemiesParent;
     public float disableRadius = 5f;
-
+    public List<WaveData> waves;
+    
+    private float childCount;
+    private float currentWaveIndex = 0;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        SpawnEnemies();
+        AddWaves();
+        SpawnEnemies(currentWaveIndex);
+        Debug.Log(waves.Count);
+    }
+
+    void Update()
+    {
+        int totalEnemies = instantiatedEnemiesParent.transform.childCount;
+        if (waves.Count > 0)
+        {
+            if (waves[(int)currentWaveIndex].MinimumAmountOfEnemies >= totalEnemies)
+            {
+                currentWaveIndex++;
+                SpawnEnemies(currentWaveIndex);
+            }
+        }
+    }
+
+    public void SpawnEnemies(float waveIndex)
+    {
+        EnableNearbySpawnPoints();
+        DisableNearbySpawnPoints();
+
+        // Get the wave data
+        WaveData wave = waves[(int)waveIndex];
+
+        // Iterate through each mob type and spawn count
+        foreach (KeyValuePair<MobType, int> mobData in wave.Mobs)
+        {
+            // store the MobData key as string
+            String mobType = mobData.Key.ToString();
+            int spawnCount = mobData.Value;
+
+            // Find the corresponding enemy prefab based on MobType
+            GameObject enemyPrefab = GetEnemyPrefabByType(mobType);
+
+            // Spawn the desired number of enemies
+            for (int i = 0; i < spawnCount; i++)
+            {
+                List<Transform> activeSpawnPoints = GetActiveSpawnPoints();
+
+                if (activeSpawnPoints.Count == 0)
+                {
+                    Debug.LogWarning("No active spawn points found for wave " + waveIndex);
+                    return; // Early exit if no spawn points are available
+                }
+
+                Transform spawnPoint = GetRandomSpawnPoint(activeSpawnPoints);
+                Vector3 spawnPosition = GetRandomSpawnPosition(spawnPoint);
+                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
+            }
+        }
+
+        Debug.Log("Wave " + waveIndex + " spawned");
+    }
+
+    private GameObject GetEnemyPrefabByType(string mobType)
+    {
+        foreach (GameObject enemyPrefab in enemyPrefabs)
+        {
+            if (enemyPrefab.name.Contains(mobType))
+            {
+                return enemyPrefab;
+            }
+        }
+
+        Debug.LogWarning("No enemy prefab found for mob type " + mobType);
+        return null;
+    }
+
+    private List<Transform> GetActiveSpawnPoints()
+    {
+        List<Transform> activeSpawnPoints = new List<Transform>();
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            if (spawnPoint.gameObject.activeSelf)
+            {
+                activeSpawnPoints.Add(spawnPoint);
+            }
+        }
+        return activeSpawnPoints;
+    }
+
+    private Transform GetRandomSpawnPoint(List<Transform> spawnPoints)
+    {
+        return spawnPoints[Random.Range(0, spawnPoints.Count)];
+    }
+
+    void AddWaves()
+    {
+        waves = new List<WaveData>();
+        waves.Add(new WaveData(1.0f, 1.0f, 1.0f, 5, new Dictionary<MobType, int>
+        {
+            { MobType.Skellie, 5 },
+            { MobType.Gobbie, 3 }
+        }));
+        waves.Add(new WaveData(1.2f, 1.1f, 1.2f, 5, new Dictionary<MobType, int>
+        {
+            { MobType.Pumpkin_Gobbie, 8 },
+            { MobType.Gobbie, 5 },
+            { MobType.Skellie, 5}
+        }));    
+        waves.Add(new WaveData(1.5f, 1.2f, 1.5f, 5, new Dictionary<MobType, int>
+        {
+            { MobType.Skellie, 10 },
+            { MobType.Gobbie, 8 }
+        }));
     }
 
     void DisableNearbySpawnPoints()
@@ -34,42 +145,6 @@ public class SpawnManager : MonoBehaviour
         foreach (Transform spawnPoint in spawnPoints)
         {
             spawnPoint.gameObject.SetActive(true);
-        }
-    }
-
-    public void SpawnEnemies()
-    {
-        EnableNearbySpawnPoints();
-        DisableNearbySpawnPoints();
-
-        List<Transform> activeSpawnPoints = new List<Transform>();
-        foreach (Transform spawnPoint in spawnPoints)
-        {
-            if (spawnPoint.gameObject.activeSelf)
-            {
-                activeSpawnPoints.Add(spawnPoint);
-            }
-        }
-
-        int enemiesPerSpawnPoint = totalEnemiesToSpawn / activeSpawnPoints.Count;
-        int remainingEnemies = totalEnemiesToSpawn % activeSpawnPoints.Count;
-
-        foreach (Transform spawnPoint in activeSpawnPoints)
-        {
-            int enemiesToSpawn = enemiesPerSpawnPoint;
-
-            if (remainingEnemies > 0)
-            {
-                enemiesToSpawn++;
-                remainingEnemies--;
-            }
-
-            for (int i = 0; i < enemiesToSpawn; i++)
-            {
-                GameObject enemyPrefab = GetRandomEnemyPrefab();
-                Vector3 spawnPosition = GetRandomSpawnPosition(spawnPoint);
-                GameObject instantiatedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
-            }
         }
     }
 
