@@ -27,4 +27,5 @@ public enum MobType
     Skellie,
     Blue_Skellie,
     Gobbie,
+    Yellow_Skellie
 }

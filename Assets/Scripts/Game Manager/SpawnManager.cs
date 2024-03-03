@@ -46,17 +46,19 @@ public class SpawnManager : MonoBehaviour
         // Get the wave data
         WaveData wave = waves[(int)waveIndex];
 
-        // Iterate through each mob type and spawn count
+        if (wave == null)
+        {
+            Debug.Log("No more waves");
+            return;
+        }
+
         foreach (KeyValuePair<MobType, int> mobData in wave.Mobs)
         {
-            // store the MobData key as string
             String mobType = mobData.Key.ToString();
             int spawnCount = mobData.Value;
 
-            // Find the corresponding enemy prefab based on MobType
             GameObject enemyPrefab = GetEnemyPrefabByType(mobType);
 
-            // Spawn the desired number of enemies
             for (int i = 0; i < spawnCount; i++)
             {
                 List<Transform> activeSpawnPoints = GetActiveSpawnPoints();
@@ -64,7 +66,7 @@ public class SpawnManager : MonoBehaviour
                 if (activeSpawnPoints.Count == 0)
                 {
                     Debug.LogWarning("No active spawn points found for wave " + waveIndex);
-                    return; // Early exit if no spawn points are available
+                    return;
                 }
 
                 Transform spawnPoint = GetRandomSpawnPoint(activeSpawnPoints);
@@ -113,7 +115,7 @@ public class SpawnManager : MonoBehaviour
         waves = new List<WaveData>();
         waves.Add(new WaveData(1.0f, 1.0f, 1.0f, 5, new Dictionary<MobType, int>
         {
-            { MobType.Skellie, 5 },
+            { MobType.Blue_Skellie, 5 },
             { MobType.Gobbie, 3 }
         }));
         waves.Add(new WaveData(1.2f, 1.1f, 1.2f, 5, new Dictionary<MobType, int>
