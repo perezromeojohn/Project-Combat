@@ -432,7 +432,6 @@ GameObject:
   - component: {fileID: 37897773}
   - component: {fileID: 37897774}
   - component: {fileID: 37897775}
-  - component: {fileID: 37897776}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -485,7 +484,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37897772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20314c50abf37004c829c5e4e6c7976b, type: 3}
   m_Name: 
@@ -508,18 +507,6 @@ MonoBehaviour:
   - {fileID: 1679377029943301208, guid: 93b48a6eb35b0024c87045a30a6682fe, type: 3}
   instantiatedEnemiesParent: {fileID: 1952317242}
   disableRadius: 2
---- !u!114 &37897776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 37897772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd05d0de59d6eb74c9c6f638f6ba79b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &58808180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23295,7 +23282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &676112819
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23784,6 +23771,7 @@ GameObject:
   - component: {fileID: 798174917}
   - component: {fileID: 798174918}
   - component: {fileID: 798174919}
+  - component: {fileID: 798174920}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -24015,6 +24003,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 27a0936204b2c0847b9879812566f66e, type: 2}
   duration: 0.1
+--- !u!114 &798174920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798174910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e798051a7c1a7d840963e4b40a6c91dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 6475897964079531646, guid: dc4aa93f55442114285062616608cc50, type: 3}
+  shadowPrefab: {fileID: 426040398071639766, guid: 6a7c12314ae7cd54a9976abf68cbbc34, type: 3}
+  trajectoryCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2.0094333
+      outSlope: -2.0094333
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.03873241
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  speed: 1
+  maxHeight: 3
+  target: {fileID: 676112818}
 --- !u!1 &826343804
 GameObject:
   m_ObjectHideFlags: 0
