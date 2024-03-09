@@ -7,7 +7,6 @@ public class LobTest : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject shadowPrefab;
     public AnimationCurve trajectoryCurve;
-    public float speed = 5f;
     public float maxHeight = 2f;
     public float duration = 1f;
 
@@ -18,49 +17,55 @@ public class LobTest : MonoBehaviour
         // if input is G, fire the projectile
         if (Input.GetKeyDown(KeyCode.G))
         {
-            ThrowToTarget(target);
+            SpawnProjectile(target);
         }
     }
 
-    // Public method to throw the projectile to a specific target
-    public void ThrowToTarget(GameObject target)
+    void SpawnProjectile(GameObject target)
     {
-        if (target != null)
-        {
-            Vector3 initialPosition = transform.position;
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        GameObject shadow = Instantiate(shadowPrefab, target.transform.position, Quaternion.identity);
+        // shadow.transform.parent = projectile.transform;
+        // shadow.transform.localPosition = new Vector3(0, -.05f, 0);
+        // set shadow transform localposition to projectile offset -.05f on y axis
+        shadow.transform.position = new Vector3(projectile.transform.position.x, projectile.transform.position.y - .05f, projectile.transform.position.z);
 
-            GameObject projectile = Instantiate(projectilePrefab, initialPosition, Quaternion.identity);
-            GameObject shadow = Instantiate(shadowPrefab, initialPosition, Quaternion.identity);
+        Vector3 targetPos = target.transform.position;
+        Vector3 shadowStartPos = shadow.transform.position;
 
-            StartCoroutine(MoveProjectile(projectile.transform, shadow.transform, target.transform));
-        }
-        else
-        {
-            Debug.LogWarning("Target is null!");
-        }
+        StartCoroutine(ProjectileCurveRoutine(projectile, transform.position, targetPos));
+        StartCoroutine(ShadowCurveRoutine(shadow, shadowStartPos, targetPos));
     }
 
-    private IEnumerator MoveProjectile(Transform projectile, Transform shadow, Transform target)
+    private IEnumerator ProjectileCurveRoutine(GameObject projectile, Vector3 startPos, Vector3 endPos)
     {
-        float startTime = Time.time;
-        float distance = Vector3.Distance(projectile.position, target.position);
-
-        while (Time.time - startTime < duration)
+        float time = 0f;
+        while (time < duration)
         {
-            float time = (Time.time - startTime) / duration;
-
-            float height = trajectoryCurve.Evaluate(time) * maxHeight;
-
-            Vector3 newPosition = Vector3.Lerp(projectile.position, target.position, time);
-            newPosition.y += height;
-
-            projectile.position = newPosition;
-            shadow.position = newPosition; // Update shadow position
+            time += Time.deltaTime;
+            float linearT = time / duration;
+            float heightT = trajectoryCurve.Evaluate(linearT);
+            float height = Mathf.Lerp(0, maxHeight, heightT);
+            
+            projectile.transform.position = Vector2.Lerp(startPos, endPos, linearT) + new Vector2(0f, height);
+            // rotate z axis
+            projectile.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2((endPos.y - projectile.transform.position.y), (endPos.x - projectile.transform.position.x)) * Mathf.Rad2Deg);
 
             yield return null;
         }
+        Destroy(projectile);
+    }
 
-        Destroy(projectile.gameObject);
-        Destroy(shadow.gameObject); // Destroy shadow after projectile
+    private IEnumerator ShadowCurveRoutine(GameObject shadow, Vector3 startPos, Vector3 endPos)
+    {
+        float time = 0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float linearT = time / duration;
+            shadow.transform.position = Vector2.Lerp(startPos, endPos, linearT);
+            yield return null;
+        }
+        Destroy(shadow);
     }
 }
