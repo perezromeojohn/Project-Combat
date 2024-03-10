@@ -314,6 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793ebc5f49792614dad6e6a7735a8436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRange: 1
+  circleRadius: 10
+  projectilePrefab: {fileID: 0}
 --- !u!1 &3482867093823565383
 GameObject:
   m_ObjectHideFlags: 0

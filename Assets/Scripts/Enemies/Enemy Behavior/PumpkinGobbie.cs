@@ -13,6 +13,7 @@ public class PumpkinGobbie : MonoBehaviour
     private StateEnum currentState;
     public float circleRadius = 4f; // Adjust this value to change the circle radius
     private bool canFire = true;
+    public GameObject projectilePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +69,7 @@ public class PumpkinGobbie : MonoBehaviour
         while (canFire)
         {
             canFire = false;
-            Debug.Log("Fire!");
+            Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(3f);
             canFire = true;
         }

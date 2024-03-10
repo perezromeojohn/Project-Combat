@@ -42174,9 +42174,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1662991522684531183, guid: a47c94f34455c524e88ff4721b7c8223, type: 3}
-      propertyPath: circleRadius
-      value: 10
-      objectReference: {fileID: 0}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 6475897964079531646, guid: dc4aa93f55442114285062616608cc50, type: 3}
     - target: {fileID: 2939169715784623984, guid: a47c94f34455c524e88ff4721b7c8223, type: 3}
       propertyPath: m_Name
       value: Pumpkin_Gobbie
