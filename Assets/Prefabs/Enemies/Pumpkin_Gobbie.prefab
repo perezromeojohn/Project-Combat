@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1954438344597562831}
   - component: {fileID: 178303277415039524}
   - component: {fileID: 7320575642777652368}
-  - component: {fileID: 1072525799356791795}
+  - component: {fileID: 1662991522684531183}
   m_Layer: 8
   m_Name: Pumpkin_Gobbie
   m_TagString: Enemy
@@ -302,7 +302,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09419699, y: 0.11668149}
   m_EdgeRadius: 0
---- !u!114 &1072525799356791795
+--- !u!114 &1662991522684531183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2939169715784623984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbca93de820707a4c90a2677b39c8c97, type: 3}
+  m_Script: {fileID: 11500000, guid: 793ebc5f49792614dad6e6a7735a8436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3482867093823565383

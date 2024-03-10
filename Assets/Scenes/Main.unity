@@ -42173,6 +42173,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1662991522684531183, guid: a47c94f34455c524e88ff4721b7c8223, type: 3}
+      propertyPath: circleRadius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2939169715784623984, guid: a47c94f34455c524e88ff4721b7c8223, type: 3}
       propertyPath: m_Name
       value: Pumpkin_Gobbie
