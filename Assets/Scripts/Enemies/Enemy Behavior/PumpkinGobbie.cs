@@ -38,7 +38,7 @@ public class PumpkinGobbie : MonoBehaviour
             case StateEnum.Attacking:
                 if (!behavior.isAttacked && behavior.health > 0)
                 {
-                    AttackPlayer();
+                    AttackPlayer(); // prime this shit
                     StartCoroutine(PrintFire());
                 }
                 break;
