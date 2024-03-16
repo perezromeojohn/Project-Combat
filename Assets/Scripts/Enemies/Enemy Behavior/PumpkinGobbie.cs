@@ -16,6 +16,7 @@ public class PumpkinGobbie : MonoBehaviour
     public GameObject projectilePrefab;
 
     // Start is called before the first frame update
+    // help me im not motivated man
     void Start()
     {
         // get the player with the Player tag
