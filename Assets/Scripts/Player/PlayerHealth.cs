@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     public MMF_Player feedbacks;
     private MMF_CameraOrthographicSize orthographicSize;
     private MMF_TimescaleModifier timescaleModifier;
+    public MMF_Player healFeedbacks;
 
     private bool isAttacked = false;
 
@@ -49,6 +50,14 @@ public class PlayerHealth : MonoBehaviour
             PlayFeedbacks();
             isAttacked = true;
             StartCoroutine(ResetIsAttacked());
+            // Debug Log all enemies that is in 1f range using gameObject.FindGameObjectsWithTag("Enemy")
+            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                if (Vector2.Distance(enemy.transform.position, transform.position) < .3f)
+                {
+                    enemy.GetComponent<Behavior>().isAttacked = true;
+                }
+            }
         }
     }
 
@@ -60,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
             health = maxHealth;
         }
         healthBar.DrawHearts(health, maxHealth);
+        healFeedbacks.PlayFeedbacks();
         // Debug.Log("Healing: " + heal);
     }
 

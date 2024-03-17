@@ -8,6 +8,7 @@ public class PlayerStats : ScriptableObject
     [Header("Player Stats")]
     public float movementSpeed;
     public float maxHealth;
+    public float magnetRange;
     [Header("Player Attacking")]
     public float damage;
     public float critChance;
@@ -16,6 +17,7 @@ public class PlayerStats : ScriptableObject
     public float attackSpeed;
     public float knockbackStrength;
     [Header("Player Mobility")]
+    public float dashCharge;
     public float rollSpeed;
     public float rollCooldown;
     public float blinkAmount;
