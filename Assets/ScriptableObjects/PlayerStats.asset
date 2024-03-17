@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   maxHealth: 14
-  damage: 5
+  damage: 23
   critChance: 20
   critMultiplier: 5
   critDamage: 12

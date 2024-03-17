@@ -52,6 +52,17 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void HealDamage(float heal)
+    {
+        health += heal;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        healthBar.DrawHearts(health, maxHealth);
+        // Debug.Log("Healing: " + heal);
+    }
+
     public void PlayFeedbacks()
     {
         if (health <= 1)

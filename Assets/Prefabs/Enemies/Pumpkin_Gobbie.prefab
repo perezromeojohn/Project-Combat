@@ -316,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 1
   circleRadius: 10
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 6475897964079531646, guid: dc4aa93f55442114285062616608cc50, type: 3}
 --- !u!1 &3482867093823565383
 GameObject:
   m_ObjectHideFlags: 0
