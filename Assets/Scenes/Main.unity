@@ -430,6 +430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 37897773}
+  - component: {fileID: 37897776}
   - component: {fileID: 37897774}
   - component: {fileID: 37897775}
   m_Layer: 0
@@ -507,6 +508,20 @@ MonoBehaviour:
   - {fileID: 1679377029943301208, guid: 93b48a6eb35b0024c87045a30a6682fe, type: 3}
   instantiatedEnemiesParent: {fileID: 1952317242}
   disableRadius: 2
+--- !u!114 &37897776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37897772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cb11f0ca1433b4aabcca788949fd62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initPlayerStats: {fileID: 11400000, guid: 65cd8c6d43d6feb4ab8f23c83e7bd828, type: 2}
+  inGamePlayerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
 --- !u!1001 &58808180
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: babe4eda6b6ef6345a9f772287e62708, type: 3}
-  m_Name: PlayerStats
+  m_Name: InitPlayerStats
   m_EditorClassIdentifier: 
-  movementSpeed: 0
-  maxHealth: 0
-  damage: 0
-  critChance: 0
-  critMultiplier: 0
-  critDamage: 0
-  attackSpeed: 0
-  knockbackStrength: 0
-  rollSpeed: 0
-  rollCooldown: 0
-  blinkAmount: 0
-  blinkCooldown: 0
+  movementSpeed: 1
+  maxHealth: 14
+  damage: 5
+  critChance: 20
+  critMultiplier: 5
+  critDamage: 12
+  attackSpeed: 1
+  knockbackStrength: 15
+  rollSpeed: 5
+  rollCooldown: 1
+  blinkAmount: 3
+  blinkCooldown: 3
