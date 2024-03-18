@@ -13,12 +13,12 @@ public class PlayerResources : MonoBehaviour
         resources.LoadResources();
         // coinsText.text = resources.coins.ToString();
         string coins = resources.coins.ToString();
-        coinsText.text = "x" + coins;
+        coinsText.text = "x " + coins;
     }
 
     void Update()
     {
         string coins = resources.coins.ToString();
-        coinsText.text = "x" + coins;
+        coinsText.text = "x " + coins;
     }
 }

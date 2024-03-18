@@ -6,6 +6,9 @@ public class DropDistribution : MonoBehaviour
 {
     public GameObject xpDrop;
     public GameObject[] drops;
+    public GameObject coin;
+    public float itemDropPercentage = 20;
+    public float coinDropPercentage = 80;
 
     private GameObject dropLayer;
 
@@ -20,7 +23,7 @@ public class DropDistribution : MonoBehaviour
         var randomX = Random.Range(-.1f, .1f);
         var randomY = Random.Range(-.1f, .1f);
         int dropChance = Random.Range(0, 100);
-        if (dropChance <= 30)
+        if (dropChance <= itemDropPercentage)
         {
             if (drops.Length == 0)
             {
@@ -33,10 +36,24 @@ public class DropDistribution : MonoBehaviour
                 cloneDrop.transform.SetParent(dropLayer.transform);
             }
         }
+        if (dropChance <= coinDropPercentage)
+        {
+            DropCoin();
+        }
         var randomXDrp = Random.Range(-.1f, .1f);
         var randomYDrp = Random.Range(-.1f, .1f);
         var randomPosDrp = new Vector3(pos.x + randomXDrp, pos.y + randomYDrp, pos.z);
         var cloneXp = Instantiate(xpDrop, randomPosDrp, Quaternion.identity, dropLayer.transform);
         cloneXp.transform.SetParent(dropLayer.transform);
+    }
+
+    public void DropCoin()
+    {
+        var pos = transform.position;
+        var randomX = Random.Range(-.1f, .1f);
+        var randomY = Random.Range(-.1f, .1f);
+        var randomPos = new Vector3(pos.x + randomX, pos.y + randomY, pos.z);
+        var cloneCoin = Instantiate(coin, randomPos, Quaternion.identity, dropLayer.transform);
+        cloneCoin.transform.SetParent(dropLayer.transform);
     }
 }

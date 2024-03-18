@@ -11,7 +11,7 @@ public class Drops : MonoBehaviour
     public BoxCollider2D boxCollider;
     public GameObject icon;
     public GameObject collected;
-    public enum ResourceType { XP, Health, PowerUp, Magnet, Coins, Gems }
+    public enum ResourceType { XP, Health, PowerUp, Magnet, Coins, Gems, Immune }
     public ResourceType resourceToHandle;
 
     public bool canMagnet = false;
@@ -28,6 +28,8 @@ public class Drops : MonoBehaviour
             LeanTween.moveLocalY(icon, -.03f, 1f).setEaseInOutSine().setLoopPingPong();
             LeanTween.scale(icon, new Vector3(1, 1, 1), .5f).setEaseInOutSine();
             LeanTween.rotateZ(icon, 10, 1f).setEaseInOutSine().setLoopPingPong();
+            icon.transform.localScale = new Vector3(0, .9f, 0);
+            LeanTween.scaleY(icon, 1f, .5f).setEaseInOutSine().setLoopPingPong();
         }
         StartCoroutine(EnableMagnet());
     }
@@ -38,7 +40,7 @@ public class Drops : MonoBehaviour
         canMagnet = true;
     }
 
-    private void Heal(GameObject player)
+    private void CollectHeal(GameObject player)
     {
         player.GetComponent<PlayerHealth>().HealDamage(1);
     }
@@ -55,6 +57,21 @@ public class Drops : MonoBehaviour
         player.GetComponent<Resources>().IncrementGems(gemValue);
     }
 
+    private void CollectPowerUp(GameObject player)
+    {
+        // Debug.Log("PowerUp");
+    }  
+
+    private void CollectImmune(GameObject player)
+    {
+        // Debug.Log("Immune");
+    }
+
+    private void CollectMagnet(GameObject player)
+    {
+        // Debug.Log("Magnet");
+    }
+
     private void Operation(GameObject player)
     {
         switch (resourceToHandle)
@@ -63,19 +80,22 @@ public class Drops : MonoBehaviour
                 // Debug.Log("XP");
                 break;
             case ResourceType.Health:
-                Heal(player);
+                CollectHeal(player);
                 break;
             case ResourceType.PowerUp:
-                // Debug.Log("PowerUp");
+                CollectPowerUp(player);
                 break;
             case ResourceType.Magnet:
-                // Debug.Log("Magnet");
+                CollectMagnet(player);
                 break;
             case ResourceType.Coins:
                 CollectCoin(player);
                 break;
             case ResourceType.Gems:
                 CollectGem(player);
+                break;
+            case ResourceType.Immune:
+                CollectImmune(player);
                 break;
         }
     }

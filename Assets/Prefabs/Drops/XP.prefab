@@ -314,3 +314,4 @@ MonoBehaviour:
   icon: {fileID: 4864844331658091473}
   collected: {fileID: 970641650035057823, guid: 6a3286e6286974543afff9cff73dba45, type: 3}
   resourceToHandle: 0
+  canMagnet: 0

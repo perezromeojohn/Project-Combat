@@ -509,7 +509,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpDrop: {fileID: 6438402843256211946, guid: 22ffd913ec6966542a67a4a6b27712d5, type: 3}
-  drops: []
+  drops:
+  - {fileID: 7599834957593988067, guid: 7a3927498b503614995aa24fa53747a8, type: 3}
+  coin: {fileID: 8926747343418678, guid: 77020d2cf7b80d74a9b2cbbb9554bcbb, type: 3}
+  itemDropPercentage: 20
+  coinDropPercentage: 80
 --- !u!61 &3373562102392654762
 BoxCollider2D:
   m_ObjectHideFlags: 0
