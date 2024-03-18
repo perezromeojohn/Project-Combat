@@ -19,8 +19,7 @@ public class Magnet : MonoBehaviour
                 {
                     if (collider.GetComponent<Drops>().canMagnet)
                     {
-                        // LeanTween.move(collider.gameObject, transform.position, .5f).setEaseInQuart();
-                        collider.gameObject.transform.position = Vector2.MoveTowards(collider.gameObject.transform.position, transform.position, 2f * Time.deltaTime);
+                        collider.gameObject.transform.position = Vector2.MoveTowards(collider.gameObject.transform.position, transform.position, 3f * Time.deltaTime);
                     }
                 }
             }
