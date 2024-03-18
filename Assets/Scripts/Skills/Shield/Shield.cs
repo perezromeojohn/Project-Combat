@@ -16,9 +16,9 @@ public class Shield : MonoBehaviour
     void Update()
     {
         // rotate the Z axis of the shield by 1 multiplied by Time.deltaTime
-        transform.Rotate(0, 0, 240 * Time.deltaTime);
+        transform.Rotate(0, 0, 70 * Time.deltaTime);
 
         // how can I rotate the shieldRotate
-        shieldRotate.transform.Rotate(0, 0, 240 * Time.deltaTime);
+        shieldRotate.transform.Rotate(0, 0, 70 * Time.deltaTime);
     }
 }
