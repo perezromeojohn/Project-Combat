@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         AddWaves();
         SpawnEnemies(currentWaveIndex);
-        Debug.Log(waves.Count);
+        Debug.Log("Total Waves: " + waves.Count);
     }
 
     void Update()

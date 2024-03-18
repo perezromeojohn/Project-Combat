@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using System;
+using Unity.Mathematics;
 
 public class Drops : MonoBehaviour
 {
     public BoxCollider2D boxCollider;
     public GameObject icon;
     public GameObject collected;
-    public enum ResourceType { XP, Health, PowerUp, Magnet, Coins }
+    public enum ResourceType { XP, Health, PowerUp, Magnet, Coins, Gems }
     public ResourceType resourceToHandle;
+
+    public bool canMagnet = false;
     
     void Start()
     {
@@ -26,11 +29,30 @@ public class Drops : MonoBehaviour
             LeanTween.scale(icon, new Vector3(1, 1, 1), .5f).setEaseInOutSine();
             LeanTween.rotateZ(icon, 10, 1f).setEaseInOutSine().setLoopPingPong();
         }
+        StartCoroutine(EnableMagnet());
+    }
+
+    IEnumerator EnableMagnet()
+    {
+        yield return new WaitForSeconds(1);
+        canMagnet = true;
     }
 
     private void Heal(GameObject player)
     {
         player.GetComponent<PlayerHealth>().HealDamage(1);
+    }
+
+    private void CollectCoin(GameObject player)
+    {
+        float coinValue = UnityEngine.Random.Range(15, 25);
+        player.GetComponent<Resources>().IncrementCoins(coinValue);
+    }
+
+    private void CollectGem(GameObject player)
+    {
+        float gemValue = 1f;
+        player.GetComponent<Resources>().IncrementGems(gemValue);
     }
 
     private void Operation(GameObject player)
@@ -49,6 +71,12 @@ public class Drops : MonoBehaviour
             case ResourceType.Magnet:
                 // Debug.Log("Magnet");
                 break;
+            case ResourceType.Coins:
+                CollectCoin(player);
+                break;
+            case ResourceType.Gems:
+                CollectGem(player);
+                break;
         }
     }
 
@@ -57,6 +85,7 @@ public class Drops : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            StopCoroutine(EnableMagnet());
             Operation(other.gameObject);
             Destroy(gameObject);
             GameObject collectedAnim = Instantiate(collected, transform.position, Quaternion.identity);
