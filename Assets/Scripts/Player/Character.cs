@@ -29,6 +29,7 @@ public class CharacterMovement : MonoBehaviour
     public bool isInvincible = false;
     private State state;
     private float rollTimer;
+    public GameObject dashSmoke;
 
     [Header("Player Animations")]
 
@@ -44,7 +45,7 @@ public class CharacterMovement : MonoBehaviour
     public bool isAttacked = false;
     private bool isHit = false;
     public float damageTaken = 0f;
-
+    public GameObject debris;
 
     void Start()
     {
@@ -198,6 +199,17 @@ public class CharacterMovement : MonoBehaviour
             state = State.Rolling;
             rollTimer = playerStats.rollCooldown; // Set the Dodge Roll cooldown timer
             isInvincible = true;
+            GameObject dashSmokeInstance = Instantiate(dashSmoke, transform.position, Quaternion.identity);
+            dashSmokeInstance.transform.SetParent(debris.transform);
+            // get the spriterendered and flip it depending on the direction the player is going
+            if (rollDirection.x > 0)
+            {
+                dashSmokeInstance.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (rollDirection.x < 0)
+            {
+                dashSmokeInstance.GetComponent<SpriteRenderer>().flipX = true;
+            }
         }
     }
 
