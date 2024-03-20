@@ -43,9 +43,10 @@ public class Drops : MonoBehaviour
 
     private void CollectXP()
     {
-        GameObject levelManager = GameObject.Find("GameManager");
-        LevelManager levelManagerScript = levelManager.GetComponent<LevelManager>();
-        levelManagerScript.IncrementExperience((int)xpValue);
+        // GameObject levelManager = GameObject.Find("GameManager");
+        // LevelManager levelManagerScript = levelManager.GetComponent<LevelManager>();
+        // levelManagerScript.IncrementExperience((int)xpValue);
+        LevelManager.instance.IncrementExperience((int)xpValue);
     }
 
     private void CollectHeal(GameObject player)

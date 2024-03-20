@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager instance;
     public float experienceMultiplier = 1.3f;
     public int currentLevel = 0;
     public int currentExperienceRequirement = 13;
@@ -15,6 +16,14 @@ public class LevelManager : MonoBehaviour
     [Header("GUI Stuff")]
     public TextMeshProUGUI levelText;
     public Image experienceBar;
+
+    private void Awake() {
+        if (instance == null) {
+            instance = this;
+        } else {
+            Destroy(this);
+        }
+    }
 
     void Start()
     {
@@ -48,7 +57,7 @@ public class LevelManager : MonoBehaviour
         levelText.text = "World Level: " + currentLevel;
         var experiencePercentage = (float)playerExperience / (float)currentExperienceRequirement;
         LeanTween.scale(experienceBar.gameObject, new Vector3(experiencePercentage, 1f, 1f), .5f)
-            .setEase(LeanTweenType.easeInOutQuart);
+            .setEase(LeanTweenType.easeOutQuart);
     }
 }
 
