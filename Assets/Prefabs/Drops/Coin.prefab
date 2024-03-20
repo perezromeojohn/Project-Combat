@@ -142,10 +142,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cb0f7f6007a5045bc4e1071f36be1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
   boxCollider: {fileID: 0}
   icon: {fileID: 8051962751055026481}
   collected: {fileID: 970641650035057823, guid: 6a3286e6286974543afff9cff73dba45, type: 3}
   resourceToHandle: 4
+  xpValue: 0
+  canMagnet: 0
 --- !u!1 &5506949826932580062
 GameObject:
   m_ObjectHideFlags: 0

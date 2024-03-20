@@ -13,6 +13,7 @@ public class Drops : MonoBehaviour
     public GameObject collected;
     public enum ResourceType { XP, Health, PowerUp, Magnet, Coins, Gems, Immune }
     public ResourceType resourceToHandle;
+    public float xpValue;
 
     public bool canMagnet = false;
     
@@ -38,6 +39,13 @@ public class Drops : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         canMagnet = true;
+    }
+
+    private void CollectXP()
+    {
+        GameObject levelManager = GameObject.Find("GameManager");
+        LevelManager levelManagerScript = levelManager.GetComponent<LevelManager>();
+        levelManagerScript.IncrementExperience((int)xpValue);
     }
 
     private void CollectHeal(GameObject player)
@@ -77,7 +85,7 @@ public class Drops : MonoBehaviour
         switch (resourceToHandle)
         {
             case ResourceType.XP:
-                // Debug.Log("XP");
+                CollectXP();
                 break;
             case ResourceType.Health:
                 CollectHeal(player);

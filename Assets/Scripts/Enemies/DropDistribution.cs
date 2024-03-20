@@ -40,10 +40,9 @@ public class DropDistribution : MonoBehaviour
         {
             DropCoin();
         }
-        var randomXDrp = Random.Range(-.1f, .1f);
-        var randomYDrp = Random.Range(-.1f, .1f);
-        var randomPosDrp = new Vector3(pos.x + randomXDrp, pos.y + randomYDrp, pos.z);
+        var randomPosDrp = new Vector3(pos.x + randomX, pos.y + randomY, pos.z);
         var cloneXp = Instantiate(xpDrop, randomPosDrp, Quaternion.identity, dropLayer.transform);
+        cloneXp.GetComponent<Drops>().xpValue = gameObject.GetComponent<Behavior>().enemy.experienceValue;
         cloneXp.transform.SetParent(dropLayer.transform);
     }
 

@@ -13,4 +13,6 @@ public class Enemy : ScriptableObject
     public float maxHealth;
     public Color spriteColor;
     public Vector3 healthBarUIOffset;
+    [Header("Misc")]
+    public float experienceValue;
 }

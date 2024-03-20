@@ -20,3 +20,4 @@ MonoBehaviour:
   maxHealth: 25
   spriteColor: {r: 0, g: 0.6156863, b: 1, a: 1}
   healthBarUIOffset: {x: 0, y: 0.15, z: 0}
+  experienceValue: 2
