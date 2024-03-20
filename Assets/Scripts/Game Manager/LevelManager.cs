@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     public TextMeshProUGUI levelText;
     public Image experienceBar;
 
-    void Update()
+    void Start()
     {
         TweenProgressBar();
     }
@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour
         {
             LevelUp();
         }
+        TweenProgressBar();
     }
 
     private void LevelUp()
@@ -46,8 +47,8 @@ public class LevelManager : MonoBehaviour
     {
         levelText.text = "World Level: " + currentLevel;
         var experiencePercentage = (float)playerExperience / (float)currentExperienceRequirement;
-        LeanTween.scale(experienceBar.gameObject, new Vector3(experiencePercentage, 1f, 1f), 1f)
-            .setEase(LeanTweenType.easeInCubic);
+        LeanTween.scale(experienceBar.gameObject, new Vector3(experiencePercentage, 1f, 1f), .5f)
+            .setEase(LeanTweenType.easeInOutQuart);
     }
 }
 
