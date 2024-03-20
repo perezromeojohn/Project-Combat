@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerResources : MonoBehaviour
 {
-    public Resources resources;
+    public Resource resources;
     public TextMeshProUGUI coinsText;
 
     void Start()

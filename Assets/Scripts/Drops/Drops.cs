@@ -57,13 +57,13 @@ public class Drops : MonoBehaviour
     private void CollectCoin(GameObject player)
     {
         float coinValue = UnityEngine.Random.Range(15, 25);
-        player.GetComponent<Resources>().IncrementCoins(coinValue);
+        player.GetComponent<Resource>().IncrementCoins(coinValue);
     }
 
     private void CollectGem(GameObject player)
     {
         float gemValue = 1f;
-        player.GetComponent<Resources>().IncrementGems(gemValue);
+        player.GetComponent<Resource>().IncrementGems(gemValue);
     }
 
     private void CollectPowerUp(GameObject player)
