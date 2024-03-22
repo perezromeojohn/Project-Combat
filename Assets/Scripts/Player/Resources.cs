@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Resource : MonoBehaviour
+public class Resources : MonoBehaviour
 {
     public float coins;
     public float gems;
