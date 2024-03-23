@@ -5670,6 +5670,7 @@ GameObject:
   - component: {fileID: 94369891}
   - component: {fileID: 94369893}
   - component: {fileID: 94369892}
+  - component: {fileID: 94369894}
   m_Layer: 5
   m_Name: LevelUp
   m_TagString: Untagged
@@ -5735,6 +5736,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94369890}
   m_CullTransparentMesh: 1
+--- !u!95 &94369894
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94369890}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: deaef22f76b29b946a783569a93d4373, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &101013481
 GameObject:
   m_ObjectHideFlags: 0
@@ -66571,6 +66593,8 @@ MonoBehaviour:
   - {fileID: 1404146046}
   - {fileID: 614486347}
   - {fileID: 1143373550}
+  perkMenu: {fileID: 94369890}
+  perkMenuAnimator: {fileID: 94369894}
 --- !u!1 &1787303552
 GameObject:
   m_ObjectHideFlags: 0

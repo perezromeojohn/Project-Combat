@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PerkManager : MonoBehaviour
 {
     public GameObject[] perkButtons;
+    public GameObject perkMenu;
+    public Animator perkMenuAnimator;
     private Animator[] perkAnimators;
     private Button[] perkButtonScripts;
 
@@ -41,6 +43,7 @@ public class PerkManager : MonoBehaviour
                     if (j == index)
                     {
                         perkAnimators[j].SetBool("isSelected", true);
+                        perkMenuAnimator.SetBool("isSelected", true);
                         Debug.Log("Perk " + j + " is selected");
                     }
                     else
@@ -58,10 +61,12 @@ public class PerkManager : MonoBehaviour
         {
             perkButtons[i].SetActive(false);
         }
+        perkMenu.SetActive(false);
     }
 
     public void ShowAllPerkButtons()
     {
+        perkMenu.SetActive(true);
         for (int i = 0; i < perkButtons.Length; i++)
         {
             perkButtons[i].SetActive(true);
