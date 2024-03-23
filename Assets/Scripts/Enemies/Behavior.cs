@@ -35,6 +35,9 @@ public class Behavior : MonoBehaviour
     public GameObject mainEnemyHealthBar;
     public SpriteRenderer spriteRenderer;
 
+    [Header("Enemy Hit Feedback")]
+    public GameObject hitParticles;
+
     // events
     private void Start()
     {
@@ -49,6 +52,7 @@ public class Behavior : MonoBehaviour
             isHit = true;
             onHit.Invoke();
             TakeDamage(damageTaken);
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.3f);
             isAttacked = false;
             damageTaken = 0f;

@@ -485,7 +485,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37897772}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20314c50abf37004c829c5e4e6c7976b, type: 3}
   m_Name: 
@@ -8827,63 +8827,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22ffd913ec6966542a67a4a6b27712d5, type: 3}
---- !u!1001 &187232689
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7983875645416160202, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_Name
-      value: Gobbie
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.8834091
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.15829878
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.00395445
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
 --- !u!1 &188984362
 GameObject:
   m_ObjectHideFlags: 0
@@ -10863,7 +10806,7 @@ MonoBehaviour:
   m_Follow: {fileID: 798174911}
   m_Lens:
     FieldOfView: 29.78128
-    OrthographicSize: 0.8
+    OrthographicSize: 1.2
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -21790,7 +21733,7 @@ Camera:
   far clip plane: 1000
   field of view: 29.78128
   orthographic: 1
-  orthographic size: 0.8
+  orthographic size: 1.2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -23161,8 +23104,8 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        RemapOrthographicSizeZero: 0.8
-        RemapOrthographicSizeOne: 0.7
+        RemapOrthographicSizeZero: 1.2
+        RemapOrthographicSizeOne: 1
     - rid: 5079079129168740372
       type: {class: MMF_Events, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
@@ -23617,7 +23560,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668930554}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -23642,8 +23585,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0052427044, y: 0.008738963}
-  m_Size: {x: 0.4601439, y: 0.46014395}
+  m_Offset: {x: -0.0052427044, y: 0.13034262}
+  m_Size: {x: 0.4601427, y: 0.70334744}
   m_Direction: 0
 --- !u!1 &676112818
 GameObject:
@@ -113384,4 +113327,3 @@ SceneRoots:
   - {fileID: 2220060419478884017}
   - {fileID: 7522088039589614272}
   - {fileID: 178128984}
-  - {fileID: 187232689}

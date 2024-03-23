@@ -228,6 +228,7 @@ MonoBehaviour:
   enemyHealthBar: {fileID: 3843386299410427314}
   mainEnemyHealthBar: {fileID: 7767820369774014513}
   spriteRenderer: {fileID: 7106009896130014559}
+  hitParticles: {fileID: 4707195801861928893, guid: fb999f79c5467104c8940abfbc7a53fa, type: 3}
 --- !u!114 &5150254759362961381
 MonoBehaviour:
   m_ObjectHideFlags: 0
