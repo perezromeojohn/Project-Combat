@@ -47,11 +47,6 @@ public class CharacterMovement : MonoBehaviour
     public float damageTaken = 0f;
     public GameObject debris;
 
-    private void OnGameStateChanged(GameState newGameState)
-    {
-        enabled = newGameState == GameState.Gameplay;
-    }
-
     void Start()
     {
         blinkTimer = 1f; // Initialize the Blink cooldown timer
@@ -62,11 +57,6 @@ public class CharacterMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         state = State.Normal;
-        GameStateManager.Instance.OnGameStateChanged += OnGameStateChanged;
-    }
-
-    private void OnDestroy() {
-        GameStateManager.Instance.OnGameStateChanged -= OnGameStateChanged;
     }
 
     void Update()
