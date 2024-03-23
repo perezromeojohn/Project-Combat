@@ -49,8 +49,7 @@ public class LevelManager : MonoBehaviour
     {
         levelText.text = "World Level: " + currentLevel;
         var experiencePercentage = (float)playerExperience / (float)currentExperienceRequirement;
-        LeanTween.scale(experienceBar.gameObject, new Vector3(experiencePercentage, 1f, 1f), .5f)
-            .setEase(LeanTweenType.easeInOutQuart);
+        experienceBar.transform.localScale = new Vector3(experiencePercentage, 1, 1);
     }
 }
 
