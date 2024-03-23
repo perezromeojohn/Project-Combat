@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 37897774}
   - component: {fileID: 37897775}
   - component: {fileID: 37897777}
+  - component: {fileID: 37897778}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -485,7 +486,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37897772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20314c50abf37004c829c5e4e6c7976b, type: 3}
   m_Name: 
@@ -540,6 +541,18 @@ MonoBehaviour:
   playerExperience: 0
   levelText: {fileID: 364766784}
   experienceBar: {fileID: 1111055399}
+--- !u!114 &37897778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37897772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fef87f31658da54a9030b1dad28ce5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &58808180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24222,7 +24235,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
-  runDust: {fileID: 0}
   swordCollider: {fileID: 668930560}
   isInvincible: 0
   dashSmoke: {fileID: 2706908962908928424, guid: b675b8134150f784c831eb815573cbc8, type: 3}
