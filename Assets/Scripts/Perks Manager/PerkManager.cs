@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using UnityEditor;
 
 public class PerkManager : MonoBehaviour
 {
@@ -11,6 +15,8 @@ public class PerkManager : MonoBehaviour
     public Animator perkMenuAnimator;
     private Animator[] perkAnimators;
     private Button[] perkButtonScripts;
+    public Perks[] perks;
+    private List<Perks> selectedPerks = new List<Perks>();
 
     void Start()
     {
@@ -23,6 +29,19 @@ public class PerkManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             ShowAllPerkButtons();
+        }
+    }
+
+    void BindSkills()
+    {
+        PickRandomPerks();
+        // for loop selecting the perks
+        for (int i = 0; i < perkButtons.Length; i++)
+        {
+            perkButtons[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkName;
+            perkButtons[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkDescription;
+            perkButtons[i].transform.GetChild(6).GetComponent<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>(FindImage(selectedPerks[i].perkName));
+            perkButtons[i].name = selectedPerks[i].perkName;
         }
     }
 
@@ -69,10 +88,48 @@ public class PerkManager : MonoBehaviour
     public void ShowAllPerkButtons()
     {
         timeManager.PauseGame();
+        BindSkills();
         perkMenu.SetActive(true);
         for (int i = 0; i < perkButtons.Length; i++)
         {
             perkButtons[i].SetActive(true);
         }
+    }
+
+    private void PickRandomPerks()
+    {
+        selectedPerks.Clear();
+        for (int i = 0; i < 3; i++)
+        {
+            Perks randomPerk = perks[UnityEngine.Random.Range(0, perks.Length)];
+            if (!selectedPerks.Contains(randomPerk))
+            {
+                selectedPerks.Add(randomPerk);
+            }
+            else
+            {
+                i--;
+            }
+        }
+    }
+
+    private string FindImage(String perkName)
+    {
+        // find the image of the perk image based on the name
+        // directory: Assets/GUI/Skill Icons / Skills / perkname.png
+        // return the image asset
+
+        string path = "Assets/GUI/Skill Icons/Skills/" + perkName + ".png";
+
+        if (File.Exists(path))
+        {
+            return path;
+        }
+        else
+        {
+            Debug.LogWarning("Image file " + perkName + " does not exist");
+        }
+
+        return null;
     }
 }
