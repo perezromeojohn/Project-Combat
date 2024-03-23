@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public PerkManager perkManager;
     public float experienceMultiplier = 1.3f;
     public int currentLevel = 0;
     public int currentExperienceRequirement = 13;
@@ -36,6 +37,7 @@ public class LevelManager : MonoBehaviour
         currentLevel++;
         currentExperienceRequirement = Mathf.RoundToInt(currentExperienceRequirement * experienceMultiplier);
         playerExperience = 0;
+        perkManager.ShowAllPerkButtons();
     }
 
     public int GetCurrentLevel()

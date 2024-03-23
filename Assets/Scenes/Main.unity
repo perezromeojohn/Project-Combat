@@ -5370,7 +5370,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37897772}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20314c50abf37004c829c5e4e6c7976b, type: 3}
   m_Name: 
@@ -5419,6 +5419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a9198daadfa1614c82f96ebae063a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perkManager: {fileID: 1773679504}
   experienceMultiplier: 1.3
   currentLevel: 1
   currentExperienceRequirement: 13
@@ -5677,7 +5678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &94369891
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10906,7 +10907,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b5722ec8dae8aac4596bd1eccd440ae6, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -23073,7 +23074,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -537, y: -60}
-  m_SizeDelta: {x: -1445.064, y: 0}
+  m_SizeDelta: {x: -1445.064, y: -253.73682}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &614486349
 Animator:
@@ -51827,7 +51828,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 536, y: -60}
-  m_SizeDelta: {x: -1445.064, y: 0}
+  m_SizeDelta: {x: -1445.064, y: -253.73682}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1143373552
 Animator:
@@ -58402,7 +58403,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: -1445.064, y: 0}
+  m_SizeDelta: {x: -1445.064, y: -253.73682}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1404146048
 MonoBehaviour:
@@ -66594,6 +66595,7 @@ MonoBehaviour:
   - {fileID: 614486347}
   - {fileID: 1143373550}
   perkMenu: {fileID: 94369890}
+  timeManager: {fileID: 37897774}
   perkMenuAnimator: {fileID: 94369894}
 --- !u!1 &1787303552
 GameObject:

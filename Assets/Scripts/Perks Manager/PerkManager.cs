@@ -7,6 +7,7 @@ public class PerkManager : MonoBehaviour
 {
     public GameObject[] perkButtons;
     public GameObject perkMenu;
+    public TimeManager timeManager;
     public Animator perkMenuAnimator;
     private Animator[] perkAnimators;
     private Button[] perkButtonScripts;
@@ -57,6 +58,7 @@ public class PerkManager : MonoBehaviour
 
     public void HideAllPerkButtons()
     {
+        timeManager.ResumeGame();
         for (int i = 0; i < perkButtons.Length; i++)
         {
             perkButtons[i].SetActive(false);
@@ -66,6 +68,7 @@ public class PerkManager : MonoBehaviour
 
     public void ShowAllPerkButtons()
     {
+        timeManager.PauseGame();
         perkMenu.SetActive(true);
         for (int i = 0; i < perkButtons.Length; i++)
         {
