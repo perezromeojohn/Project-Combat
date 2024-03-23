@@ -23012,6 +23012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 614486348}
   - component: {fileID: 614486355}
+  - component: {fileID: 614486356}
   - component: {fileID: 614486354}
   - component: {fileID: 614486353}
   - component: {fileID: 614486352}
@@ -23234,6 +23235,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614486347}
   m_CullTransparentMesh: 1
+--- !u!114 &614486356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614486347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bf3546557752f44b52e8d44e417e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perkManager: {fileID: 1773679504}
 --- !u!1 &655074870
 GameObject:
   m_ObjectHideFlags: 0
@@ -51752,6 +51766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1143373551}
   - component: {fileID: 1143373558}
+  - component: {fileID: 1143373559}
   - component: {fileID: 1143373557}
   - component: {fileID: 1143373556}
   - component: {fileID: 1143373555}
@@ -51974,6 +51989,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143373550}
   m_CullTransparentMesh: 1
+--- !u!114 &1143373559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143373550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bf3546557752f44b52e8d44e417e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perkManager: {fileID: 1773679504}
 --- !u!1 &1236472021
 GameObject:
   m_ObjectHideFlags: 0
@@ -58313,6 +58341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1404146047}
   - component: {fileID: 1404146055}
+  - component: {fileID: 1404146057}
   - component: {fileID: 1404146054}
   - component: {fileID: 1404146053}
   - component: {fileID: 1404146051}
@@ -58535,6 +58564,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1404146057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404146046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bf3546557752f44b52e8d44e417e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perkManager: {fileID: 1773679504}
 --- !u!1 &1411529337
 GameObject:
   m_ObjectHideFlags: 0
@@ -66522,93 +66564,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1773679502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Script: {fileID: 11500000, guid: d3acfcbc1b368014ba7c7fe91c41c21a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Feedbacks: []
-  InitializationMode: 2
-  AutoInitialization: 1
-  SafeMode: 3
-  Direction: 0
-  AutoChangeDirectionOnEnd: 0
-  AutoPlayOnStart: 0
-  AutoPlayOnEnable: 0
-  ForceTimescaleMode: 0
-  ForcedTimescaleMode: 1
-  DurationMultiplier: 1
-  RandomizeDuration: 0
-  RandomDurationMultiplier: {x: 0.5, y: 1.5}
-  DisplayFullDurationDetails: 0
-  PlayerTimescaleMode: 1
-  OnlyPlayIfWithinRange: 0
-  RangeCenter: {fileID: 0}
-  RangeDistance: 5
-  UseRangeFalloff: 0
-  RangeFalloff:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  RemapRangeFalloff: {x: 0, y: 1}
-  IgnoreRangeEvents: 0
-  CooldownDuration: 0
-  InitialDelay: 0
-  CanPlay: 1
-  CanPlayWhileAlreadyPlaying: 1
-  ChanceToPlay: 100
-  FeedbacksIntensity: 1
-  Events:
-    TriggerMMFeedbacksEvents: 0
-    TriggerUnityEvents: 1
-    OnPlay:
-      m_PersistentCalls:
-        m_Calls: []
-    OnPause:
-      m_PersistentCalls:
-        m_Calls: []
-    OnResume:
-      m_PersistentCalls:
-        m_Calls: []
-    OnRevert:
-      m_PersistentCalls:
-        m_Calls: []
-    OnComplete:
-      m_PersistentCalls:
-        m_Calls: []
-    OnRestoreInitialValues:
-      m_PersistentCalls:
-        m_Calls: []
-    OnSkipToTheEnd:
-      m_PersistentCalls:
-        m_Calls: []
-  DebugActive: 0
-  FeedbacksList: []
-  KeepPlayModeChanges: 0
-  PerformanceMode: 0
-  StopFeedbacksOnDisable: 0
-  PlayCount: 0
-  references:
-    version: 2
-    RefIds: []
+  perkButtons:
+  - {fileID: 1404146046}
+  - {fileID: 614486347}
+  - {fileID: 1143373550}
 --- !u!1 &1787303552
 GameObject:
   m_ObjectHideFlags: 0
