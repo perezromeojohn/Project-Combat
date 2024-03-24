@@ -7,6 +7,7 @@ public class TimeManager : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     private float timeElapsed; // Elapsed time in seconds
+    private bool isPaused = false;
 
     void Start()
     {
@@ -17,6 +18,8 @@ public class TimeManager : MonoBehaviour
     {
         timeElapsed += Time.deltaTime;
         UpdateTimerDisplay();
+
+        EnsurePause();
     }
 
     void UpdateTimerDisplay()
@@ -37,10 +40,20 @@ public class TimeManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        isPaused = true;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        isPaused = false;
+    }
+
+    private void EnsurePause()
+    {
+        if (isPaused)
+        {
+            PauseGame();
+        }
     }
 }
