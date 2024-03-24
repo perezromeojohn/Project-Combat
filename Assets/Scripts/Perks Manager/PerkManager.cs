@@ -15,8 +15,14 @@ public class PerkManager : MonoBehaviour
     public Animator perkMenuAnimator;
     private Animator[] perkAnimators;
     private Button[] perkButtonScripts;
-    public Perks[] perks;
+    
+    [Header("Player Perks")]
+    public Perks[] perkList;
     private List<Perks> selectedPerks = new List<Perks>();
+    private const int maxPerkLevel = 5;
+    public Dictionary<string, int> playerPerks = new Dictionary<string, int>();
+    public GameObject[] perkFrames; // gui indicating the frame of the Perk
+    private float perkFrameIndex = 0;
 
     void Start()
     {
@@ -29,6 +35,11 @@ public class PerkManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             ShowAllPerkButtons();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            PrintPerks();
         }
     }
 
@@ -67,6 +78,7 @@ public class PerkManager : MonoBehaviour
                         perkAnimators[j].SetBool("isSelected", true);
                         perkMenuAnimator.SetBool("isSelected", true);
                         Debug.Log("Perk " + j + " is selected");
+                        AddPerkToPlayer(selectedPerks[j]);
                     }
                     else
                     {
@@ -103,7 +115,7 @@ public class PerkManager : MonoBehaviour
         selectedPerks.Clear();
         for (int i = 0; i < 3; i++)
         {
-            Perks randomPerk = perks[UnityEngine.Random.Range(0, perks.Length)];
+            Perks randomPerk = perkList[UnityEngine.Random.Range(0, perkList.Length)];
             if (!selectedPerks.Contains(randomPerk))
             {
                 selectedPerks.Add(randomPerk);
@@ -133,5 +145,40 @@ public class PerkManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void AddPerkToPlayer(Perks addedPerk)
+    {
+        if (playerPerks.ContainsKey(addedPerk.perkName))
+        {
+            if (playerPerks[addedPerk.perkName] < maxPerkLevel)
+            {
+                playerPerks[addedPerk.perkName]++;
+                Debug.Log(addedPerk.perkName + " upgraded to level " + playerPerks[addedPerk.perkName]);
+            }
+            else
+            {
+                Debug.Log(addedPerk.perkName + " is already at max level");
+            }
+        }
+        else
+        {
+            playerPerks.Add(addedPerk.perkName, 1);
+            Debug.Log(addedPerk.perkName + " added at level 1");
+            perkFrames[Convert.ToInt32(perkFrameIndex)].GetComponent<Image>().enabled = true;
+            perkFrames[Convert.ToInt32(perkFrameIndex)].GetComponent<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>(FindImage(addedPerk.perkName));
+            if (perkFrameIndex < 5)
+            {
+                perkFrameIndex++;
+            }
+        }
+    }
+
+    private void PrintPerks()
+    {
+        foreach (KeyValuePair<string, int> perk in playerPerks)
+        {
+            Debug.Log(perk.Key + " at level " + perk.Value);
+        }
     }
 }
