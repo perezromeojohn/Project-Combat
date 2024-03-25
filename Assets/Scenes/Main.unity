@@ -485,7 +485,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37897772}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20314c50abf37004c829c5e4e6c7976b, type: 3}
   m_Name: 
@@ -23272,8 +23272,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0052427044, y: 0.13034262}
-  m_Size: {x: 0.4601427, y: 0.70334744}
+  m_Offset: {x: -0.023382466, y: 0.13034268}
+  m_Size: {x: 0.25235924, y: 0.7033467}
   m_Direction: 0
 --- !u!1 &676112818
 GameObject:
