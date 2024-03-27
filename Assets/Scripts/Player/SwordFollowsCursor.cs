@@ -30,7 +30,8 @@ public class SwordFollowsCursor : MonoBehaviour
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            // transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = rotation;
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // cursorGraph.transform.position = cursorPos;
             // add if time scale is == 0
