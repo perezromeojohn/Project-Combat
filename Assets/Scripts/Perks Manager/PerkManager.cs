@@ -49,11 +49,11 @@ public class PerkManager : MonoBehaviour
         // for loop selecting the perks
         for (int i = 0; i < perkButtons.Length; i++)
         {
-            perkButtons[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkName;
-            perkButtons[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkDescription;
+            perkButtons[i].transform.GetChild(9).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkName;
+            perkButtons[i].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkDescription;
             // for cooldown set format to color <color=#red>: Cooldown: color <color=#yellow>: perkCooldown seconds
-            perkButtons[i].transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "<color=#FFB4A0>Cooldown: </color><color=#FFB023><b>" + selectedPerks[i].perkCooldown + "</b></color> <color=#FFFFFF>seconds</color>";
-            perkButtons[i].transform.GetChild(7).GetComponent<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>(FindImage(selectedPerks[i].perkName));
+            perkButtons[i].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "<color=#FFB4A0>Cooldown: </color><color=#FFB023><b>" + selectedPerks[i].perkCooldown + "</b></color> <color=#FFFFFF>seconds</color>";
+            perkButtons[i].transform.GetChild(6).GetComponent<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>(FindImage(selectedPerks[i].perkName));
             perkButtons[i].name = selectedPerks[i].perkName;
         }
     }

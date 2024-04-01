@@ -113523,10 +113523,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkButtons:
-  - {fileID: 806187622}
-  - {fileID: 1404146046}
-  - {fileID: 1406570112}
-  perkMenu: {fileID: 94369890}
+  - {fileID: 1013418999}
+  - {fileID: 217926838}
+  - {fileID: 1565211889}
+  perkMenu: {fileID: 1772290616}
   timeManager: {fileID: 37897774}
   perkMenuAnimator: {fileID: 94369894}
   perkList:
