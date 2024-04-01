@@ -10761,7 +10761,7 @@ MonoBehaviour:
   m_Follow: {fileID: 798174911}
   m_Lens:
     FieldOfView: 29.78128
-    OrthographicSize: 1.018628
+    OrthographicSize: 1.2
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -12211,7 +12211,7 @@ Camera:
   far clip plane: 1000
   field of view: 29.78128
   orthographic: 1
-  orthographic size: 1.018628
+  orthographic size: 1.2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -67223,7 +67223,7 @@ MonoBehaviour:
   - {fileID: 1565211889}
   perkMenu: {fileID: 1772290616}
   timeManager: {fileID: 37897774}
-  perkMenuAnimator: {fileID: 0}
+  perkMenuAnimator: {fileID: 1772290618}
   perkList:
   - {fileID: 11400000, guid: 9458315d33599874ba535dde0f0579da, type: 2}
   - {fileID: 11400000, guid: 28be0e690aa301d41b6f220765219cdd, type: 2}
