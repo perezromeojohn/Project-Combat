@@ -21,8 +21,6 @@ public class PerkManager : MonoBehaviour
     private List<Perks> selectedPerks = new List<Perks>();
     private const int maxPerkLevel = 5;
     public Dictionary<string, int> playerPerks = new Dictionary<string, int>();
-    public GameObject[] perkFrames; // gui indicating the frame of the Perk
-    private float perkFrameIndex = 0;
 
     void Start()
     {
@@ -38,6 +36,12 @@ public class PerkManager : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.L))
+        {
+            PrintPerks();
+        }
+
+        // if I press Q print all the playerPerks
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             PrintPerks();
         }
@@ -165,12 +169,6 @@ public class PerkManager : MonoBehaviour
         {
             playerPerks.Add(addedPerk.perkName, 1);
             Debug.Log(addedPerk.perkName + " added at level 1");
-            perkFrames[Convert.ToInt32(perkFrameIndex)].GetComponent<Image>().enabled = true;
-            perkFrames[Convert.ToInt32(perkFrameIndex)].GetComponent<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>(FindImage(addedPerk.perkName));
-            if (perkFrameIndex < 5)
-            {
-                perkFrameIndex++;
-            }
         }
     }
 
