@@ -20,7 +20,11 @@ public class SwordFollowsCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotateAtCursor();
+        // if time scale is equal to 1 rotate the sword
+        if (Time.timeScale != 0)
+        {
+            RotateAtCursor();
+        }
     }
 
     private void RotateAtCursor() {

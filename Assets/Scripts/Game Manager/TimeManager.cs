@@ -8,6 +8,8 @@ public class TimeManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     private float timeElapsed; // Elapsed time in seconds
     private bool isPaused = false;
+    public GameObject pauseScreen;
+    public GameObject perkScreen;
 
     void Start()
     {
@@ -20,6 +22,24 @@ public class TimeManager : MonoBehaviour
         UpdateTimerDisplay();
 
         EnsurePause();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // if perkScreen is active, close it
+            if (!perkScreen.activeSelf)
+            {
+                if (isPaused)
+                {
+                    ResumeGame();
+                    pauseScreen.SetActive(false);
+                }
+                else
+                {
+                    PauseGame();
+                    pauseScreen.SetActive(true);
+                }
+            }
+        }
     }
 
     void UpdateTimerDisplay()
