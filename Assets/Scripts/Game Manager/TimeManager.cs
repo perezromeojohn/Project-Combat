@@ -10,6 +10,7 @@ public class TimeManager : MonoBehaviour
     private bool isPaused = false;
     public GameObject pauseScreen;
     public GameObject perkScreen;
+    public GameObject topFrame;
 
     void Start()
     {
@@ -32,11 +33,13 @@ public class TimeManager : MonoBehaviour
                 {
                     ResumeGame();
                     pauseScreen.SetActive(false);
+                    topFrame.SetActive(true);
                 }
                 else
                 {
                     PauseGame();
                     pauseScreen.SetActive(true);
+                    topFrame.SetActive(false);
                 }
             }
         }

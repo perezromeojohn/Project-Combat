@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0
   maxHealth: 0
+  magnetRange: 0
   damage: 0
   critChance: 0
   critMultiplier: 0
   critDamage: 0
   attackSpeed: 0
   knockbackStrength: 0
+  dashCharge: 0
   rollSpeed: 0
   rollCooldown: 0
   blinkAmount: 0

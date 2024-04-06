@@ -40,6 +40,7 @@ public class CharacterMovement : MonoBehaviour
 
     [SerializeField] private GameObject hand;
     [SerializeField] private Animator swordAnimator;
+    private float attackTimer = 0f;
 
 
     public bool isAttacked = false;
@@ -129,12 +130,16 @@ public class CharacterMovement : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        attackTimer += Time.deltaTime;
+
+        if (attackTimer >= 1f / playerStats.attackSpeed)
         {
             if (swordAnimator.GetBool("isAttacking") == false)
             {
                 swordAnimator.SetBool("isAttacking", true);
             }
+
+            attackTimer = 0f;
         }
     }
 
