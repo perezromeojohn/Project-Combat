@@ -17,12 +17,9 @@ MonoBehaviour:
   magnetRange: 0
   damage: 0
   critChance: 0
-  critMultiplier: 0
   critDamage: 0
   attackSpeed: 0
   knockbackStrength: 0
   dashCharge: 0
   rollSpeed: 0
   rollCooldown: 0
-  blinkAmount: 0
-  blinkCooldown: 0

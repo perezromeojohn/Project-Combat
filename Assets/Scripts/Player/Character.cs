@@ -18,10 +18,6 @@ public class CharacterMovement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private Vector3 moveDirection;
 
-    [Header("Player Blink")]
-    private bool isDashButtonDown;
-    private float blinkTimer;
-
     [Header("Player Dodge Roll")]
     private Vector3 rollDirection;
     private float rollSpeed;
@@ -50,7 +46,6 @@ public class CharacterMovement : MonoBehaviour
 
     void Start()
     {
-        blinkTimer = 1f; // Initialize the Blink cooldown timer
         rollTimer = 1f; // Initialize the Dodge Roll cooldown timer
     }
 
@@ -64,7 +59,6 @@ public class CharacterMovement : MonoBehaviour
     {
         Attack();
         GetInput();
-        Blink();
 
         swordAnimator.enabled = true;
         playerAnimator.enabled = true;
@@ -96,13 +90,6 @@ public class CharacterMovement : MonoBehaviour
                 playerAnimator.SetBool("isRolling", false);
                 hairAnimator.SetBool("isRolling", false);
 
-                if (isDashButtonDown && blinkTimer <= 0)
-                {
-                    rb.MovePosition(transform.position + moveDirection * playerStats.blinkAmount);
-                    isDashButtonDown = false;
-                    blinkTimer = playerStats.blinkCooldown; // Set the Blink cooldown timer
-                }
-
                 // set hand gameobject to active
                 hand.SetActive(true);
 
@@ -114,12 +101,6 @@ public class CharacterMovement : MonoBehaviour
                 hand.SetActive(false);
                 swordCollider.enabled = false;
                 break;
-        }
-
-        // Update the cooldown timers
-        if (blinkTimer > 0)
-        {
-            blinkTimer -= Time.deltaTime;
         }
 
         if (rollTimer > 0)
@@ -183,14 +164,6 @@ public class CharacterMovement : MonoBehaviour
                     state = State.Normal;
                 }
                 break;
-        }
-    }
-
-    void Blink()
-    {
-        if (Input.GetKey(KeyCode.F) && blinkTimer <= 0)
-        {
-            isDashButtonDown = true;
         }
     }
 

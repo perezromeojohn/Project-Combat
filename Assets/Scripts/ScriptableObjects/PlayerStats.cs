@@ -12,7 +12,6 @@ public class PlayerStats : ScriptableObject
     [Header("Player Attacking")]
     public float damage;
     public float critChance;
-    public float critMultiplier;
     public float critDamage;
     public float attackSpeed;
     public float knockbackStrength;
@@ -20,6 +19,4 @@ public class PlayerStats : ScriptableObject
     public float dashCharge;
     public float rollSpeed;
     public float rollCooldown;
-    public float blinkAmount;
-    public float blinkCooldown;
 }

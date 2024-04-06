@@ -15,6 +15,10 @@ public class PerkManager : MonoBehaviour
     public Animator perkMenuAnimator;
     private Animator[] perkAnimators;
     private Button[] perkButtonScripts;
+
+    [Header("Perks UI")]
+    public GameObject perkPanel;
+    public GameObject perkFrame;
     
     [Header("Player Perks")]
     public Perks[] perkList;
@@ -133,10 +137,6 @@ public class PerkManager : MonoBehaviour
 
     private string FindImage(String perkName)
     {
-        // find the image of the perk image based on the name
-        // directory: Assets/GUI/Skill Icons / Skills / perkname.png
-        // return the image asset
-
         string path = "Assets/GUI/Skill Icons/Skills/" + perkName + ".png";
 
         if (File.Exists(path))
@@ -159,6 +159,15 @@ public class PerkManager : MonoBehaviour
             {
                 playerPerks[addedPerk.perkName]++;
                 Debug.Log(addedPerk.perkName + " upgraded to level " + playerPerks[addedPerk.perkName]);
+                foreach (Transform child in perkPanel.transform)
+                {
+                    if (child.name == addedPerk.perkName)
+                    {
+                        GameObject levelObject = child.Find("Level").gameObject;
+                        TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
+                        levelText.text = "Lvl. " + playerPerks[addedPerk.perkName];
+                    }
+                }
             }
             else
             {
@@ -168,6 +177,15 @@ public class PerkManager : MonoBehaviour
         else
         {
             playerPerks.Add(addedPerk.perkName, 1);
+            GameObject newPerkFrame = Instantiate(perkFrame, perkPanel.transform);
+            GameObject levelObject = newPerkFrame.transform.Find("Level").gameObject;
+            TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
+            Image perkImage = newPerkFrame.transform.Find("Icon").GetComponent<Image>();
+
+            newPerkFrame.name = addedPerk.perkName;
+            perkImage.sprite = AssetDatabase.LoadAssetAtPath<Sprite>(FindImage(addedPerk.perkName));
+            levelText.text = "Lvl. 1";
+
             Debug.Log(addedPerk.perkName + " added at level 1");
         }
     }
