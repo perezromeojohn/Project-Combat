@@ -45,12 +45,9 @@ public class PlayerStatsPauseDisplay : MonoBehaviour
                         valueText.text = playerStats.knockbackStrength.ToString();
                         break;
                     case 8:
-                        valueText.text = playerStats.dashCharge.ToString();
-                        break;
-                    case 9:
                         valueText.text = playerStats.rollSpeed.ToString();
                         break;
-                    case 10:
+                    case 9:
                         valueText.text = playerStats.rollCooldown.ToString();
                         break;
                     // Add cases for other stats as needed

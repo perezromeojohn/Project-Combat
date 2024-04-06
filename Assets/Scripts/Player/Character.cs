@@ -19,6 +19,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Vector3 moveDirection;
 
     [Header("Player Dodge Roll")]
+    public GameObject rollFrame;
     private Vector3 rollDirection;
     private float rollSpeed;
     [SerializeField] private CapsuleCollider2D swordCollider;
@@ -188,6 +189,26 @@ public class CharacterMovement : MonoBehaviour
             {
                 dashSmokeInstance.GetComponent<SpriteRenderer>().flipX = true;
             }
+            rollFrame.SetActive(true);
+            DodgeRollFrameCooldown();
+        }
+
+        if (rollTimer <= 0)
+        {
+            rollFrame.SetActive(false);
+        }
+    }
+
+    void DodgeRollFrameCooldown()
+    {
+        if (rollFrame.activeSelf)
+        {
+            GameObject rollFrameCooldown = rollFrame.transform.Find("RollFG").gameObject;
+            LeanTween.scaleX(rollFrameCooldown, 0f, rollTimer);
+            LeanTween.delayedCall(rollTimer, () =>
+            {
+                rollFrameCooldown.transform.localScale = new Vector3(1f, 1f, 1f);
+            });
         }
     }
 

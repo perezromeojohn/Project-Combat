@@ -16,7 +16,6 @@ public class PlayerStats : ScriptableObject
     public float attackSpeed;
     public float knockbackStrength;
     [Header("Player Mobility")]
-    public float dashCharge;
     public float rollSpeed;
     public float rollCooldown;
 }
