@@ -6,7 +6,6 @@ using UnityEngine;
 public class SwordFollowsCursor : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private float rotationSpeed = 250f;
     [SerializeField] private GameObject cursorGraph;
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private SpriteRenderer hairSprite;

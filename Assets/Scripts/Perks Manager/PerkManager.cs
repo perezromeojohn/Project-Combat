@@ -22,6 +22,8 @@ public class PerkManager : MonoBehaviour
     
     [Header("Player Perks")]
     public Perks[] perkList;
+    public GameObject[] perkGameObjects;
+    public GameObject perkParent;
     private List<Perks> selectedPerks = new List<Perks>();
     private const int maxPerkLevel = 5;
     public Dictionary<string, int> playerPerks = new Dictionary<string, int>();
@@ -181,6 +183,15 @@ public class PerkManager : MonoBehaviour
             GameObject levelObject = newPerkFrame.transform.Find("Level").gameObject;
             TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
             Image perkImage = newPerkFrame.transform.Find("Icon").GetComponent<Image>();
+
+            for (int i = 0; i < perkGameObjects.Length; i++)
+            {
+                if (perkGameObjects[i].name == addedPerk.perkName)
+                {
+                    GameObject newPerk = Instantiate(perkGameObjects[i], perkParent.transform);
+                    newPerk.name = addedPerk.perkName;
+                }
+            }
 
             newPerkFrame.name = addedPerk.perkName;
             perkImage.sprite = AssetDatabase.LoadAssetAtPath<Sprite>(FindImage(addedPerk.perkName));

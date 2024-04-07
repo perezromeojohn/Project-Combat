@@ -21010,6 +21010,7 @@ Transform:
   - {fileID: 2087414538}
   - {fileID: 1869187265}
   - {fileID: 1962156355}
+  - {fileID: 1642397502}
   m_Father: {fileID: 1471945102}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &798174912
@@ -59024,6 +59025,37 @@ Transform:
   - {fileID: 687463529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1642397501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1642397502}
+  m_Layer: 6
+  m_Name: SkillHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1642397502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642397501}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 798174911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1645574254
 GameObject:
   m_ObjectHideFlags: 0
@@ -70839,6 +70871,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 887fbcb647ccba24e8e39b39a6f5d721, type: 2}
   - {fileID: 11400000, guid: b68858fdabefb084c92c30076b5086e1, type: 2}
   - {fileID: 11400000, guid: dc59ff8601cea1849b3800296773e331, type: 2}
+  perkGameObjects:
+  - {fileID: 7890587839991812584, guid: 8efe44c03bf445e4995e6813465a8d3a, type: 3}
+  perkParent: {fileID: 1642397501}
 --- !u!1 &1812728248
 GameObject:
   m_ObjectHideFlags: 0
@@ -112204,7 +112239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992dbb8552551e148ac819c912588e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
   cursorGraph: {fileID: 0}
   playerSprite: {fileID: 798174914}
   hairSprite: {fileID: 265667140}
