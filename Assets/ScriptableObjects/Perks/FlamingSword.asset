@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: FlamingSword
   m_EditorClassIdentifier: 
   perkName: Flaming Sword
-  perkDescription: When the player hits an enemy inflict burn damage based on your
-    attack damage and additional 1.5% damage
-  perkImage: FlamingSword
+  perkDescriptions:
+  - Fires level 1
+  - Fires level 2
+  - Fires level 3
+  - Fires level 4
+  - Fires level 5
   isSkill: 0
   perkCooldown: 3

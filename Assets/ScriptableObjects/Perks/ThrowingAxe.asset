@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: ThrowingAxe
   m_EditorClassIdentifier: 
   perkName: Throwing Axe
-  perkDescription: Every 3 seconds throw an Axe to a random enemy near the player
-  perkImage: ThrowingAxe
+  perkDescriptions:
+  - Fires level 1
+  - Fires level 2
+  - Fires level 3
+  - Fires level 4
+  - Fires level 5
   isSkill: 1
   perkCooldown: 3

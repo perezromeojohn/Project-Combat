@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: AllSeeingEye
   m_EditorClassIdentifier: 
   perkName: All Seeing Eye
-  perkDescription: Damages all enemies that is in your screen by 1% of your damage
+  perkDescriptions:
+  - Fires level 1
+  - Fires level 2
+  - Fires level 3
+  - Fires level 4
+  - Fires level 5
   isSkill: 1
   perkCooldown: 3

@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Attack Up
   m_EditorClassIdentifier: 
   perkName: Attack Up
-  perkDescription: Raise attack damage by 3
+  perkDescriptions:
+  - Fires level 1
+  - Fires level 2
+  - Fires level 3
+  - Fires level 4
+  - Fires level 5
   isSkill: 0
   perkCooldown: 3

@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: EnchantedShield
   m_EditorClassIdentifier: 
   perkName: Enchanted Shield
-  perkDescription: An enchanted shield would rotate around you damaging the enemies
-    it ht along the way
-  perkImage: EnchantedShield
+  perkDescriptions:
+  - Fires level 1
+  - Fires level 2
+  - Fires level 3
+  - Fires level 4
+  - Fires level 5
   isSkill: 1
   perkCooldown: 3

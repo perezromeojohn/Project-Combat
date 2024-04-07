@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   perkName: Fireball
-  perkDescription: Flame goes burr
+  perkDescriptions:
+  - Fires level 1
+  - Fires level 2
+  - Fires level 3
+  - Fires level 4
+  - Fires level 5
   isSkill: 1
   perkCooldown: 3

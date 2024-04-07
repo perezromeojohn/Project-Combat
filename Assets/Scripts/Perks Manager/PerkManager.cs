@@ -60,9 +60,17 @@ public class PerkManager : MonoBehaviour
         for (int i = 0; i < perkButtons.Length; i++)
         {
             perkButtons[i].transform.GetChild(9).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkName;
-            perkButtons[i].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkDescription;
-            // for cooldown set format to color <color=#red>: Cooldown: color <color=#yellow>: perkCooldown seconds
-            perkButtons[i].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "<color=#FFB4A0>Cooldown: </color><color=#FFB023><b>" + selectedPerks[i].perkCooldown + "</b></color> <color=#FFFFFF>seconds</color>";
+            if (playerPerks.ContainsKey(selectedPerks[i].perkName))
+            {
+                perkButtons[i].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkDescriptions[playerPerks[selectedPerks[i].perkName]];
+                perkButtons[i].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "";
+                float nextLevel = playerPerks[selectedPerks[i].perkName] + 1;
+                perkButtons[i].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. " + nextLevel; 
+            } else {
+                perkButtons[i].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkDescriptions[0];
+                perkButtons[i].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "<color=#FFB4A0>Cooldown: </color><color=#FFB023><b>" + selectedPerks[i].perkCooldown + "</b></color> <color=#FFFFFF>seconds</color>";
+                perkButtons[i].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. 1";
+            }
             perkButtons[i].transform.GetChild(6).GetComponent<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>(FindImage(selectedPerks[i].perkName));
             perkButtons[i].name = selectedPerks[i].perkName;
         }

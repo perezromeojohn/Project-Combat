@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: GemStoneMenace
   m_EditorClassIdentifier: 
   perkName: Gemstone Menace
-  perkDescription: Spawn a Gemstone randomly near the player. After 2 seconds, it
-    explodes and damages nearby enemis that got caught up in the explosion
+  perkDescriptions:
+  - Fires level 1
+  - Fires level 2
+  - Fires level 3
+  - Fires level 4
+  - Fires level 5
   isSkill: 1
   perkCooldown: 3

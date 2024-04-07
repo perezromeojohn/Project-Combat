@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Baldur'sFury
   m_EditorClassIdentifier: 
   perkName: Baldur's Fury
-  perkDescription: Every 8 Seconds. Gain a sudden boost of movement speed and attack
-    damage that lasts for 3 seconds
+  perkDescriptions:
+  - Fires level 1
+  - Fires level 2
+  - Fires level 3
+  - Fires level 4
+  - Fires level 5
   isSkill: 1
   perkCooldown: 3
