@@ -116,7 +116,7 @@ public class SpawnManager : MonoBehaviour
         waves.Add(new WaveData(1.0f, 1.0f, 1.0f, 5, new Dictionary<MobType, int>
         {
             { MobType.Blue_Skellie, 5 },
-            { MobType.Gobbie, 3 }
+            { MobType.Gobbie, 20 }
         }));
         waves.Add(new WaveData(1.2f, 1.1f, 1.2f, 5, new Dictionary<MobType, int>
         {

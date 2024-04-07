@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perk: {fileID: 11400000, guid: f4252ecc3340ed745add2c19e94ecbc5, type: 2}
   damageMultiplier: 1.2
+  projectilePrefab: {fileID: 6062285665793185973, guid: 6012b7a95d2cb4c4dbbfb2e4e3252e7d, type: 3}
 --- !u!114 &7618956921149606798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,3 +61,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTimer: 0
+  isOnCooldown: 0
