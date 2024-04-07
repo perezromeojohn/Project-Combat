@@ -72,13 +72,13 @@ public class Fireball : MonoBehaviour
 
     void CastSkill(float level, float damage, float projectileCount)
     {
-        int centerIndex = (int)(projectileCount / 2); // Index of the center projectile
-        float angleSpread = 12f; // Angle spread in degrees
+        int centerIndex = (int)(projectileCount / 2);
+        float angleSpread = 12f;
 
         Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = cursorPos - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        angleSpread *= Mathf.Deg2Rad; // Convert angleSpread to radians
+        angleSpread *= Mathf.Deg2Rad;
 
         for (int i = 0; i < projectileCount; i++)
         {
@@ -87,7 +87,6 @@ public class Fireball : MonoBehaviour
             Projectile fireballProjectile = fireball.GetComponent<Projectile>();
             fireballProjectile.damage = damage;
 
-            // Calculate the direction of the fireball based on its index
             if (i == centerIndex)
             {
                 fireballSpriteRenderer.transform.rotation = Quaternion.Euler(0, 0, angle - 45);
