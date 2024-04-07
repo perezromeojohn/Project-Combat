@@ -5807,7 +5807,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37897772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20314c50abf37004c829c5e4e6c7976b, type: 3}
   m_Name: 
@@ -11546,7 +11546,7 @@ MonoBehaviour:
   m_Follow: {fileID: 798174911}
   m_Lens:
     FieldOfView: 29.78128
-    OrthographicSize: 1.002127
+    OrthographicSize: 1
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -13119,7 +13119,7 @@ Camera:
   far clip plane: 1000
   field of view: 29.78128
   orthographic: 1
-  orthographic size: 1.002127
+  orthographic size: 1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -14761,8 +14761,8 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        RemapOrthographicSizeZero: 1.2
-        RemapOrthographicSizeOne: 1
+        RemapOrthographicSizeZero: 1
+        RemapOrthographicSizeOne: 0.8
     - rid: 5079079129168740372
       type: {class: MMF_Events, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
