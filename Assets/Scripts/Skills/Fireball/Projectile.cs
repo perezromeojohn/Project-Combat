@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float damage;
+    public float pierce;
     private Collider2D col;
     private List<Collider2D> hitEnemies = new List<Collider2D>();
     void Start()
@@ -14,13 +15,18 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!hitEnemies.Contains(other)) {
-            // if tag is enemy
-            if (other.gameObject.CompareTag("Enemy")) {
+        if (!hitEnemies.Contains(other))
+        {
+            if (other.gameObject.CompareTag("Enemy"))
+            {
                 hitEnemies.Add(other);
                 other.GetComponent<Behavior>().isAttacked = true;
                 other.GetComponent<Behavior>().damageTaken = damage;
-                Destroy(gameObject);
+                pierce--;
+                if (pierce <= 0)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

@@ -13,6 +13,7 @@ public class Fireball : MonoBehaviour
     private float cooldown = 0;
     private float calculatedDamage;
     public float damageMultiplier = 1.2f;
+    private float pierce = 0;
     private SkillCooldown cooldownScript;
     public GameObject projectilePrefab;
     private List<Collider2D> hitEnemies = new List<Collider2D>();
@@ -43,34 +44,34 @@ public class Fireball : MonoBehaviour
     
     void ActivateSkill(int skillLevel)
     {
+        // Calculate the damage multiplier based on the skill level
+        float damageMultiplier = 1f + (0.2f * (skillLevel - 1));
+
+        // Calculate the damage using the base damage and the calculated damage multiplier
+        calculatedDamage = skillDamage * damageMultiplier;
+
+        // Additional logic for other properties based on the skill level
         switch(skillLevel)
         {
-            // every level the skill will increase the damage by 20%
-            case 1:
-                calculatedDamage = skillDamage * damageMultiplier;
-                break;
             case 2:
-                calculatedDamage = skillDamage * damageMultiplier;
+                pierce = 1;
                 break;
             case 3:
-                calculatedDamage = skillDamage * damageMultiplier;
-                skillProjectile = 2;
-                break;
-            case 4:
-                calculatedDamage = skillDamage * damageMultiplier;
                 skillProjectile = 3;
                 break;
+            case 4:
+                pierce = 2;
+                break;
             case 5:
-                calculatedDamage = skillDamage * damageMultiplier;
                 skillProjectile = 5;
-
+                pierce = 3;
                 break;
         }
-        CastSkill(skillLevel, Mathf.Floor(calculatedDamage), skillProjectile);
+        CastSkill(skillLevel, Mathf.Floor(calculatedDamage), skillProjectile, pierce);
         calculatedDamage = 0;
     }
 
-    void CastSkill(float level, float damage, float projectileCount)
+    void CastSkill(float level, float damage, float projectileCount, float projectilePierce)
     {
         int centerIndex = (int)(projectileCount / 2);
         float angleSpread = 12f;
@@ -86,6 +87,7 @@ public class Fireball : MonoBehaviour
             GameObject fireballSpriteRenderer = fireball.transform.GetChild(0).gameObject;
             Projectile fireballProjectile = fireball.GetComponent<Projectile>();
             fireballProjectile.damage = damage;
+            fireballProjectile.pierce = projectilePierce;
 
             if (i == centerIndex)
             {
