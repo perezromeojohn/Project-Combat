@@ -9,12 +9,14 @@ public class EggBomb : MonoBehaviour
     private SkillCooldown cooldownScript;
 
     [Header("Egg Bomb Components")]
-    private float skillProjectile = 1;
-    private float skillDamage = 10;
+    private int skillProjectile = 1;
+    private float skillDamage = 69;
     private float cooldown = 0;
     private float calculatedDamage;
     public float damageMultiplier = 1.2f;
     public GameObject projectilePrefab;
+    public float delayBetweenProjectiles = 0.3f;
+    public float range = 0.5f;
 
     void Start()
     {
@@ -52,28 +54,40 @@ public class EggBomb : MonoBehaviour
         switch(skillLevel)
         {
             case 2:
-                skillProjectile = 1;
+                range = 0.75f;
                 break;
             case 3:
-                skillProjectile = 3;
-                break;
-            case 4:
                 skillProjectile = 2;
                 break;
+            case 4:
+                skillProjectile = 3;
+                range = 1f;
+                break;
             case 5:
-                skillProjectile = 5;
+                skillProjectile = 4;
                 break;
         }
-        CastSkill(skillLevel, Mathf.Floor(calculatedDamage), skillProjectile);
+        CastSkill(Mathf.Floor(calculatedDamage), skillProjectile, range);
         calculatedDamage = 0;
     }
 
-    void CastSkill(int skillLevel, float damage, float projectileCount)
+    void CastSkill(float damage, int projectileCount, float projRange)
+    {
+        StartCoroutine(SpawnProjectiles(damage, projectileCount, projRange));
+    }
+
+    IEnumerator SpawnProjectiles(float damage, int projectileCount, float projRange)
     {
         for (int i = 0; i < projectileCount; i++)
         {
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            projectile.transform.position = new Vector3(transform.position.x + Random.Range(-1f, 1f), transform.position.y + Random.Range(-1f, 1f), transform.position.z);
+            EggLob eggLob = projectile.GetComponent<EggLob>();
+            EggAnim eggAnim = projectile.transform.GetChild(0).GetComponent<EggAnim>();
+
+            eggAnim.damage = damage;
+            eggLob.defaultRandomRange = projRange;
+
+            yield return new WaitForSeconds(delayBetweenProjectiles);
         }
     }
 }
