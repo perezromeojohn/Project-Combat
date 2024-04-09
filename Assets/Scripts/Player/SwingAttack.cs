@@ -9,7 +9,6 @@ using Unity.VisualScripting;
 public class SwingAttack : MonoBehaviour
 {
     [Header("MM Feedbacks")]
-    public MMF_Player feedbacks;
     public MMF_Player cameraImpulse;
     private MMF_FloatingText floatingText;
     private MMF_CinemachineImpulse impulse;
@@ -26,7 +25,7 @@ public class SwingAttack : MonoBehaviour
 
     void Awake() {
         hitBox.enabled = false;
-        impulse = feedbacks.GetFeedbackOfType<MMF_CinemachineImpulse>();
+        impulse = cameraImpulse.GetFeedbackOfType<MMF_CinemachineImpulse>();
     }
 
     void EnableAttack() {
@@ -45,14 +44,6 @@ public class SwingAttack : MonoBehaviour
         swordAnimator.SetBool("isAttacking", false);
     }
 
-    void DamageNumbers(Transform hit)
-    {
-        floatingText = feedbacks.GetFeedbackOfType<MMF_FloatingText>();
-        floatingText.PositionMode = MMF_FloatingText.PositionModes.TargetTransform;
-        floatingText.TargetTransform = hit;
-        floatingText.Value = damage.ToString();
-    }
-
     private void OnTriggerEnter2D(Collider2D other) {
         // Debug.Log(other.name);
         if (!hitEnemies.Contains(other)) {
@@ -63,7 +54,6 @@ public class SwingAttack : MonoBehaviour
                 damage = playerStats.damage;
                 other.GetComponent<Behavior>().isAttacked = true;
                 other.GetComponent<Behavior>().damageTaken = damage;
-                DamageNumbers(other.transform);
                 StartCoroutine(Feedbacks());
             }
         }
@@ -72,7 +62,6 @@ public class SwingAttack : MonoBehaviour
 
     private IEnumerator Feedbacks()
     {
-        feedbacks.PlayFeedbacks();
         if (!isPlaying)
         {
             cameraImpulse.PlayFeedbacks();

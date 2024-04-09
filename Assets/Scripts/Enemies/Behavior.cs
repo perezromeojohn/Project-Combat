@@ -37,12 +37,14 @@ public class Behavior : MonoBehaviour
 
     [Header("Enemy Hit Feedback")]
     public GameObject hitParticles;
+    private DamageNumbers damageNumbers;
 
     // events
     private void Start()
     {
         EnemyInit();
         onSpawn.Invoke();
+        damageNumbers = DamageNumberManager.Instance;
     }
 
     IEnumerator EnemyHit()
@@ -52,6 +54,7 @@ public class Behavior : MonoBehaviour
             isHit = true;
             onHit.Invoke();
             TakeDamage(damageTaken);
+            damageNumbers.DamageValues(transform, damageTaken);
             Instantiate(hitParticles, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.3f);
             isAttacked = false;
