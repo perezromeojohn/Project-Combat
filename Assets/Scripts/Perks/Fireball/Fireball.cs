@@ -16,7 +16,6 @@ public class Fireball : MonoBehaviour
     private float pierce = 0;
     private SkillCooldown cooldownScript;
     public GameObject projectilePrefab;
-    private List<Collider2D> hitEnemies = new List<Collider2D>();
 
     void Start()
     {
