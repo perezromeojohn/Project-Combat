@@ -20,18 +20,6 @@ public class Drops : MonoBehaviour
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-        // if resource type is not coin, print yes
-        if (resourceToHandle != ResourceType.Coins)
-        {
-            icon.transform.rotation = Quaternion.Euler(0, 0, -10);
-            icon.transform.localScale = new Vector3(0, 0, 0);
-            
-            LeanTween.moveLocalY(icon, -.03f, 1f).setEaseInOutSine().setLoopPingPong();
-            LeanTween.scale(icon, new Vector3(1, 1, 1), .5f).setEaseInOutSine();
-            LeanTween.rotateZ(icon, 10, 1f).setEaseInOutSine().setLoopPingPong();
-            icon.transform.localScale = new Vector3(0, .9f, 0);
-            LeanTween.scaleY(icon, 1f, .5f).setEaseInOutSine().setLoopPingPong();
-        }
         StartCoroutine(EnableMagnet());
     }
 

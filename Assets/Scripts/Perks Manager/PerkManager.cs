@@ -131,17 +131,41 @@ public class PerkManager : MonoBehaviour
     private void PickRandomPerks()
     {
         selectedPerks.Clear();
-        for (int i = 0; i < 3; i++)
+        // Create a list of available perks to select from
+        List<Perks> availablePerks = new List<Perks>(perkList);
+
+        // Remove perks that are already at max level
+        foreach (var perk in playerPerks)
         {
-            Perks randomPerk = perkList[UnityEngine.Random.Range(0, perkList.Length)];
-            if (!selectedPerks.Contains(randomPerk))
+            Perks foundPerk = availablePerks.Find(p => p.perkName == perk.Key);
+            if (foundPerk != null && perk.Value >= maxPerkLevel)
             {
-                selectedPerks.Add(randomPerk);
+                availablePerks.Remove(foundPerk);
             }
-            else
+        }
+
+        // Loop until you have selected 3 unique perks
+        while (selectedPerks.Count < 3)
+        {
+            // If no available perks remain, break out of the loop
+            if (availablePerks.Count == 0)
             {
-                i--;
+                break;
             }
+
+            // Filter out perks that are already at max level
+            List<Perks> filteredPerks = availablePerks.FindAll(p => !playerPerks.ContainsKey(p.perkName) || playerPerks[p.perkName] < maxPerkLevel);
+
+            // If no perks remain after filtering, break out of the loop
+            if (filteredPerks.Count == 0)
+            {
+                break;
+            }
+
+            // Pick a random perk from the filtered list
+            Perks randomPerk = filteredPerks[UnityEngine.Random.Range(0, filteredPerks.Count)];
+            selectedPerks.Add(randomPerk);
+            availablePerks.Remove(randomPerk); // Remove the selected perk from the available list
         }
     }
 

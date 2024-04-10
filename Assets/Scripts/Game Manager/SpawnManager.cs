@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         AddWaves();
-        SpawnEnemies(currentWaveIndex);
+        SpawnRandomWave();
         Debug.Log("Total Waves: " + waves.Count);
     }
 
@@ -32,25 +32,19 @@ public class SpawnManager : MonoBehaviour
         {
             if (waves[(int)currentWaveIndex].MinimumAmountOfEnemies >= totalEnemies)
             {
-                currentWaveIndex++;
-                SpawnEnemies(currentWaveIndex);
+                SpawnRandomWave();
             }
         }
     }
 
-    public void SpawnEnemies(float waveIndex)
+    public void SpawnRandomWave()
     {
         EnableNearbySpawnPoints();
         DisableNearbySpawnPoints();
 
-        // Get the wave data
-        WaveData wave = waves[(int)waveIndex];
-
-        if (wave == null)
-        {
-            Debug.Log("No more waves");
-            return;
-        }
+        // Get a random wave index
+        int randomWaveIndex = Random.Range(0, waves.Count);
+        WaveData wave = waves[randomWaveIndex];
 
         foreach (KeyValuePair<MobType, int> mobData in wave.Mobs)
         {
@@ -65,7 +59,7 @@ public class SpawnManager : MonoBehaviour
 
                 if (activeSpawnPoints.Count == 0)
                 {
-                    Debug.LogWarning("No active spawn points found for wave " + waveIndex);
+                    Debug.LogWarning("No active spawn points found for wave " + randomWaveIndex);
                     return;
                 }
 
@@ -75,7 +69,7 @@ public class SpawnManager : MonoBehaviour
             }
         }
 
-        Debug.Log("Wave " + waveIndex + " spawned");
+        Debug.Log("Random Wave spawned");
     }
 
     private GameObject GetEnemyPrefabByType(string mobType)
@@ -113,21 +107,19 @@ public class SpawnManager : MonoBehaviour
     void AddWaves()
     {
         waves = new List<WaveData>();
-        waves.Add(new WaveData(1.0f, 1.0f, 1.0f, 5, new Dictionary<MobType, int>
+        waves.Add(new WaveData(1.0f, 1.0f, 1.0f, 30, new Dictionary<MobType, int>
         {
-            { MobType.Blue_Skellie, 5 },
-            { MobType.Gobbie, 20 }
+            { MobType.Gobbie, 80 },
         }));
-        waves.Add(new WaveData(1.2f, 1.1f, 1.2f, 5, new Dictionary<MobType, int>
+        waves.Add(new WaveData(1.2f, 1.1f, 1.2f, 30, new Dictionary<MobType, int>
         {
-            { MobType.Pumpkin_Gobbie, 8 },
-            { MobType.Gobbie, 5 },
-            { MobType.Skellie, 5}
+            { MobType.Gobbie, 80 },
+            { MobType.Blue_Skellie, 10 },
         }));    
-        waves.Add(new WaveData(1.5f, 1.2f, 1.5f, 5, new Dictionary<MobType, int>
+        waves.Add(new WaveData(1.5f, 1.2f, 1.5f, 30, new Dictionary<MobType, int>
         {
-            { MobType.Skellie, 10 },
-            { MobType.Gobbie, 8 }
+            { MobType.Gobbie, 80 },
+            { MobType.Pumpkin_Gobbie, 10 },
         }));
     }
 

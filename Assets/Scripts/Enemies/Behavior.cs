@@ -56,7 +56,7 @@ public class Behavior : MonoBehaviour
             TakeDamage(damageTaken);
             damageNumbers.DamageValues(transform, damageTaken);
             Instantiate(hitParticles, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.1f);
             isAttacked = false;
             damageTaken = 0f;
             isHit = false;
@@ -123,7 +123,7 @@ public class Behavior : MonoBehaviour
         float scaleFactor = Mathf.Clamp01(health / maxHealth);
         Vector3 newScale = enemyHealthBar.transform.localScale;
         newScale.x = scaleFactor;
-        LeanTween.scaleX(enemyHealthBar, scaleFactor, 0.3f).setEase(LeanTweenType.easeOutQuart);
+        enemyHealthBar.transform.localScale = newScale;
     }
 
     public void TakeDamage(float damage)
