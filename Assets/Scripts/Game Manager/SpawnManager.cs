@@ -15,61 +15,45 @@ public class SpawnManager : MonoBehaviour
     public List<WaveData> waves;
     
     private float childCount;
-    private float currentWaveIndex = 0;
+    public int maxUnitCap = 100;
+
+    private float lastSpawnTime;
+    private float spawnInterval = 2f;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        AddWaves();
-        SpawnRandomWave();
-        Debug.Log("Total Waves: " + waves.Count);
+        lastSpawnTime = Time.time;
     }
 
     void Update()
     {
-        int totalEnemies = instantiatedEnemiesParent.transform.childCount;
-        if (waves.Count > 0)
+        if (Time.time - lastSpawnTime >= spawnInterval)
         {
-            if (waves[(int)currentWaveIndex].MinimumAmountOfEnemies >= totalEnemies)
-            {
-                SpawnRandomWave();
-            }
+            lastSpawnTime = Time.time;
+            SpawnMobs();
         }
     }
 
-    public void SpawnRandomWave()
+    public void SpawnMobs()
     {
+        if (instantiatedEnemiesParent.transform.childCount >= maxUnitCap)
+        {
+            Debug.Log("Unit cap reached. No more spawning.");
+            return;
+        }
+
         EnableNearbySpawnPoints();
         DisableNearbySpawnPoints();
 
-        // Get a random wave index
-        int randomWaveIndex = Random.Range(0, waves.Count);
-        WaveData wave = waves[randomWaveIndex];
+        int remainingSlots = maxUnitCap - instantiatedEnemiesParent.transform.childCount;
+        int spawnCount = Mathf.Min(10, remainingSlots); // Spawn up to 10 mobs or remaining slots
 
-        foreach (KeyValuePair<MobType, int> mobData in wave.Mobs)
+        foreach (GameObject prefab in enemyPrefabs)
         {
-            String mobType = mobData.Key.ToString();
-            int spawnCount = mobData.Value;
-
-            GameObject enemyPrefab = GetEnemyPrefabByType(mobType);
-
-            for (int i = 0; i < spawnCount; i++)
-            {
-                List<Transform> activeSpawnPoints = GetActiveSpawnPoints();
-
-                if (activeSpawnPoints.Count == 0)
-                {
-                    Debug.LogWarning("No active spawn points found for wave " + randomWaveIndex);
-                    return;
-                }
-
-                Transform spawnPoint = GetRandomSpawnPoint(activeSpawnPoints);
-                Vector3 spawnPosition = GetRandomSpawnPosition(spawnPoint);
-                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
-            }
+            Vector3 spawnPosition = GetRandomSpawnPosition(GetRandomSpawnPoint(GetActiveSpawnPoints()));
+            Instantiate(prefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
         }
-
-        Debug.Log("Random Wave spawned");
     }
 
     private GameObject GetEnemyPrefabByType(string mobType)
