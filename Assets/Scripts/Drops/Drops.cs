@@ -21,6 +21,17 @@ public class Drops : MonoBehaviour
     {
         boxCollider = GetComponent<BoxCollider2D>();
         StartCoroutine(EnableMagnet());
+
+        // set scale of the icon to 0 and leantween them to 1 by .3 seconds
+        icon.transform.localScale = new Vector3(0, 0, 0);
+        if (resourceToHandle == ResourceType.XP)
+        {
+            LeanTween.scale(icon, new Vector3(0.7f, 0.7f, 0.7f), 0.3f);
+        }
+        else
+        {
+            LeanTween.scale(icon, new Vector3(1, 1, 1), 0.3f);
+        }
     }
 
     IEnumerator EnableMagnet()
