@@ -12,7 +12,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject player;
     public GameObject instantiatedEnemiesParent;
     public float disableRadius = 5f;
-    public List<WaveData> waves;
+
+    public TimeManager timeManager;
     
     private float childCount;
     public int maxUnitCap = 100;
@@ -32,6 +33,12 @@ public class SpawnManager : MonoBehaviour
         {
             lastSpawnTime = Time.time;
             SpawnMobs();
+        }
+
+        // if I press K, return the current time
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log("Current time: " + timeManager.GetTimeElapsed()); // this returns the current time elapsed
         }
     }
 
@@ -86,25 +93,6 @@ public class SpawnManager : MonoBehaviour
     private Transform GetRandomSpawnPoint(List<Transform> spawnPoints)
     {
         return spawnPoints[Random.Range(0, spawnPoints.Count)];
-    }
-
-    void AddWaves()
-    {
-        waves = new List<WaveData>();
-        waves.Add(new WaveData(1.0f, 1.0f, 1.0f, 30, new Dictionary<MobType, int>
-        {
-            { MobType.Gobbie, 80 },
-        }));
-        waves.Add(new WaveData(1.2f, 1.1f, 1.2f, 30, new Dictionary<MobType, int>
-        {
-            { MobType.Gobbie, 80 },
-            { MobType.Blue_Skellie, 10 },
-        }));    
-        waves.Add(new WaveData(1.5f, 1.2f, 1.5f, 30, new Dictionary<MobType, int>
-        {
-            { MobType.Gobbie, 80 },
-            { MobType.Pumpkin_Gobbie, 10 },
-        }));
     }
 
     void DisableNearbySpawnPoints()
