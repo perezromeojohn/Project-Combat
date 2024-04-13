@@ -10,6 +10,7 @@ public class EggLob : MonoBehaviour
     public AnimationCurve trajectoryCurve;
     public float maxHeight = 2f;
     public float duration = 1f;
+    public ParticleSystem trailEffect;
 
     public float searchRadius = 1f;
     public float defaultRandomRange = 0.5f;
@@ -77,6 +78,7 @@ public class EggLob : MonoBehaviour
         
         eggIcon.enabled = false;
         explode.SetActive(true);
+        trailEffect.Stop();
     }
 
     private IEnumerator ShadowCurveRoutine(GameObject shadow, Vector3 startPos, Vector3 endPos)

@@ -84,6 +84,7 @@ public class FishMissile : MonoBehaviour
         {
             GameObject fishMissile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             GameObject fishMissileSpriteRenderer = fishMissile.transform.GetChild(0).gameObject;
+            GameObject fishTrailSpriteRenderer = fishMissile.transform.GetChild(2).gameObject;
             Projectile fishMissileProjectile = fishMissile.GetComponent<Projectile>();
             fishMissileProjectile.damage = damage;
             fishMissileProjectile.pierce = projectilePierce;
@@ -91,6 +92,7 @@ public class FishMissile : MonoBehaviour
             if (i == centerIndex)
             {
                 fishMissileSpriteRenderer.transform.rotation = Quaternion.Euler(0, 0, angle - 45);
+                fishTrailSpriteRenderer.transform.rotation = Quaternion.Euler(0, 0, angle - 45);
                 LeanTween.move(fishMissile, (Vector2)transform.position + direction.normalized * 3, 2f)
                     .setEaseLinear()
                     .setOnComplete(() => Destroy(fishMissile));
@@ -100,6 +102,7 @@ public class FishMissile : MonoBehaviour
                 float offsetAngle = (i - centerIndex) * angleSpread;
                 Vector2 rotatedDirection = Quaternion.Euler(0, 0, angle + offsetAngle * Mathf.Rad2Deg) * Vector2.right;
                 fishMissileSpriteRenderer.transform.rotation = Quaternion.Euler(0, 0, angle + offsetAngle * Mathf.Rad2Deg - 45);
+                fishTrailSpriteRenderer.transform.rotation = Quaternion.Euler(0, 0, angle + offsetAngle * Mathf.Rad2Deg - 45);
                 LeanTween.move(fishMissile, (Vector2)transform.position + rotatedDirection.normalized * 3, 2f)
                     .setEaseLinear()
                     .setOnComplete(() => Destroy(fishMissile));
