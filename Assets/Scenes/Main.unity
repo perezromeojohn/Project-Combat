@@ -71293,10 +71293,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc59ff8601cea1849b3800296773e331, type: 2}
   - {fileID: 11400000, guid: 10f829d558dc5a84a8ad915bddc397bc, type: 2}
   - {fileID: 11400000, guid: c323b249ce0c2ed41bd65e9918a34f71, type: 2}
+  - {fileID: 11400000, guid: b3ec7e304042b4449aa41b1c733be314, type: 2}
   perkGameObjects:
   - {fileID: 7890587839991812584, guid: 8efe44c03bf445e4995e6813465a8d3a, type: 3}
   - {fileID: 3187159651447736569, guid: c6928b9a98b526a4788e0cbfda84dbc2, type: 3}
   - {fileID: 2584567626273998274, guid: 3477dff35450f5a4c969d87c457fb715, type: 3}
+  - {fileID: 1908816593734302149, guid: 2021ef72d2127b54e93dbdd6a90db485, type: 3}
   perkParent: {fileID: 1642397501}
 --- !u!1 &1812728248
 GameObject:
