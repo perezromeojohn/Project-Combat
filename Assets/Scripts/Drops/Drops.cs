@@ -55,13 +55,13 @@ public class Drops : MonoBehaviour
     private void CollectCoin(GameObject player)
     {
         float coinValue = UnityEngine.Random.Range(15, 25);
-        player.GetComponent<Resources>().IncrementCoins(coinValue);
+        player.GetComponent<PlayerResourceData>().IncrementCoins(coinValue);
     }
 
     private void CollectGem(GameObject player)
     {
         float gemValue = 1f;
-        player.GetComponent<Resources>().IncrementGems(gemValue);
+        player.GetComponent<PlayerResourceData>().IncrementGems(gemValue);
     }
 
     private void CollectPowerUp(GameObject player)
@@ -119,16 +119,5 @@ public class Drops : MonoBehaviour
             GameObject debris = GameObject.Find("Debris");
             collectedAnim.transform.SetParent(debris.transform);
         }
-    }
-}
-
-[CustomEditor(typeof(Dropdown))]
-public class EnumExampleEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-        var myScript = target as Drops;
-        myScript.resourceToHandle = (Drops.ResourceType)EditorGUILayout.EnumPopup("Resource Type", myScript.resourceToHandle);
     }
 }

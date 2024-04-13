@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FlamingSword
   m_EditorClassIdentifier: 
   perkName: Flaming Sword
+  perkDisplayName: Flaming Sword
   perkDescriptions:
   - Fires level 1
   - Fires level 2

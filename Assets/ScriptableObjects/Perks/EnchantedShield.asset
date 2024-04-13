@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnchantedShield
   m_EditorClassIdentifier: 
   perkName: Enchanted Shield
+  perkDisplayName: Enchanted Shield
   perkDescriptions:
   - Fires level 1
   - Fires level 2

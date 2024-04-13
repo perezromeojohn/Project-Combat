@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GemStoneMenace
   m_EditorClassIdentifier: 
   perkName: Gemstone Menace
+  perkDisplayName: Gemstone Menace
   perkDescriptions:
   - Fires level 1
   - Fires level 2

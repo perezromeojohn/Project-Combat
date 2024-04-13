@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ElectroShield
   m_EditorClassIdentifier: 
   perkName: Electro Shield
+  perkDisplayName: Electro Shield
   perkDescriptions:
   - Fires level 1
   - Fires level 2

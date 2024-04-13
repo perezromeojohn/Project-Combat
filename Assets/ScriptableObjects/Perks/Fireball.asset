@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   perkName: Fireball
+  perkDisplayName: Fireball
   perkDescriptions:
   - Fires level 1
   - Fires level 2

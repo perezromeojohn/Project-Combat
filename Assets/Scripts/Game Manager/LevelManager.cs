@@ -53,26 +53,3 @@ public class LevelManager : MonoBehaviour
     }
 }
 
-[CustomEditor(typeof(LevelManager))]
-public class LevelManagerEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-
-        LevelManager levelManager = (LevelManager)target;
-        if (GUILayout.Button("Level Up"))
-        {
-            levelManager.IncrementExperience(100);
-        }
-
-        // create a reset button to reset the level and experience
-        if (GUILayout.Button("Reset Level"))
-        {
-            levelManager.currentLevel = 1;
-            levelManager.currentExperienceRequirement = 13;
-            levelManager.playerExperience = 0;
-        }
-    }
-}
-

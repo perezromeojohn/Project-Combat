@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bleed
   m_EditorClassIdentifier: 
   perkName: Bleed
+  perkDisplayName: Bleed
   perkDescriptions:
   - Fires level 1
   - Fires level 2

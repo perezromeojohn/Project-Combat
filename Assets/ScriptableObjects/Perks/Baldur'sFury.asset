@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Baldur'sFury
   m_EditorClassIdentifier: 
   perkName: Baldur's Fury
+  perkDisplayName: Baldur's Fury
   perkDescriptions:
   - Fires level 1
   - Fires level 2

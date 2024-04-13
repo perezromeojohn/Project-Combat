@@ -75,21 +75,7 @@ public class Behavior : MonoBehaviour
         SetHealthUI();
 
         player = GameObject.FindWithTag("Player").transform; // we are referencing the player's transform, not the last position of the player
-        // get animator
-        string animatorPath = "Assets/Animations/EnemyOverrides/" + enemy.enemyName + ".overrideController";
-        Animator enemyAnimator = GetComponent<Animator>();
         
-        if (File.Exists(animatorPath))
-        {
-            // load animator
-            AnimatorOverrideController animatorOverrideController = (AnimatorOverrideController)AssetDatabase.LoadAssetAtPath(animatorPath, typeof(AnimatorOverrideController));
-            enemyAnimator.runtimeAnimatorController = animatorOverrideController;
-        }
-        else
-        {
-            Debug.LogWarning("Animator not found for enemy: " + enemy.enemyName);
-        }
-
         enemySprite = GetComponent<SpriteRenderer>();
         enemySprite.color = color;
 
