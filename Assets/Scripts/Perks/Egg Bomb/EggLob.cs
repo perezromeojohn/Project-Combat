@@ -15,6 +15,9 @@ public class EggLob : MonoBehaviour
     public float searchRadius = 1f;
     public float defaultRandomRange = 0.5f;
 
+
+    private Vector3 targetPos;
+
     void Start()
     {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, searchRadius);
@@ -52,11 +55,16 @@ public class EggLob : MonoBehaviour
         GameObject shadow = Instantiate(shadowPrefab, transform.position, Quaternion.identity);
         shadow.transform.position = new Vector3(transform.position.x, transform.position.y - .05f, transform.position.z);
 
-        Vector3 targetPos = target;
+        targetPos = target;
         Vector3 shadowStartPos = shadow.transform.position;
 
         StartCoroutine(ProjectileCurveRoutine(transform.position, targetPos));
         StartCoroutine(ShadowCurveRoutine(shadow, shadowStartPos, targetPos));
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, targetPos);
     }
 
     private IEnumerator ProjectileCurveRoutine(Vector3 startPos, Vector3 endPos)

@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Skellie
   movementSpeed: 0.2
   minDistanceToPlayer: 0.1
-  damage: 2
+  damage: 1
   health: 25
   maxHealth: 25
   spriteColor: {r: 0, g: 0.6156863, b: 1, a: 1}

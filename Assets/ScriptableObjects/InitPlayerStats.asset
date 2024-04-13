@@ -13,16 +13,12 @@ MonoBehaviour:
   m_Name: InitPlayerStats
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  maxHealth: 8
+  maxHealth: 10
   magnetRange: 0.3
   damage: 5
   critChance: 20
-  critMultiplier: 5
   critDamage: 12
   attackSpeed: 1
   knockbackStrength: 15
-  dashCharge: 3
   rollSpeed: 5
   rollCooldown: 1
-  blinkAmount: 3
-  blinkCooldown: 3

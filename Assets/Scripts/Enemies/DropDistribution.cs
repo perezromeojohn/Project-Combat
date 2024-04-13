@@ -7,8 +7,8 @@ public class DropDistribution : MonoBehaviour
     public GameObject xpDrop;
     public GameObject[] drops;
     public GameObject coin;
-    public float itemDropPercentage = 20;
-    public float coinDropPercentage = 80;
+    public float itemDropPercentage = 5;
+    public float coinDropPercentage = 1;
 
     private GameObject dropLayer;
 
