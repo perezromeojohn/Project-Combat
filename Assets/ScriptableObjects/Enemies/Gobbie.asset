@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gobbie
   m_EditorClassIdentifier: 
   enemyName: Gobbie
-  movementSpeed: 0.2
+  movementSpeed: 0.4
   minDistanceToPlayer: 0.1
   damage: 1
   health: 5

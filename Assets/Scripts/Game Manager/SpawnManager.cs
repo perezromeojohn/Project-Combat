@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
     public int maxUnitCap = 100;
 
     private float lastSpawnTime;
-    private float spawnInterval = 2f;
+    private float spawnInterval = 1f;
 
     void Start()
     {

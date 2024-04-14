@@ -10,7 +10,7 @@ public class EggBomb : MonoBehaviour
 
     [Header("Egg Bomb Components")]
     private int skillProjectile = 1;
-    private float skillDamage = 69;
+    private float skillDamage = 10;
     private float cooldown = 0;
     private float calculatedDamage;
     public float damageMultiplier = 1.2f;
