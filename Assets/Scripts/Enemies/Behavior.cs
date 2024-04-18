@@ -39,12 +39,23 @@ public class Behavior : MonoBehaviour
     public GameObject hitParticles;
     private DamageNumbers damageNumbers;
 
+
+    private TimeManager timeManager;
+    private float currentLevel = 1;
+    private float healthMultiplier = 1.5f;
+
+
+    private void Awake()
+    {
+        damageNumbers = DamageNumberManager.Instance;
+        timeManager = GlobalTimeManager.Instance;
+    }
+
     // events
     private void Start()
     {
         EnemyInit();
         onSpawn.Invoke();
-        damageNumbers = DamageNumberManager.Instance;
     }
 
     IEnumerator EnemyHit()
@@ -86,8 +97,10 @@ public class Behavior : MonoBehaviour
 
     void SetStats()
     {
-        health = enemy.health;
-        maxHealth = enemy.maxHealth;
+        var elapsedTime = timeManager.GetTimeElapsed();
+        currentLevel = Mathf.FloorToInt(elapsedTime / 60) + 1;
+        maxHealth = Mathf.Floor(enemy.maxHealth * Mathf.Pow(healthMultiplier, currentLevel - 1));
+        health = maxHealth;
         damage = enemy.damage;
         color = enemy.spriteColor;
         movementSpeed = enemy.movementSpeed;
