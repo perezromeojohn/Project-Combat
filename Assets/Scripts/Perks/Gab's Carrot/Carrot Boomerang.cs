@@ -59,7 +59,6 @@ public class CarrotBoomerang : MonoBehaviour
             {
                 carrots[i].SetActive(true);
                 carrots[i].GetComponent<CarrotProjectile>().damage = skillDamage;
-                Debug.Log("Carrot " + i + " is active");
             }
         }
         transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);

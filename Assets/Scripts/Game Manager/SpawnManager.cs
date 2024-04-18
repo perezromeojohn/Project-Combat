@@ -5,6 +5,14 @@ using UnityEngine;
 
 using Random = UnityEngine.Random;
 
+[System.Serializable]
+public class SpawnRule
+{
+    public float spawnTime; // The time at which this rule applies
+    public int batchSpawnAmount;
+    public List<string> enemyTypes; // List of enemy types to spawn at this time
+}
+
 public class SpawnManager : MonoBehaviour
 {
     public List<Transform> spawnPoints;
@@ -14,12 +22,20 @@ public class SpawnManager : MonoBehaviour
     public float disableRadius = 5f;
 
     public TimeManager timeManager;
-    
-    private float childCount;
+
+    public List<SpawnRule> spawnRules; // List of spawn rules based on time
+
     public int maxUnitCap = 100;
 
     private float lastSpawnTime;
-    private float spawnInterval = 10f;
+    private float spawnInterval = 5;
+
+    void Awake()
+    {
+        spawnRules.Add(new SpawnRule { spawnTime = 0f, batchSpawnAmount = 3, enemyTypes = new List<string> { "Gobbie" } });
+        spawnRules.Add(new SpawnRule { spawnTime = 20, batchSpawnAmount = 5, enemyTypes = new List<string> { "Skellie" } });
+        spawnRules.Add(new SpawnRule { spawnTime = 30, batchSpawnAmount = 10, enemyTypes = new List<string> { "Skellie", "Gobbie" } });
+    }
 
     void Start()
     {
@@ -53,13 +69,28 @@ public class SpawnManager : MonoBehaviour
         EnableNearbySpawnPoints();
         DisableNearbySpawnPoints();
 
-        int remainingSlots = maxUnitCap - instantiatedEnemiesParent.transform.childCount;
-        int spawnCount = Mathf.Min(10, remainingSlots); // Spawn up to 10 mobs or remaining slots
+        float elapsedTime = timeManager.GetTimeElapsed();
+        Debug.Log("Elapsed Time: " + elapsedTime);
 
-        foreach (GameObject prefab in enemyPrefabs)
+        foreach (SpawnRule rule in spawnRules)
         {
-            Vector3 spawnPosition = GetRandomSpawnPosition(GetRandomSpawnPoint(GetActiveSpawnPoints()));
-            Instantiate(prefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
+            if (elapsedTime >= rule.spawnTime)
+            {
+                Debug.Log("Spawning enemies for time: " + rule.spawnTime);
+                for (int i = 0; i < rule.batchSpawnAmount; i++)
+                {
+                    foreach (string enemyType in rule.enemyTypes)
+                    {
+                        GameObject prefab = GetEnemyPrefabByType(enemyType);
+                        if (prefab != null)
+                        {
+                            Vector3 spawnPosition = GetRandomSpawnPosition(GetRandomSpawnPoint(GetActiveSpawnPoints()));
+                            Instantiate(prefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
+                            // Debug.Log("Spawned enemy: " + enemyType);
+                        }
+                    }
+                }
+            }
         }
     }
 
