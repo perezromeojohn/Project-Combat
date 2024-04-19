@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0077f303324a44993abe7c544bd54a, type: 3}
   m_Name: Blue Skellie
   m_EditorClassIdentifier: 
-  enemyName: Skellie
+  enemyName: Blue Skellie
   movementSpeed: 0.3
   minDistanceToPlayer: 0.1
   damage: 1

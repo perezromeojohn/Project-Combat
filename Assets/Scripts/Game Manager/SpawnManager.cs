@@ -32,9 +32,9 @@ public class SpawnManager : MonoBehaviour
 
     void Awake()
     {
-        spawnRules.Add(new SpawnRule { spawnTime = 0f, batchSpawnAmount = 3, enemyTypes = new List<string> { "Gobbie" } });
-        spawnRules.Add(new SpawnRule { spawnTime = 20, batchSpawnAmount = 5, enemyTypes = new List<string> { "Skellie" } });
-        spawnRules.Add(new SpawnRule { spawnTime = 30, batchSpawnAmount = 10, enemyTypes = new List<string> { "Skellie", "Gobbie" } });
+        spawnRules.Add(new SpawnRule { spawnTime = 0f, batchSpawnAmount = 1, enemyTypes = new List<string> { "Red Gobbie" } });
+        spawnRules.Add(new SpawnRule { spawnTime = 20, batchSpawnAmount = 1, enemyTypes = new List<string> { "Skellie" } });
+        spawnRules.Add(new SpawnRule { spawnTime = 30, batchSpawnAmount = 1, enemyTypes = new List<string> { "Skellie", } });
     }
 
     void Start()
@@ -70,7 +70,9 @@ public class SpawnManager : MonoBehaviour
         DisableNearbySpawnPoints();
 
         float elapsedTime = timeManager.GetTimeElapsed();
-        Debug.Log("Elapsed Time: " + elapsedTime);
+        // Debug.Log("Elapsed Time: " + elapsedTime);
+
+        Debug.Log(spawnRules);
 
         foreach (SpawnRule rule in spawnRules)
         {
@@ -81,12 +83,13 @@ public class SpawnManager : MonoBehaviour
                 {
                     foreach (string enemyType in rule.enemyTypes)
                     {
+                        // we're turning on 1 by 1 the list of our spawnRules, instead of switching it on and off
+                        Debug.Log("Spawning enemy: " + enemyType);
                         GameObject prefab = GetEnemyPrefabByType(enemyType);
                         if (prefab != null)
                         {
                             Vector3 spawnPosition = GetRandomSpawnPosition(GetRandomSpawnPoint(GetActiveSpawnPoints()));
                             Instantiate(prefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
-                            // Debug.Log("Spawned enemy: " + enemyType);
                         }
                     }
                 }
