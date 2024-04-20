@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 5568408236012811428}
   - component: {fileID: 9162979708283235245}
   - component: {fileID: 2236019365002930074}
-  - component: {fileID: 2060413646307815972}
+  - component: {fileID: 6776721580632721666}
   m_Layer: 8
   m_Name: Red Gobbie
   m_TagString: Enemy
@@ -470,7 +470,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09419699, y: 0.11668149}
   m_EdgeRadius: 0
---- !u!114 &2060413646307815972
+--- !u!114 &6776721580632721666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -479,9 +479,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4153181349675753375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbca93de820707a4c90a2677b39c8c97, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cab9d996f851064d9bb4c180b88ab37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 1
+  projectile: {fileID: 4621738061571516603, guid: eddfec636bdf2a84dba63003856457c8, type: 3}
 --- !u!1 &4774368263839168910
 GameObject:
   m_ObjectHideFlags: 0
