@@ -29,6 +29,7 @@ public class SpawnManager : MonoBehaviour
 
     private float lastSpawnTime;
     private float spawnInterval = 5;
+    private float previousSpawnTime = 0f; // Track previous spawn time
 
     void Awake()
     {
@@ -70,29 +71,28 @@ public class SpawnManager : MonoBehaviour
         DisableNearbySpawnPoints();
 
         float elapsedTime = timeManager.GetTimeElapsed();
-        // Debug.Log("Elapsed Time: " + elapsedTime);
-
-        Debug.Log(spawnRules);
+        Debug.Log("Elapsed Time: " + elapsedTime);
 
         foreach (SpawnRule rule in spawnRules)
         {
-            if (elapsedTime >= rule.spawnTime)
+            if (elapsedTime >= rule.spawnTime && rule.spawnTime >= previousSpawnTime)
             {
                 Debug.Log("Spawning enemies for time: " + rule.spawnTime);
                 for (int i = 0; i < rule.batchSpawnAmount; i++)
                 {
                     foreach (string enemyType in rule.enemyTypes)
                     {
-                        // we're turning on 1 by 1 the list of our spawnRules, instead of switching it on and off
-                        Debug.Log("Spawning enemy: " + enemyType);
                         GameObject prefab = GetEnemyPrefabByType(enemyType);
                         if (prefab != null)
                         {
                             Vector3 spawnPosition = GetRandomSpawnPosition(GetRandomSpawnPoint(GetActiveSpawnPoints()));
                             Instantiate(prefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
+                            Debug.Log("Spawned enemy: " + enemyType);
                         }
                     }
                 }
+                // Update previous spawn time
+                previousSpawnTime = rule.spawnTime;
             }
         }
     }
