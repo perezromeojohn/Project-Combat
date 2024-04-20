@@ -22,12 +22,15 @@ public class RedGobbie : MonoBehaviour
 
     void Update()
     {
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        FlipSprite(direction);
+
         switch (currentState)
         {
             case EnemyStates.Moving:
                 if (!behavior.isAttacked && behavior.health > 0)
                 {
-                    MoveToPlayer(player.transform);
+                    MoveToPlayer(player.transform, direction);
                 }
                 break;
             case EnemyStates.Attacking:
@@ -45,12 +48,8 @@ public class RedGobbie : MonoBehaviour
         }
     }
 
-    void MoveToPlayer(Transform target)
+    void MoveToPlayer(Transform target, Vector2 direction)
     {
-        // if enemy transform is close to player transform, change state to attacking
-        Vector2 direction = (target.position - transform.position).normalized;
-        FlipSprite(direction);
-
         if (Vector2.Distance(transform.position, target.position) < 1f)
         {
             SetState(EnemyStates.Attacking);
