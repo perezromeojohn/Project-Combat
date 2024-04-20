@@ -17,7 +17,6 @@ public class Behavior : MonoBehaviour
     [Header("Enemy Stats")]
     public Enemy enemy; // scriptable object
     private Transform player;
-    private Color color;
     private Vector3 healthBarUIOffset;
     private SpriteRenderer enemySprite;
     public Animator enemyAnimator;
@@ -88,7 +87,6 @@ public class Behavior : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform; // we are referencing the player's transform, not the last position of the player
         
         enemySprite = GetComponent<SpriteRenderer>();
-        enemySprite.color = color;
 
         gameObject.name = enemy.enemyName;
         // set mainEnemyHealthBar position to the healthbarUIOffset
@@ -102,7 +100,6 @@ public class Behavior : MonoBehaviour
         maxHealth = Mathf.Floor(enemy.maxHealth * Mathf.Pow(healthMultiplier, currentLevel - 1));
         health = maxHealth;
         damage = enemy.damage;
-        color = enemy.spriteColor;
         movementSpeed = enemy.movementSpeed;
         healthBarUIOffset = enemy.healthBarUIOffset;
     }
