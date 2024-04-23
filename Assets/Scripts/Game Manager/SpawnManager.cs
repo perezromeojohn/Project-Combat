@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
 
     public List<SpawnRule> spawnRules; // List of spawn rules based on time
 
-    public int maxUnitCap = 100;
+    public int maxUnitCap = 75;
 
     private float lastSpawnTime;
     private float spawnInterval = 5;
@@ -33,9 +33,11 @@ public class SpawnManager : MonoBehaviour
 
     void Awake()
     {
-        spawnRules.Add(new SpawnRule { spawnTime = 0f, batchSpawnAmount = 1, enemyTypes = new List<string> { "Red Gobbie" } });
-        spawnRules.Add(new SpawnRule { spawnTime = 20, batchSpawnAmount = 1, enemyTypes = new List<string> { "Skellie" } });
-        spawnRules.Add(new SpawnRule { spawnTime = 30, batchSpawnAmount = 1, enemyTypes = new List<string> { "Skellie", } });
+        spawnRules.Add(new SpawnRule { spawnTime = 0f, batchSpawnAmount = 20, enemyTypes = new List<string> { "Skellie" } });
+        // spawnRules.Add(new SpawnRule { spawnTime = 20, batchSpawnAmount = 15, enemyTypes = new List<string> { "Skellie" } });
+        // spawnRules.Add(new SpawnRule { spawnTime = 30, batchSpawnAmount = 15, enemyTypes = new List<string> { "Skellie", "Gobbie" } });
+        // spawnRules.Add(new SpawnRule { spawnTime = 40, batchSpawnAmount = 10, enemyTypes = new List<string> { "Grizzly", "Yellow Skellie" } });
+        // spawnRules.Add(new SpawnRule { spawnTime = 50, batchSpawnAmount = 10, enemyTypes = new List<string> { "Bandit Gobbie", "Red Gobbie" } });
     }
 
     void Start()
@@ -101,7 +103,7 @@ public class SpawnManager : MonoBehaviour
     {
         foreach (GameObject enemyPrefab in enemyPrefabs)
         {
-            if (enemyPrefab.name.Contains(mobType))
+            if (enemyPrefab.name == mobType)
             {
                 return enemyPrefab;
             }

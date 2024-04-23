@@ -69,8 +69,8 @@ public class Behavior : MonoBehaviour
             GameObject particles = Instantiate(hitParticles, transform.position, Quaternion.identity);
             ParticleSystem.VelocityOverLifetimeModule velocity = particles.GetComponent<ParticleSystem>().velocityOverLifetime;
             Vector2 direction = (transform.position - player.position).normalized;
-            velocity.x = direction.x * 1.3f;
-            velocity.y = direction.y * 1.3f;
+            velocity.x = direction.x * 1f;
+            velocity.y = direction.y * 1f;
             yield return new WaitForSeconds(0.1f);
             isAttacked = false;
             damageTaken = 0f;
