@@ -7,6 +7,7 @@ public class Skellie : MonoBehaviour
     private GameObject player;
     private Behavior behavior;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,7 @@ public class Skellie : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         behavior = GetComponent<Behavior>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -31,7 +33,9 @@ public class Skellie : MonoBehaviour
         // transform.Translate(direction * behavior.movementSpeed * Time.deltaTime);
         if (!behavior.isAttacked && behavior.health > 0)
         {
-            transform.Translate(direction * behavior.movementSpeed * Time.deltaTime);
+            // transform.Translate(direction * behavior.movementSpeed * Time.deltaTime);
+            // use rigidbody2d to move the enemy
+            rb.MovePosition(rb.position + direction * behavior.movementSpeed * Time.fixedDeltaTime);
         }
         
     }

@@ -10,6 +10,7 @@ public class RedGobbie : MonoBehaviour
     private Animator animator;
     public EnemyStates currentState = EnemyStates.Moving;
     public GameObject projectile;
+    private Rigidbody2D rb;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class RedGobbie : MonoBehaviour
         behavior = GetComponent<Behavior>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -57,7 +59,8 @@ public class RedGobbie : MonoBehaviour
             SetState(EnemyStates.Moving);
             if (!behavior.isAttacked && behavior.health > 0)
             {
-                transform.Translate(direction * behavior.movementSpeed * Time.deltaTime);
+                // transform.Translate(direction * behavior.movementSpeed * Time.deltaTime);
+                rb.MovePosition(rb.position + direction * behavior.movementSpeed * Time.fixedDeltaTime);
             }
         }
     }

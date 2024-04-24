@@ -5835,7 +5835,7 @@ MonoBehaviour:
   disableRadius: 2
   timeManager: {fileID: 37897774}
   spawnRules: []
-  maxUnitCap: 100
+  maxUnitCap: 150
 --- !u!114 &37897776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6696,6 +6696,10 @@ PrefabInstance:
     - target: {fileID: 7983875645416160202, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
       propertyPath: m_Name
       value: Gobbie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983875645416160202, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8732802600839065302, guid: 3f382030811d5ea4e91fd0ac90cc7c76, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58626,6 +58630,10 @@ PrefabInstance:
     - target: {fileID: 4153181349675753375, guid: 7317a8b1362824b48af139e9acd81ce3, type: 3}
       propertyPath: m_Name
       value: Red Gobbie
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153181349675753375, guid: 7317a8b1362824b48af139e9acd81ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7840388860087550043, guid: 7317a8b1362824b48af139e9acd81ce3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -155751,6 +155759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bandit Gobbie
       objectReference: {fileID: 0}
+    - target: {fileID: 8206539536625863221, guid: 223165da74c909343b084c6ee163e1f3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -155807,6 +155819,10 @@ PrefabInstance:
     - target: {fileID: 4657404955540322047, guid: bee2cebb2cd34ed4a959dcbc9fd9a74b, type: 3}
       propertyPath: m_Name
       value: Grizzly
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657404955540322047, guid: bee2cebb2cd34ed4a959dcbc9fd9a74b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -155886,6 +155902,10 @@ PrefabInstance:
     - target: {fileID: 7289540198635694825, guid: 45c89c0743f60bd47aed0ceb2a82dd15, type: 3}
       propertyPath: m_Name
       value: Yellow Skellie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7289540198635694825, guid: 45c89c0743f60bd47aed0ceb2a82dd15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7998929549751803164, guid: 45c89c0743f60bd47aed0ceb2a82dd15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -156048,6 +156068,10 @@ PrefabInstance:
     - target: {fileID: 4654969684666806448, guid: 2771a61335eb3ae45a4de98dc3f6122e, type: 3}
       propertyPath: m_Name
       value: Blue Skellie
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654969684666806448, guid: 2771a61335eb3ae45a4de98dc3f6122e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
