@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 1
-  projectile: {fileID: 4621738061571516603, guid: eddfec636bdf2a84dba63003856457c8, type: 3}
+  projectile: {fileID: 4621738061571516603, guid: da6110005623b4e4ab3486e5a14a6192, type: 3}
 --- !u!1 &1233909980259790129
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +386,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.006243348, y: -0.03746007}
+  m_Offset: {x: -0.0044332445, y: -0.05728805}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -397,7 +397,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.08222842, y: 0.075985275}
+  m_Size: {x: 0.20729715, y: 0.11564124}
   m_EdgeRadius: 0
 --- !u!1 &3470684582168343725
 GameObject:

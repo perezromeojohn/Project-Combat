@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6511014322022570101}
   - component: {fileID: 3388403189731024018}
   m_Layer: 6
-  m_Name: Axe
+  m_Name: Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: -2007558131
   m_SortingLayer: 2
   m_SortingOrder: 15
-  m_Sprite: {fileID: 21300000, guid: dd4a6c5ec892a5c4f931301fdc0049f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8859b082707c99b49914ee1465f79bfa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 6042933134231836480}
   - component: {fileID: 956013586555916773}
   m_Layer: 0
-  m_Name: Gobbie Axe
+  m_Name: Trunky Bulle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,8 +235,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008334279, y: -0.0030550025}
-  m_Size: {x: 0.10622251, y: 0.10622252}
+  m_Offset: {x: 0.008556247, y: -0.0024294108}
+  m_Size: {x: 0.08805585, y: 0.08805585}
   m_Direction: 0
 --- !u!114 &956013586555916773
 MonoBehaviour:
