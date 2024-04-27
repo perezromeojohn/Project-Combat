@@ -115,9 +115,9 @@ public class Drops : MonoBehaviour
             StopCoroutine(EnableMagnet());
             Operation(other.gameObject);
             Destroy(gameObject);
-            GameObject collectedAnim = Instantiate(collected, transform.position, Quaternion.identity);
-            GameObject debris = GameObject.Find("Debris");
-            collectedAnim.transform.SetParent(debris.transform);
+            // GameObject collectedAnim = Instantiate(collected, transform.position, Quaternion.identity);
+            // GameObject debris = GameObject.Find("Debris");
+            // collectedAnim.transform.SetParent(debris.transform);
         }
     }
 }

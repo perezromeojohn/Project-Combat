@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public Collider2D playerCollider;
     public HealthBar healthBar;
     private float maxHealth;
-    private float health;
+    public float health;
     public MMF_Player feedbacks;
     private MMF_CameraOrthographicSize orthographicSize;
     private MMF_TimescaleModifier timescaleModifier;
@@ -42,7 +42,6 @@ public class PlayerHealth : MonoBehaviour
         if (!isAttacked)
         {
             // Debug.Log("Taking damage: " + damage);
-            health -= damage;
             // Debug.Log("Current health: " + health);
             feedbacks.PlayFeedbacks();
             OnPlayerHit.Invoke();
@@ -57,6 +56,12 @@ public class PlayerHealth : MonoBehaviour
                 {
                     enemy.GetComponent<Behavior>().isAttacked = true;
                 }
+            }
+            health -= damage;
+            if (health <= 0)
+            {
+                health = 0;
+                Die();
             }
         }
     }
@@ -75,7 +80,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void PlayFeedbacks()
     {
-        if (health <= 1)
+        if (health == 0)
+        {
+            Debug.Log("Player is dedo like deedee");
+        }
+        else if (health <= 1)
         {
             orthographicSize.Active = true;
             timescaleModifier.Active = true;

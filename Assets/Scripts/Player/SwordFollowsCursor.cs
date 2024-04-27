@@ -5,7 +5,6 @@ using UnityEngine;
 public class SwordFollowsCursor : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private GameObject cursorGraph;
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private SpriteRenderer hairSprite;
     [SerializeField] private SpriteRenderer handSprite;
@@ -34,7 +33,6 @@ public class SwordFollowsCursor : MonoBehaviour
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = rotation;
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // cursorGraph.transform.position = cursorPos;
             // add if time scale is == 0
 
             if (Time.timeScale != 0)
