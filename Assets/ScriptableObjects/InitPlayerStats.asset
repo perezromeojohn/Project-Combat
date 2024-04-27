@@ -19,6 +19,6 @@ MonoBehaviour:
   critChance: 20
   critDamage: 12
   attackSpeed: 1
-  knockbackStrength: 15
+  knockbackStrength: 8
   rollSpeed: 5
   rollCooldown: 1

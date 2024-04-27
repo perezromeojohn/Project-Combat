@@ -223,6 +223,10 @@ public class PerkManager : MonoBehaviour
                     GameObject newPerk = Instantiate(perkGameObjects[i], perkParent.transform);
                     newPerk.name = addedPerk.perkName;
                 }
+                else
+                {
+                    Debug.LogWarning("Perk not found");
+                }
             }
 
             newPerkFrame.name = addedPerk.perkName;
