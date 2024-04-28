@@ -28,12 +28,12 @@ public class SpawnManager : MonoBehaviour
     public int maxUnitCap = 100;
 
     private float lastSpawnTime;
-    private float spawnInterval = 5;
+    private float spawnInterval = 15;
     private float previousSpawnTime = 0f; // Track previous spawn time
 
     void Awake()
     {
-        spawnRules.Add(new SpawnRule { spawnTime = 0f, batchSpawnAmount = 20, enemyTypes = new List<string> { "Gobbie" } });
+        spawnRules.Add(new SpawnRule { spawnTime = 0f, batchSpawnAmount = 20, enemyTypes = new List<string> { "Gobbie", "Skellie", "Red Gobbie", "Blue Skellie", "Grizzly" } });
         // spawnRules.Add(new SpawnRule { spawnTime = 20, batchSpawnAmount = 15, enemyTypes = new List<string> { "Skellie" } });
         // spawnRules.Add(new SpawnRule { spawnTime = 30, batchSpawnAmount = 15, enemyTypes = new List<string> { "Skellie", "Gobbie" } });
         // spawnRules.Add(new SpawnRule { spawnTime = 40, batchSpawnAmount = 10, enemyTypes = new List<string> { "Grizzly", "Yellow Skellie" } });
