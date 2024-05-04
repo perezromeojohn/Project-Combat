@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
     public int maxUnitCap = 100;
 
     private float lastSpawnTime;
-    private float spawnInterval = 15;
+    private float spawnInterval = 5;
     private float previousSpawnTime = 0f; // Track previous spawn time
 
     void Awake()
@@ -80,20 +80,28 @@ public class SpawnManager : MonoBehaviour
             if (elapsedTime >= rule.spawnTime && rule.spawnTime >= previousSpawnTime)
             {
                 Debug.Log("Spawning enemies for time: " + rule.spawnTime);
-                for (int i = 0; i < rule.batchSpawnAmount; i++)
+                int remainingBatchAmount = rule.batchSpawnAmount;
+
+                for (int i = 0; i < rule.enemyTypes.Count && remainingBatchAmount > 0; i++)
                 {
-                    foreach (string enemyType in rule.enemyTypes)
+                    string enemyType = rule.enemyTypes[i];
+                    GameObject prefab = GetEnemyPrefabByType(enemyType);
+
+                    if (prefab != null)
                     {
-                        GameObject prefab = GetEnemyPrefabByType(enemyType);
-                        if (prefab != null)
+                        int spawnCount = Mathf.Min(remainingBatchAmount, rule.batchSpawnAmount / rule.enemyTypes.Count);
+                        
+                        for (int j = 0; j < spawnCount; j++)
                         {
                             Vector3 spawnPosition = GetRandomSpawnPosition(GetRandomSpawnPoint(GetActiveSpawnPoints()));
                             Instantiate(prefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
                             Debug.Log("Spawned enemy: " + enemyType);
                         }
+
+                        remainingBatchAmount -= spawnCount;
                     }
                 }
-                // Update previous spawn time
+
                 previousSpawnTime = rule.spawnTime;
             }
         }
