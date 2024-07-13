@@ -51,7 +51,8 @@ public class SwingAttack : MonoBehaviour
             if (other.gameObject.CompareTag("Enemy")) {
                 hitEnemies.Add(other);
                 // Debug.Log(other.name);
-                damage = playerStats.damage;
+                // damage = playerStats.damage;
+                damage = ComputeDamage(playerStats.damage);
                 other.GetComponent<Behavior>().isAttacked = true;
                 other.GetComponent<Behavior>().damageTaken = damage;
                 StartCoroutine(Feedbacks());
@@ -69,5 +70,24 @@ public class SwingAttack : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
             isPlaying = false;
         }
+    }
+
+    private float ComputeDamage(float damage)
+    {
+        // based on the player's stats critical damage and critical chance
+        // lets say critChance = 20, meaning 20% chance to crit
+        // then critDamage = 12, meaning 12% more damage
+
+        var critChance = playerStats.critChance;
+        var critDamage = playerStats.critDamage;
+
+        var randomize = Random.Range(0, 100);
+        if (randomize <= critChance)
+        {
+            // crit
+            damage += damage * (critDamage / 100);
+        }
+
+        return damage;
     }
 }
