@@ -4,90 +4,64 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    [SerializeField] private float maxDistance = .05f; // Max distance for the laser
     [SerializeField] GameObject turretFirePoint; // The point where the laser originates
-    [SerializeField] GameObject targetedEnemy; // The enemy that the turret is targeting
-    [SerializeField] float radius = 1f; // Radius for detecting nearby enemies
-    [SerializeField] LineRenderer lineRenderer; // The line renderer for the laser
+    [SerializeField] GameObject sunflowerProjectile; // The projectile that the turret will shoot
+
+    public int projectileCount = 3; // Number of projectiles to spawn
+    public float projectileInterval = 3f; // Time between spawning projectiles
+    public float turretLifeTime = 10f; // Life time before the turret gets destroyed
+    public float damage = 0f; // Damage dealt by the projectile
 
     void Start()
     {
-    
+        // Set initial scale to 0,0,0
+        transform.localScale = Vector3.zero;
+
+        // Scale up to 1.5 in all axes over 0.2 seconds
+        LeanTween.scale(gameObject, new Vector3(1.5f, 1.5f, 1.5f), 0.2f).setOnComplete(() =>
+        {
+            // Start the coroutine to spawn projectiles
+            StartCoroutine(SpawnProjectiles());
+
+            // Start the coroutine to destroy the turret
+            StartCoroutine(DestroyTurret());
+        });
+    }
+
+    IEnumerator SpawnProjectiles()
+    {
+        for (int i = 0; i < projectileCount; i++)
+        {
+            // Instantiate(sunflowerProjectile, turretFirePoint.transform.position, turretFirePoint.transform.rotation);
+            GameObject projectile = Instantiate(sunflowerProjectile, turretFirePoint.transform.position, turretFirePoint.transform.rotation);
+            projectile.GetComponent<SunflowerProjectile>().damage = damage;
+
+            // Scale up to 1.8 and then back to 1.5 over 0.3 seconds
+            LeanTween.scale(gameObject, new Vector3(1.8f, 1.8f, 1.8f), 0.15f).setOnComplete(() =>
+            {
+                LeanTween.scale(gameObject, new Vector3(1.5f, 1.5f, 1.5f), 0.15f);
+            });
+
+            // Wait for the specified interval before spawning the next projectile
+            yield return new WaitForSeconds(projectileInterval);
+        }
+    }
+
+    IEnumerator DestroyTurret()
+    {
+        // Wait for the specified life time before starting the destruction
+        yield return new WaitForSeconds(turretLifeTime);
+
+        // Scale down to 0 in all axes over 0.2 seconds
+        LeanTween.scale(gameObject, Vector3.zero, 0.2f).setOnComplete(() =>
+        {
+            // Destroy the turret after scaling down
+            Destroy(gameObject);
+        });
     }
 
     void Update()
     {
-        DetectNearbyEnemy();
-        CheckTargetedEnemyDistance();
-        DrawLaser();
-    }
-
-    void DetectNearbyEnemy()
-    {
-        // if targeted enemy is not null, return
-        if (targetedEnemy != null)
-        {
-            return;
-        }
-
-        // Get all colliders within the radius
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(turretFirePoint.transform.position, radius);
-
-        // Loop through the colliders and print their names
-        foreach (Collider2D hitCollider in hitColliders)
-        {
-            Debug.Log("Detected object: " + hitCollider.name);
-            // Set the detected enemy as the targeted enemy if not already targeted
-            if (targetedEnemy == null)
-            {
-                targetedEnemy = hitCollider.gameObject;
-            }
-        }
-    }
-
-    void CheckTargetedEnemyDistance()
-    {
-        if (targetedEnemy != null)
-        {
-            float distance = Vector2.Distance(turretFirePoint.transform.position, targetedEnemy.transform.position);
-            if (distance > radius)
-            {
-                Debug.Log("Targeted enemy out of range: " + targetedEnemy.name);
-                targetedEnemy = null;
-            }
-        }
-    }
-
-    void DrawLaser()
-    {
-        Vector3 turretPosition = turretFirePoint.transform.position;
-        Vector3 endPosition;
-
-        if (targetedEnemy != null)
-        {
-            endPosition = targetedEnemy.transform.position;
-        }
-        else
-        {
-            endPosition = turretFirePoint.transform.position + turretFirePoint.transform.up * maxDistance;
-        }
-
-        // Ignore z positions by setting them to the same value as the turretFirePoint's z position
-        turretPosition.z = turretFirePoint.transform.position.z;
-        endPosition.z = turretFirePoint.transform.position.z;
-
-        // Ensure correct order: first position is turret, second is end position
-        lineRenderer.SetPosition(0, turretPosition);
-        lineRenderer.SetPosition(1, endPosition);
-    }
-
-
-    void OnDrawGizmos()
-    {
-        if (turretFirePoint != null)
-        {
-            Gizmos.color = Color.green; // Set the color of the gizmo
-            Gizmos.DrawWireSphere(turretFirePoint.transform.position, radius); // Draw a wireframe sphere
-        }
+        // No need to put anything here for the current requirements
     }
 }
