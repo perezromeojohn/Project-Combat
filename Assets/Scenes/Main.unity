@@ -28417,7 +28417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215408064}
   m_Layer: 0
-  m_Name: MANAGERS--------------------------
+  m_Name: MANAGERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64051,7 +64051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1369172261}
   m_Layer: 0
-  m_Name: UI---------------------------------------
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64987,7 +64987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1471945102}
   m_Layer: 0
-  m_Name: CHARACTER---------------------------------------
+  m_Name: CHARACTER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71067,7 +71067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1607966243}
   m_Layer: 0
-  m_Name: ENVIRONMENT-----------------------------------
+  m_Name: ENVIRONMENT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76072,7 +76072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1631909695}
   m_Layer: 0
-  m_Name: MM FEEDBACKS------------------------------
+  m_Name: MM FEEDBACKS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82938,7 +82938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1747348172}
   m_Layer: 0
-  m_Name: LIGHTS-----------------------------------------
+  m_Name: LIGHTS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104221,7 +104221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2001385280}
   m_Layer: 0
-  m_Name: CAMERAS---------------------
+  m_Name: CAMERAS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
