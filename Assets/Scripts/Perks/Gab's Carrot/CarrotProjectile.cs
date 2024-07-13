@@ -17,7 +17,7 @@ public class CarrotProjectile : MonoBehaviour
 
     void Update()
     {
-        carrotSprite.transform.Rotate(0, 0, 360 * Time.deltaTime);
+        carrotSprite.transform.Rotate(0, 0, -360 * Time.deltaTime);
     }
 
     IEnumerator ClearHitListRoutine()
