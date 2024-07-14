@@ -29757,7 +29757,7 @@ MonoBehaviour:
   m_Follow: {fileID: 798174911}
   m_Lens:
     FieldOfView: 29.78128
-    OrthographicSize: 1
+    OrthographicSize: 1.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -31325,7 +31325,7 @@ Camera:
   far clip plane: 1000
   field of view: 29.78128
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 1.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -32843,8 +32843,8 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        RemapOrthographicSizeZero: 1
-        RemapOrthographicSizeOne: 0.8
+        RemapOrthographicSizeZero: 1.5
+        RemapOrthographicSizeOne: 1
     - rid: 5079079129168740372
       type: {class: MMF_Events, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
@@ -33725,7 +33725,7 @@ SpriteRenderer:
   m_SortingLayerID: -2007558131
   m_SortingLayer: 2
   m_SortingOrder: 15
-  m_Sprite: {fileID: -1985899028, guid: f598b230126fdfd45b193afa0a836561, type: 3}
+  m_Sprite: {fileID: 666073289, guid: 83ca2ba9ecb9ed049aca9c8acdcc8f4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -10,10 +10,9 @@ public class SunflowerProjectile : MonoBehaviour
     public float damage = 0f; // Damage dealt by the projectile
 
     private List<Collider2D> hitEnemies = new List<Collider2D>();
-
     private float elapsedTime = 0f;
     private Vector3 initialPosition;
-    
+
     [SerializeField] GameObject sunflowerIcon;
 
     void Start()
@@ -23,6 +22,9 @@ public class SunflowerProjectile : MonoBehaviour
 
         // Start the coroutine to destroy the projectile after a certain time
         StartCoroutine(DestroyAfterTime());
+
+        // Start the coroutine to reset hit enemies list every second
+        StartCoroutine(ResetHitEnemiesList());
     }
 
     void Update()
@@ -69,5 +71,14 @@ public class SunflowerProjectile : MonoBehaviour
             // Destroy the projectile
             Destroy(gameObject);
         });
+    }
+
+    IEnumerator ResetHitEnemiesList()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            hitEnemies.Clear();
+        }
     }
 }
