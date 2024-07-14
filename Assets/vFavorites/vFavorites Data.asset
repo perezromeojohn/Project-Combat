@@ -51,6 +51,15 @@ MonoBehaviour:
       isAsset: 0
       _id: 1054282086
     - globalId:
+        globalObjectIdString: GlobalObjectId_V1-1-7823ba6b3e94f83499ff2fdef9149a6c-102900000-0
+      _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 102900000, guid: 7823ba6b3e94f83499ff2fdef9149a6c, type: 3}
+      isSceneGameObject: 0
+      isFolder: 1
+      isAsset: 0
+      _id: 1060246707
+    - globalId:
         globalObjectIdString: GlobalObjectId_V1-1-e4c335cd2c5809442a11d1140bc4697b-102900000-0
       _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -59,9 +68,36 @@ MonoBehaviour:
       isFolder: 1
       isAsset: 0
       _id: 1063658804
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-1-e0e8a256aba751d44b0915fb97d4b153-102900000-0
+      _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 102900000, guid: e0e8a256aba751d44b0915fb97d4b153, type: 3}
+      isSceneGameObject: 0
+      isFolder: 1
+      isAsset: 0
+      _id: 1057592255
     name: Page 1
     _id: 1064424036
-  - items: []
+  - items:
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-1-77199002117d2d74a874f4578d7c54c5-102900000-0
+      _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 102900000, guid: 77199002117d2d74a874f4578d7c54c5, type: 3}
+      isSceneGameObject: 0
+      isFolder: 1
+      isAsset: 0
+      _id: 1036423602
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-1-de10c674a707e6944a0b350dd0371f3d-102900000-0
+      _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 102900000, guid: de10c674a707e6944a0b350dd0371f3d, type: 3}
+      isSceneGameObject: 0
+      isFolder: 1
+      isAsset: 0
+      _id: 1057147855
     name: Page 2
     _id: 1055155158
   - items: []
