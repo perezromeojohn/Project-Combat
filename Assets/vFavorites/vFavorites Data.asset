@@ -42,6 +42,15 @@ MonoBehaviour:
       isAsset: 0
       _id: 1057297385
     - globalId:
+        globalObjectIdString: GlobalObjectId_V1-1-a4cf7e79137dcbe4cbeab0168e1452d4-102900000-0
+      _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 102900000, guid: a4cf7e79137dcbe4cbeab0168e1452d4, type: 3}
+      isSceneGameObject: 0
+      isFolder: 1
+      isAsset: 0
+      _id: 1052026177
+    - globalId:
         globalObjectIdString: GlobalObjectId_V1-1-209b77b232bc2eb4983382363318e8a4-102900000-0
       _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -60,6 +69,15 @@ MonoBehaviour:
       isAsset: 0
       _id: 1060246707
     - globalId:
+        globalObjectIdString: GlobalObjectId_V1-1-3d7164e7b375b0c439e32af004309567-102900000-0
+      _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 102900000, guid: 3d7164e7b375b0c439e32af004309567, type: 3}
+      isSceneGameObject: 0
+      isFolder: 1
+      isAsset: 0
+      _id: 1057010477
+    - globalId:
         globalObjectIdString: GlobalObjectId_V1-1-e4c335cd2c5809442a11d1140bc4697b-102900000-0
       _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
@@ -68,6 +86,15 @@ MonoBehaviour:
       isFolder: 1
       isAsset: 0
       _id: 1063658804
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-1-24ca7e6cfbcc34ef1b6da4e63053cf17-102900000-0
+      _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 102900000, guid: 24ca7e6cfbcc34ef1b6da4e63053cf17, type: 3}
+      isSceneGameObject: 0
+      isFolder: 1
+      isAsset: 0
+      _id: 1054740526
     - globalId:
         globalObjectIdString: GlobalObjectId_V1-1-e0e8a256aba751d44b0915fb97d4b153-102900000-0
       _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
