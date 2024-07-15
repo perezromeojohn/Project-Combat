@@ -15,7 +15,7 @@ public class PoisonCloud : MonoBehaviour
     private float cooldown = 0;
     private float duration = 3;
     private float calculatedDamage;
-    public float damageMultiplier = 1.2f;
+    public float damageMultiplier = 1.8f;
     public float flameThrowerRange = 1f;
 
     void Start()
@@ -56,10 +56,13 @@ public class PoisonCloud : MonoBehaviour
             case 2:
                 break;
             case 3:
+                flameThrowerRange = 1.5f;
                 break;
             case 4:
                 break;
             case 5:
+                flameThrowerRange = 2f;
+                duration = 5;
                 break;
         }
         CastSkill(Mathf.Floor(calculatedDamage), flameThrowerRange, duration);
@@ -68,7 +71,6 @@ public class PoisonCloud : MonoBehaviour
 
     void CastSkill(float damage, float range, float flameThrowerDuration)
     {
-        Debug.Log("Casting Poison Cloud");
         poisionSmogCollision.damage = damage;
         poisonSmog.flameThrowerRange = range;
         poisonSmog.duration = flameThrowerDuration;
