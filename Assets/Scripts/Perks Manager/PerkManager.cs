@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,10 +24,16 @@ public class PerkManager : MonoBehaviour
     [Header("Player Perks")]
     public Perks[] perkList;
     public GameObject[] perkGameObjects;
+
+    [Header("Player Stats")]
+    public StatUpgrade[] statUpgrades;
     public GameObject perkParent;
-    private List<Perks> selectedPerks = new List<Perks>();
+    private List<object> selectedPerks = new List<object>();
     private const int maxPerkLevel = 5;
     public Dictionary<string, int> playerPerks = new Dictionary<string, int>();
+
+    [Header("Player Stats")]
+    public PlayerStats inGamePlayerStats;
 
     void Start()
     {
@@ -35,19 +42,12 @@ public class PerkManager : MonoBehaviour
 
     void Update()
     {
-        // when I press J, cal the show all perk buttons
         if (Input.GetKeyDown(KeyCode.J))
         {
             ShowAllPerkButtons();
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            PrintPerks();
-        }
-
-        // if I press Q print all the playerPerks
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.Q))
         {
             PrintPerks();
         }
@@ -55,25 +55,57 @@ public class PerkManager : MonoBehaviour
 
     void BindSkills()
     {
-        PickRandomPerks();
-        // for loop selecting the perks
+        PickRandomUpgrades();
         for (int i = 0; i < perkButtons.Length; i++)
         {
-            perkButtons[i].transform.GetChild(9).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkDisplayName;
-            if (playerPerks.ContainsKey(selectedPerks[i].perkName))
+            if (selectedPerks[i] is Perks perk)
             {
-                perkButtons[i].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkDescriptions[playerPerks[selectedPerks[i].perkName]];
-                perkButtons[i].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "";
-                float nextLevel = playerPerks[selectedPerks[i].perkName] + 1;
-                perkButtons[i].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. " + nextLevel; 
-            } else {
-                perkButtons[i].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = selectedPerks[i].perkDescriptions[0];
-                perkButtons[i].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "<color=#FFB4A0>Cooldown: </color><color=#FFB023><b>" + selectedPerks[i].perkCooldown + "</b></color> <color=#FFFFFF>seconds</color>";
-                perkButtons[i].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. 1";
+                BindPerk(perk, i);
             }
-            perkButtons[i].transform.GetChild(6).GetComponent<Image>().sprite = Resources.Load<Sprite>("Perk Icons/" + selectedPerks[i].perkDisplayName) as Sprite;
-            perkButtons[i].name = selectedPerks[i].perkName;
+            else if (selectedPerks[i] is StatUpgrade statUpgrade)
+            {
+                BindStat(statUpgrade, i);
+            }
         }
+    }
+
+    void BindPerk(Perks perk, int index)
+    {
+        perkButtons[index].transform.GetChild(9).GetComponent<TextMeshProUGUI>().text = perk.perkDisplayName;
+        if (playerPerks.ContainsKey(perk.perkName))
+        {
+            perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = perk.perkDescriptions[playerPerks[perk.perkName]];
+            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "";
+            float nextLevel = playerPerks[perk.perkName] + 1;
+            perkButtons[index].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. " + nextLevel; 
+        } else {
+            perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = perk.perkDescriptions[0];
+            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "<color=#FFB4A0>Cooldown: </color><color=#FFB023><b>" + perk.perkCooldown + "</b></color> <color=#FFFFFF>seconds</color>";
+            perkButtons[index].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. 1";
+        }
+        perkButtons[index].transform.GetChild(6).GetComponent<Image>().sprite = Resources.Load<Sprite>("Perk Icons/" + perk.perkDisplayName) as Sprite;
+        perkButtons[index].name = perk.perkName;
+    }
+
+    void BindStat(StatUpgrade statUpgrade, int index)
+    {
+        perkButtons[index].transform.GetChild(9).GetComponent<TextMeshProUGUI>().text = statUpgrade.statDisplayName;
+        if (playerPerks.ContainsKey(statUpgrade.statName))
+        {
+            int currentLevel = playerPerks[statUpgrade.statName];
+            perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = statUpgrade.statDescriptions[currentLevel];
+            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "";
+            float nextLevel = currentLevel + 1;
+            perkButtons[index].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. " + nextLevel;
+        }
+        else
+        {
+            perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = statUpgrade.statDescriptions[0];
+            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "<color=#FFB4A0>Increase: </color><color=#FFB023><b>" + statUpgrade.baseIncreaseAmount + "</b></color>";
+            perkButtons[index].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. 1";
+        }
+        perkButtons[index].transform.GetChild(6).GetComponent<Image>().sprite = Resources.Load<Sprite>("Stat Icons/" + statUpgrade.statDisplayName) as Sprite;
+        perkButtons[index].name = statUpgrade.statName;
     }
 
     void BindButtons()
@@ -86,7 +118,7 @@ public class PerkManager : MonoBehaviour
             perkAnimators[i] = perkButtons[i].GetComponent<Animator>();
             perkButtonScripts[i] = perkButtons[i].GetComponent<Button>();
 
-            int index = i; // Capture a local copy of 'i'
+            int index = i;
             perkButtonScripts[i].onClick.AddListener(() => 
             {
                 for (int j = 0; j < perkButtons.Length; j++)
@@ -128,113 +160,163 @@ public class PerkManager : MonoBehaviour
         }
     }
 
-    private void PickRandomPerks()
+    private void PickRandomUpgrades()
     {
         selectedPerks.Clear();
-        // Create a list of available perks to select from
-        List<Perks> availablePerks = new List<Perks>(perkList);
+        List<object> availableUpgrades = new List<object>();
+        
+        availableUpgrades.AddRange(perkList.Where(p => !playerPerks.ContainsKey(p.perkName) || playerPerks[p.perkName] < maxPerkLevel));
+        availableUpgrades.AddRange(statUpgrades.Where(s => !playerPerks.ContainsKey(s.statName) || playerPerks[s.statName] < maxPerkLevel));
 
-        // Remove perks that are already at max level
-        foreach (var perk in playerPerks)
+        while (selectedPerks.Count < 3 && availableUpgrades.Count > 0)
         {
-            Perks foundPerk = availablePerks.Find(p => p.perkName == perk.Key);
-            if (foundPerk != null && perk.Value >= maxPerkLevel)
-            {
-                availablePerks.Remove(foundPerk);
-            }
-        }
-
-        // Loop until you have selected 3 unique perks
-        while (selectedPerks.Count < 3)
-        {
-            // If no available perks remain, break out of the loop
-            if (availablePerks.Count == 0)
-            {
-                break;
-            }
-
-            // Filter out perks that are already at max level
-            List<Perks> filteredPerks = availablePerks.FindAll(p => !playerPerks.ContainsKey(p.perkName) || playerPerks[p.perkName] < maxPerkLevel);
-
-            // If no perks remain after filtering, break out of the loop
-            if (filteredPerks.Count == 0)
-            {
-                break;
-            }
-
-            // Pick a random perk from the filtered list
-            Perks randomPerk = filteredPerks[UnityEngine.Random.Range(0, filteredPerks.Count)];
-            selectedPerks.Add(randomPerk);
-            availablePerks.Remove(randomPerk); // Remove the selected perk from the available list
+            int randomIndex = UnityEngine.Random.Range(0, availableUpgrades.Count);
+            object selectedUpgrade = availableUpgrades[randomIndex];
+            selectedPerks.Add(selectedUpgrade);
+            availableUpgrades.RemoveAt(randomIndex);
         }
     }
 
-    private string FindImage(String perkName)
+    public void AddPerkToPlayer(object addedUpgrade)
     {
-        string path = "Assets/GUI/Skill Icons/Skills/" + perkName + ".png";
-
-        if (File.Exists(path))
+        if (addedUpgrade is Perks perk)
         {
-            return path;
+            AddPerkUpgrade(perk);
         }
-        else
+        else if (addedUpgrade is StatUpgrade statUpgrade)
         {
-            Debug.LogWarning("Image file " + perkName + " does not exist");
+            AddStatUpgrade(statUpgrade);
         }
-
-        return null;
     }
 
-    public void AddPerkToPlayer(Perks addedPerk)
+    private void AddPerkUpgrade(Perks perk)
     {
-        if (playerPerks.ContainsKey(addedPerk.perkName))
+        if (playerPerks.ContainsKey(perk.perkName))
         {
-            if (playerPerks[addedPerk.perkName] < maxPerkLevel)
+            if (playerPerks[perk.perkName] < maxPerkLevel)
             {
-                playerPerks[addedPerk.perkName]++;
-                Debug.Log(addedPerk.perkName + " upgraded to level " + playerPerks[addedPerk.perkName]);
-                foreach (Transform child in perkPanel.transform)
-                {
-                    if (child.name == addedPerk.perkName)
-                    {
-                        GameObject levelObject = child.Find("Level").gameObject;
-                        TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
-                        levelText.text = "Lvl. " + playerPerks[addedPerk.perkName];
-                    }
-                }
+                playerPerks[perk.perkName]++;
+                Debug.Log(perk.perkName + " upgraded to level " + playerPerks[perk.perkName]);
+                UpdatePerkUI(perk);
             }
             else
             {
-                Debug.Log(addedPerk.perkName + " is already at max level");
+                Debug.Log(perk.perkName + " is already at max level");
             }
         }
         else
         {
-            playerPerks.Add(addedPerk.perkName, 1);
-            GameObject newPerkFrame = Instantiate(perkFrame, perkPanel.transform);
-            GameObject levelObject = newPerkFrame.transform.Find("Level").gameObject;
-            TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
-            Image perkImage = newPerkFrame.transform.Find("Icon").GetComponent<Image>();
+            playerPerks.Add(perk.perkName, 1);
+            CreateNewPerkUI(perk);
+            InstantiatePerkGameObject(perk);
+            Debug.Log(perk.perkName + " added at level 1");
+        }
+    }
 
-            for (int i = 0; i < perkGameObjects.Length; i++)
+    private void AddStatUpgrade(StatUpgrade statUpgrade)
+    {
+        if (playerPerks.ContainsKey(statUpgrade.statName))
+        {
+            if (playerPerks[statUpgrade.statName] < maxPerkLevel)
             {
-                if (perkGameObjects[i].name == addedPerk.perkName)
-                {
-                    GameObject newPerk = Instantiate(perkGameObjects[i], perkParent.transform);
-                    newPerk.name = addedPerk.perkName;
-                }
-                else
-                {
-                    Debug.LogWarning("Perk not found");
-                }
+                playerPerks[statUpgrade.statName]++;
+                Debug.Log(statUpgrade.statName + " upgraded to level " + playerPerks[statUpgrade.statName]);
+                UpdateStatUI(statUpgrade);
             }
+            else
+            {
+                Debug.Log(statUpgrade.statName + " is already at max level");
+            }
+        }
+        else
+        {
+            playerPerks.Add(statUpgrade.statName, 1);
+            CreateNewStatUI(statUpgrade);
+            Debug.Log(statUpgrade.statName + " added at level 1");
+        }
 
-            newPerkFrame.name = addedPerk.perkName;
-            // perkImage.sprite = AssetDatabase.LoadAssetAtPath<Sprite>(FindImage(addedPerk.perkName));
-            perkImage.sprite = Resources.Load<Sprite>("Perk Icons/" + addedPerk.perkDisplayName);
-            levelText.text = "Lvl. 1";
+        ApplyStatUpgrade(statUpgrade);
+    }
 
-            Debug.Log(addedPerk.perkName + " added at level 1");
+    private void UpdatePerkUI(Perks perk)
+    {
+        // Update existing perk UI
+        foreach (Transform child in perkPanel.transform)
+        {
+            if (child.name == perk.perkName)
+            {
+                GameObject levelObject = child.Find("Level").gameObject;
+                TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
+                levelText.text = "Lvl. " + playerPerks[perk.perkName];
+                break;
+            }
+        }
+    }
+
+    private void UpdateStatUI(StatUpgrade statUpgrade)
+    {
+        // Update existing stat UI
+        foreach (Transform child in perkPanel.transform)
+        {
+            if (child.name == statUpgrade.statName)
+            {
+                GameObject levelObject = child.Find("Level").gameObject;
+                TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
+                levelText.text = "Lvl. " + playerPerks[statUpgrade.statName];
+                break;
+            }
+        }
+    }
+
+    private void CreateNewPerkUI(Perks perk)
+    {
+        GameObject newPerkFrame = Instantiate(perkFrame, perkPanel.transform);
+        GameObject levelObject = newPerkFrame.transform.Find("Level").gameObject;
+        TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
+        Image perkImage = newPerkFrame.transform.Find("Icon").GetComponent<Image>();
+
+        newPerkFrame.name = perk.perkName;
+        perkImage.sprite = Resources.Load<Sprite>("Perk Icons/" + perk.perkDisplayName);
+        levelText.text = "Lvl. 1";
+    }
+
+    private void CreateNewStatUI(StatUpgrade statUpgrade)
+    {
+        GameObject newStatFrame = Instantiate(perkFrame, perkPanel.transform);
+        GameObject levelObject = newStatFrame.transform.Find("Level").gameObject;
+        TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
+        Image statImage = newStatFrame.transform.Find("Icon").GetComponent<Image>();
+
+        newStatFrame.name = statUpgrade.statName;
+        statImage.sprite = Resources.Load<Sprite>("Stat Icons/" + statUpgrade.statDisplayName);
+        levelText.text = "Lvl. 1";
+    }
+
+    private void InstantiatePerkGameObject(Perks perk)
+    {
+        for (int i = 0; i < perkGameObjects.Length; i++)
+        {
+            if (perkGameObjects[i].name == perk.perkName)
+            {
+                GameObject newPerk = Instantiate(perkGameObjects[i], perkParent.transform);
+                newPerk.name = perk.perkName;
+                return;
+            }
+        }
+        Debug.LogWarning("Perk not found");
+    }
+
+    private void ApplyStatUpgrade(StatUpgrade statUpgrade)
+    {
+        switch (statUpgrade.statName)
+        {
+            case "Health":
+                inGamePlayerStats.maxHealth += statUpgrade.baseIncreaseAmount;
+                break;
+            case "Damage":
+                inGamePlayerStats.damage += statUpgrade.baseIncreaseAmount;
+                break;
+            // Add other stats as needed
         }
     }
 

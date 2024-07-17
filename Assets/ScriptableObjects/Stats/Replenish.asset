@@ -9,16 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: babe4eda6b6ef6345a9f772287e62708, type: 3}
-  m_Name: PlayerStats
+  m_Script: {fileID: 11500000, guid: bb1c799a9f3765842adde7a1afafb767, type: 3}
+  m_Name: Replenish
   m_EditorClassIdentifier: 
-  movementSpeed: 0
-  maxHealth: 0
-  magnetRange: 0
-  damage: 0
-  critChance: 0
-  critDamage: 0
-  attackSpeed: 0
-  knockbackStrength: 0
-  rollSpeed: 0
-  rollCooldown: 0
+  statName: Health
+  statDisplayName: Replenish
+  statDescriptions:
+  - dog
+  - dogg
+  - doggeriones
+  - fuckoers
+  - yaesiur
+  baseIncreaseAmount: 2
