@@ -25,7 +25,7 @@ public class PerkManager : MonoBehaviour
     public Perks[] perkList;
     public GameObject[] perkGameObjects;
 
-    [Header("Player Stats")]
+    [Header("Player Stat Upgrades")]
     public StatUpgrade[] statUpgrades;
     public GameObject perkParent;
     private List<object> selectedPerks = new List<object>();
@@ -34,6 +34,9 @@ public class PerkManager : MonoBehaviour
 
     [Header("Player Stats")]
     public PlayerStats inGamePlayerStats;
+
+    [Header("External Classes for Stats")]
+    public PlayerHealth playerHealth;
 
     void Start()
     {
@@ -312,6 +315,7 @@ public class PerkManager : MonoBehaviour
         {
             case "Health":
                 inGamePlayerStats.maxHealth += statUpgrade.baseIncreaseAmount;
+                playerHealth.UpdateMaxHealth(statUpgrade.baseIncreaseAmount);
                 break;
             case "Damage":
                 inGamePlayerStats.damage += statUpgrade.baseIncreaseAmount;

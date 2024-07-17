@@ -37,6 +37,13 @@ public class PlayerHealth : MonoBehaviour
         timescaleModifier.Active = false;
     }
 
+    public void UpdateMaxHealth(float addedHealth) // update health as soon as player upgrades health
+    {
+        maxHealth = playerStats.maxHealth;
+        health += addedHealth;
+        healthBar.UpdateMaxHealth(addedHealth);
+    }
+
     public void TakeDamage(float damage)
     {
         if (!isAttacked)

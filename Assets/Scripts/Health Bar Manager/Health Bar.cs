@@ -79,4 +79,12 @@ public class HealthBar : MonoBehaviour
         }
         hearts = new List<HealthHeart>();
     }
+
+    public void UpdateMaxHealth(float addedPoints)
+    {
+        maxHealth += addedPoints;
+        health += addedPoints;
+        ClearHearts();
+        DrawHearts(health, maxHealth);
+    }
 }
