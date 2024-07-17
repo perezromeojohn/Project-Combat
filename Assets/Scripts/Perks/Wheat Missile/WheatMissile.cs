@@ -77,17 +77,41 @@ public class WheatMissile : MonoBehaviour
 
     IEnumerator SpawnProjectiles(float damage, int projectileCount, float projRange)
     {
-
-        for (int i = 0; i < projectileCount; i++)
+        // Find all enemies within range
+        Collider2D[] collidersInRange = Physics2D.OverlapCircleAll(transform.position, projRange);
+        List<GameObject> enemiesInRange = new List<GameObject>();
+        
+        foreach (Collider2D collider in collidersInRange)
         {
-            // Vector3 spawnPosition = transform.position + new Vector3((col - numRows / 2) * spacing, (row - numRows / 2) * spacing, 0);
-            // random spawn based on the range
-            Vector3 spawnPosition = transform.position + new Vector3(Random.Range(-projRange, projRange), Random.Range(-projRange, projRange), 0);
-            GameObject projectile = Instantiate(wheatProjectilePrefab, spawnPosition, Quaternion.identity);
-            
-            projectile.GetComponent<WheatProjectile>().damage = damage;
+            if (collider.CompareTag("Enemy"))
+            {
+                enemiesInRange.Add(collider.gameObject);
+            }
+        }
 
+        int enemyCount = Mathf.Min(enemiesInRange.Count, projectileCount);
+
+        // Spawn projectiles on enemies
+        for (int i = 0; i < enemyCount; i++)
+        {
+            Vector3 spawnPosition = enemiesInRange[i].transform.position;
+            SpawnProjectile(spawnPosition, damage);
             yield return new WaitForSeconds(delayBetweenProjectiles);
         }
+
+        // Spawn remaining projectiles randomly
+        for (int i = enemyCount; i < projectileCount; i++)
+        {
+            Vector3 randomOffset = Random.insideUnitCircle * projRange;
+            Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+            SpawnProjectile(spawnPosition, damage);
+            yield return new WaitForSeconds(delayBetweenProjectiles);
+        }
+    }
+
+    void SpawnProjectile(Vector3 position, float damage)
+    {
+        GameObject projectile = Instantiate(wheatProjectilePrefab, position, Quaternion.identity);
+        projectile.GetComponent<WheatProjectile>().damage = damage;
     }
 }
