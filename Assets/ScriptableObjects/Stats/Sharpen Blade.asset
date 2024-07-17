@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb1c799a9f3765842adde7a1afafb767, type: 3}
-  m_Name: Replenish
+  m_Name: Sharpen Blade
   m_EditorClassIdentifier: 
-  statName: Health
-  statDisplayName: Replenish
+  statName: Crit Chance
+  statDisplayName: Sharpen Blade
   statDescriptions:
   - dog
   - dogg
   - doggeriones
   - fuckoers
   - yaesiur
-  baseIncreaseAmount: 2
+  baseIncreaseAmount: 10

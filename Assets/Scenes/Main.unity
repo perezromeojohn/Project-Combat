@@ -88488,6 +88488,10 @@ MonoBehaviour:
   statUpgrades:
   - {fileID: 11400000, guid: be5724a25b2b4234aa236c644d4588b5, type: 2}
   - {fileID: 11400000, guid: 6b10a8320a2f7334b803f6fcf67fa834, type: 2}
+  - {fileID: 11400000, guid: 7ddf51f72d6b0bd45bffac7844777341, type: 2}
+  - {fileID: 11400000, guid: 3048dc7ec2f014847bf3b1a7bbd200e2, type: 2}
+  - {fileID: 11400000, guid: e6ccef17e4fa52546aefacc63626f091, type: 2}
+  - {fileID: 11400000, guid: 2204f44f860727a4391de092d576a16c, type: 2}
   perkParent: {fileID: 1642397501}
   inGamePlayerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
   playerHealth: {fileID: 798174918}

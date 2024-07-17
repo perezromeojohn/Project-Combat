@@ -320,6 +320,18 @@ public class PerkManager : MonoBehaviour
             case "Damage":
                 inGamePlayerStats.damage += statUpgrade.baseIncreaseAmount;
                 break;
+            case "Crit Chance":
+                inGamePlayerStats.critChance += statUpgrade.baseIncreaseAmount;
+                break;
+            case "Crit Damage":
+                inGamePlayerStats.critDamage += statUpgrade.baseIncreaseAmount;
+                break;
+            case "Magnet Range":
+                inGamePlayerStats.magnetRange += statUpgrade.baseIncreaseAmount;
+                break;
+            case "Movement Speed":
+                inGamePlayerStats.movementSpeed += statUpgrade.baseIncreaseAmount;
+                break;
             // Add other stats as needed
         }
     }
