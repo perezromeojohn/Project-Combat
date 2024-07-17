@@ -54,7 +54,6 @@ public class PlayerHealth : MonoBehaviour
             // Debug.Log("Current health: " + health);
             feedbacks.PlayFeedbacks();
             OnPlayerHit.Invoke();
-            healthBar.DrawHearts(health, maxHealth);
             PlayFeedbacks();
             isAttacked = true;
             StartCoroutine(ResetIsAttacked());
@@ -67,6 +66,7 @@ public class PlayerHealth : MonoBehaviour
                 }
             }
             health -= damage;
+            healthBar.DrawHearts(health, maxHealth);
             if (health <= 0)
             {
                 health = 0;
