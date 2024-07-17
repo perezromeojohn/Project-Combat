@@ -35,6 +35,8 @@ public class PlayerHealth : MonoBehaviour
         timescaleModifier = feedbacks.GetFeedbackOfType<MMF_TimescaleModifier>();
         orthographicSize.Active = false;
         timescaleModifier.Active = false;
+
+        Debug.Log(maxHealth);
     }
 
     public void UpdateMaxHealth(float addedHealth) // update health as soon as player upgrades health
