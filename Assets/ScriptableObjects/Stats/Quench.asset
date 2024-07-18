@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1c799a9f3765842adde7a1afafb767, type: 3}
   m_Name: Quench
   m_EditorClassIdentifier: 
-  statName: Health
+  statName: Crit Damage
   statDisplayName: Quench
   statDescriptions:
   - dog
