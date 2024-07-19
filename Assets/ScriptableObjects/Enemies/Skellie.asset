@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Skellie
   m_EditorClassIdentifier: 
   enemyName: Skellie
-  movementSpeed: 0.4
+  movementSpeed: 0.3
   minDistanceToPlayer: 0.1
   damage: 1
-  health: 5
   maxHealth: 5
-  spriteColor: {r: 1, g: 1, b: 1, a: 1}
   healthBarUIOffset: {x: 0, y: 0.15, z: 0}
   experienceValue: 1
