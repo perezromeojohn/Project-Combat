@@ -43,6 +43,9 @@ public class Behavior : MonoBehaviour
     private float currentLevel = 1;
     private float healthMultiplier = 1.5f;
 
+    // kill count
+    private KillCount killCount;
+
 
     private void Awake()
     {
@@ -134,6 +137,7 @@ public class Behavior : MonoBehaviour
         SetHealthUI();
         if (health <= 0f)
         {
+            KillCount.AddKill();
             Animator enemyAnimator = GetComponent<Animator>();
             enemyAnimator.SetBool("isHealthZero", true);
             enemyHealthBarUI.enabled = false;
