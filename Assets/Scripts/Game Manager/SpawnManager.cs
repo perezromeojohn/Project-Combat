@@ -15,7 +15,6 @@ public class SpawnRule
 
 public class SpawnManager : MonoBehaviour
 {
-    public List<Transform> spawnPoints;
     public List<GameObject> enemyPrefabs;
     private GameObject player;
     public GameObject instantiatedEnemiesParent;
@@ -31,21 +30,38 @@ public class SpawnManager : MonoBehaviour
     private float spawnInterval = 5;
     private float previousSpawnTime = 0f; // Track previous spawn time
 
+    private Camera mainCamera;
+    public float spawnOffset = 0.3f; // Minimum offset to ensure enemies spawn outside the camera view
+    public float maxSpawnOffset = 1.0f; // Maximum offset for random spawn positions
+
+    public GameObject playArea; // Reference to the scaled GameObject representing the play area
+    private Bounds playAreaBounds;
+
     void Awake()
     {
-        // spawnRules.Add(new SpawnRule { spawnTime = 0f, batchSpawnAmount = 20, enemyTypes = new List<string> { "Gobbie", "Skellie", "Red Gobbie", "Blue Skellie", "Grizzly" } });
-        spawnRules.Add(new SpawnRule { spawnTime = 0f, batchSpawnAmount = 20, enemyTypes = new List<string> { "Gobbie", "Skellie",} });
+        // Example spawn rules
+        spawnRules.Add(new SpawnRule { spawnTime = 0f, batchSpawnAmount = 20, enemyTypes = new List<string> { "Gobbie", "Skellie" } });
         spawnRules.Add(new SpawnRule { spawnTime = 20, batchSpawnAmount = 15, enemyTypes = new List<string> { "Skellie" } });
         spawnRules.Add(new SpawnRule { spawnTime = 30, batchSpawnAmount = 15, enemyTypes = new List<string> { "Skellie", "Gobbie" } });
         spawnRules.Add(new SpawnRule { spawnTime = 40, batchSpawnAmount = 10, enemyTypes = new List<string> { "Grizzly", "Yellow Skellie" } });
         spawnRules.Add(new SpawnRule { spawnTime = 50, batchSpawnAmount = 10, enemyTypes = new List<string> { "Bandit Gobbie", "Red Gobbie" } });
         spawnRules.Add(new SpawnRule { spawnTime = 60, batchSpawnAmount = 10, enemyTypes = new List<string> { "Gobbie", "Skellie", "Red Gobbie", "Blue Skellie", "Grizzly" } });
+
+        if (playArea != null)
+        {
+            playAreaBounds = playArea.GetComponent<Renderer>().bounds;
+        }
+        else
+        {
+            Debug.LogError("Play area GameObject not assigned to SpawnManager!");
+        }
     }
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         lastSpawnTime = Time.time;
+        mainCamera = Camera.main;
     }
 
     void Update()
@@ -56,10 +72,10 @@ public class SpawnManager : MonoBehaviour
             SpawnMobs();
         }
 
-        // if I press K, return the current time
+        // If I press K, return the current time
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Debug.Log("Current time: " + timeManager.GetTimeElapsed()); // this returns the current time elapsed
+            Debug.Log("Current time: " + timeManager.GetTimeElapsed()); // This returns the current time elapsed
         }
     }
 
@@ -70,9 +86,6 @@ public class SpawnManager : MonoBehaviour
             Debug.Log("Unit cap reached. No more spawning.");
             return;
         }
-
-        EnableNearbySpawnPoints();
-        DisableNearbySpawnPoints();
 
         float elapsedTime = timeManager.GetTimeElapsed();
         Debug.Log("Elapsed Time: " + elapsedTime);
@@ -95,7 +108,7 @@ public class SpawnManager : MonoBehaviour
                         
                         for (int j = 0; j < spawnCount; j++)
                         {
-                            Vector3 spawnPosition = GetRandomSpawnPosition(GetRandomSpawnPoint(GetActiveSpawnPoints()));
+                            Vector3 spawnPosition = GetRandomSpawnPosition();
                             Instantiate(prefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
                             Debug.Log("Spawned enemy: " + enemyType);
                         }
@@ -123,59 +136,27 @@ public class SpawnManager : MonoBehaviour
         return null;
     }
 
-    private List<Transform> GetActiveSpawnPoints()
+    Vector3 GetRandomSpawnPosition()
     {
-        List<Transform> activeSpawnPoints = new List<Transform>();
-        foreach (Transform spawnPoint in spawnPoints)
+        Vector3 spawnPosition;
+        bool validPosition = false;
+
+        do
         {
-            if (spawnPoint.gameObject.activeSelf)
-            {
-                activeSpawnPoints.Add(spawnPoint);
-            }
-        }
-        return activeSpawnPoints;
-    }
+            // Get a random position within the play area bounds
+            spawnPosition = new Vector3(
+                Random.Range(playAreaBounds.min.x, playAreaBounds.max.x),
+                Random.Range(playAreaBounds.min.y, playAreaBounds.max.y),
+                0
+            );
 
-    private Transform GetRandomSpawnPoint(List<Transform> spawnPoints)
-    {
-        return spawnPoints[Random.Range(0, spawnPoints.Count)];
-    }
+            // Check if the position is outside the camera view
+            Vector3 viewportPoint = mainCamera.WorldToViewportPoint(spawnPosition);
+            validPosition = viewportPoint.x < 0 || viewportPoint.x > 1 || 
+                            viewportPoint.y < 0 || viewportPoint.y > 1;
 
-    void DisableNearbySpawnPoints()
-    {
-        foreach (Transform spawnPoint in spawnPoints)
-        {
-            if (Vector3.Distance(spawnPoint.position, player.transform.position) <= disableRadius)
-            {
-                spawnPoint.gameObject.SetActive(false);
-            }
-        }
-    }
-
-    void EnableNearbySpawnPoints()
-    {
-        foreach (Transform spawnPoint in spawnPoints)
-        {
-            spawnPoint.gameObject.SetActive(true);
-        }
-    }
-
-    Vector3 GetRandomSpawnPosition(Transform spawnPoint)
-    {
-        Vector3 spawnPosition = Vector3.zero;
-        SpriteRenderer renderer = spawnPoint.GetComponent<SpriteRenderer>();
-
-        if (renderer != null)
-        {
-            Bounds bounds = renderer.bounds;
-            spawnPosition = new Vector3(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y), spawnPoint.position.z);
-        }
+        } while (!validPosition);
 
         return spawnPosition;
-    }
-
-    GameObject GetRandomEnemyPrefab()
-    {
-        return enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
     }
 }
