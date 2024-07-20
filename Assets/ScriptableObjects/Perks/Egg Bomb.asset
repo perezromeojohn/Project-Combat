@@ -15,10 +15,9 @@ MonoBehaviour:
   perkName: EggBomb
   perkDisplayName: Egg Bomb
   perkDescriptions:
-  - Egg Bomberinoes
+  - Summon eggs that explode upon impact
   - Fires level 2
   - Fires level 3
   - Fires level 4
   - Fires level 5
-  isSkill: 1
   perkCooldown: 3

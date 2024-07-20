@@ -15,7 +15,7 @@ MonoBehaviour:
   perkName: SunflowerTurret
   perkDisplayName: Sunflower Turret
   perkDescriptions:
-  - Fires level 1
+  - Summon a Sunflower that shoots a rotating flower
   - Fires level 2
   - Fires level 3
   - Fires level 4

@@ -15,10 +15,10 @@ MonoBehaviour:
   perkName: SheepHerd
   perkDisplayName: Sheep Herd
   perkDescriptions:
-  - Fires level 1
+  - From Gab's Farms, summon a herd of sheep at the nearest enemy and rams them,
+    dealing damage
   - Fires level 2
   - Fires level 3
   - Fires level 4
   - Fires level 5
-  isSkill: 1
   perkCooldown: 5

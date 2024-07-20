@@ -4848,7 +4848,7 @@ GameObject:
   - component: {fileID: 435748857145012141}
   - component: {fileID: 5208356373307248963}
   m_Layer: 6
-  m_Name: GabsCarrot
+  m_Name: MagicCarrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
