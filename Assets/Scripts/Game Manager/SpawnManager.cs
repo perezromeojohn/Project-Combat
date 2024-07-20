@@ -110,7 +110,7 @@ public class SpawnManager : MonoBehaviour
                         {
                             Vector3 spawnPosition = GetRandomSpawnPosition();
                             Instantiate(prefab, spawnPosition, Quaternion.identity, instantiatedEnemiesParent.transform);
-                            Debug.Log("Spawned enemy: " + enemyType);
+                            // Debug.Log("Spawned enemy: " + enemyType);
                         }
 
                         remainingBatchAmount -= spawnCount;

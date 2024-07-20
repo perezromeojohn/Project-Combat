@@ -20,6 +20,7 @@ public class PerkManager : MonoBehaviour
     [Header("Perks UI")]
     public GameObject perkPanel;
     public GameObject perkFrame;
+    public GameObject[] hotBarFrame;
     
     [Header("Player Perks")]
     public Perks[] perkList;
@@ -30,6 +31,10 @@ public class PerkManager : MonoBehaviour
     public GameObject perkParent;
     private List<object> selectedPerks = new List<object>();
     private const int maxPerkLevel = 5;
+    private const int maxPerkToCollect = 8;
+    private const int maxStatToCollect = 10;
+    public float currentPerkCount = 0;
+    public float currentStatCount = 0;
     public Dictionary<string, int> playerPerks = new Dictionary<string, int>();
 
     [Header("Player Stats")]
@@ -41,6 +46,20 @@ public class PerkManager : MonoBehaviour
     void Start()
     {
         BindButtons();
+
+
+        // set up hotbar
+        for (int i = 0; i < hotBarFrame.Length; i++)
+        {
+            Transform[] children = hotBarFrame[i].GetComponentsInChildren<Transform>();
+            foreach (Transform child in children)
+            {
+                if (child.name == "Icon" || child.name == "Cooldown" || child.name == "Level")
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     void Update()
@@ -130,7 +149,7 @@ public class PerkManager : MonoBehaviour
                     {
                         perkAnimators[j].SetBool("isSelected", true);
                         perkMenuAnimator.SetBool("isSelected", true);
-                        Debug.Log("Perk " + j + " is selected");
+                        // Debug.Log("Perk " + j + " is selected");
                         AddPerkToPlayer(selectedPerks[j]);
                     }
                     else
@@ -199,20 +218,23 @@ public class PerkManager : MonoBehaviour
             if (playerPerks[perk.perkName] < maxPerkLevel)
             {
                 playerPerks[perk.perkName]++;
-                Debug.Log(perk.perkName + " upgraded to level " + playerPerks[perk.perkName]);
+                // Debug.Log(perk.perkName + " upgraded to level " + playerPerks[perk.perkName]);
                 UpdatePerkUI(perk);
+                UpdatePerkToHotBar(perk);
             }
             else
             {
-                Debug.Log(perk.perkName + " is already at max level");
+                // Debug.Log(perk.perkName + " is already at max level");
             }
         }
         else
         {
             playerPerks.Add(perk.perkName, 1);
             CreateNewPerkUI(perk);
+            AddPerkToHotBar(perk);
             InstantiatePerkGameObject(perk);
-            Debug.Log(perk.perkName + " added at level 1");
+            currentPerkCount++;
+            // Debug.Log(perk.perkName + " added at level 1");
         }
     }
 
@@ -223,19 +245,20 @@ public class PerkManager : MonoBehaviour
             if (playerPerks[statUpgrade.statName] < maxPerkLevel)
             {
                 playerPerks[statUpgrade.statName]++;
-                Debug.Log(statUpgrade.statName + " upgraded to level " + playerPerks[statUpgrade.statName]);
+                // Debug.Log(statUpgrade.statName + " upgraded to level " + playerPerks[statUpgrade.statName]);
                 UpdateStatUI(statUpgrade);
             }
             else
             {
-                Debug.Log(statUpgrade.statName + " is already at max level");
+                // Debug.Log(statUpgrade.statName + " is already at max level");
             }
         }
         else
         {
             playerPerks.Add(statUpgrade.statName, 1);
             CreateNewStatUI(statUpgrade);
-            Debug.Log(statUpgrade.statName + " added at level 1");
+            currentStatCount++;
+            // Debug.Log(statUpgrade.statName + " added at level 1");
         }
 
         ApplyStatUpgrade(statUpgrade);
@@ -333,6 +356,40 @@ public class PerkManager : MonoBehaviour
                 inGamePlayerStats.movementSpeed += statUpgrade.baseIncreaseAmount;
                 break;
             // Add other stats as needed
+        }
+    }
+
+    private void AddPerkToHotBar(Perks perk)
+    {
+        GameObject hotBarFrame = this.hotBarFrame[(int)currentPerkCount];
+        hotBarFrame.name = perk.perkName;
+
+        GameObject levelObject = hotBarFrame.transform.Find("Level").gameObject;
+        TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
+        levelText.text = "Lvl. 1";
+
+        Image perkImage = hotBarFrame.transform.Find("Icon").GetComponent<Image>();
+        perkImage.sprite = Resources.Load<Sprite>("Perk Icons/" + perk.perkDisplayName);
+
+        // active
+        hotBarFrame.transform.Find("Icon").gameObject.SetActive(true);
+        // hotBarFrame.transform.Find("Cooldown").gameObject.SetActive(true);
+        hotBarFrame.transform.Find("Level").gameObject.SetActive(true);
+        hotBarFrame.transform.Find("Cooldown").gameObject.SetActive(true);
+    }
+
+    private void UpdatePerkToHotBar(Perks perk)
+    {
+        // find the perk in the hotbar
+        for (int i = 0; i < hotBarFrame.Length; i++)
+        {
+            if (hotBarFrame[i].name == perk.perkName)
+            {
+                GameObject levelObject = hotBarFrame[i].transform.Find("Level").gameObject;
+                TextMeshProUGUI levelText = levelObject.GetComponent<TextMeshProUGUI>();
+                levelText.text = "Lvl. " + playerPerks[perk.perkName];
+                break;
+            }
         }
     }
 

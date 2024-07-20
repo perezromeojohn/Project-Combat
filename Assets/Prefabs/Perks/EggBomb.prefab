@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6667823773195242328}
-  - component: {fileID: 489225981666049034}
   - component: {fileID: 8813098267166651398}
+  - component: {fileID: 489225981666049034}
   m_Layer: 6
   m_Name: EggBomb
   m_TagString: Untagged
@@ -33,20 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &489225981666049034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3187159651447736569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3460421a9310bdd4ea751f6567b8b0b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldownTimer: 0
-  isOnCooldown: 0
 --- !u!114 &8813098267166651398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,3 +48,20 @@ MonoBehaviour:
   perk: {fileID: 11400000, guid: 10f829d558dc5a84a8ad915bddc397bc, type: 2}
   damageMultiplier: 1.2
   projectilePrefab: {fileID: 2021845264880840518, guid: 67183d43f33e12a49aedd34e242ef5b5, type: 3}
+  delayBetweenProjectiles: 0.3
+  range: 0.5
+--- !u!114 &489225981666049034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3187159651447736569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3460421a9310bdd4ea751f6567b8b0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTimer: 0
+  isOnCooldown: 0
+  aboveComponent: {fileID: 0}

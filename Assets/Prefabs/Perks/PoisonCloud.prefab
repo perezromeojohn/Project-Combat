@@ -4932,6 +4932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTimer: 0
   isOnCooldown: 0
+  aboveComponent: {fileID: 0}
 --- !u!198 &2922569962695741816
 ParticleSystem:
   m_ObjectHideFlags: 0
