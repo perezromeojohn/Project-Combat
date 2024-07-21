@@ -32,6 +32,11 @@ public class FlashHit : MonoBehaviour
 
     public void Flash()
     {
+        // if the gameObject is not active, return
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
         // If the flashRoutine is not null, then it is currently running.
         if (flashRoutine != null)
         {

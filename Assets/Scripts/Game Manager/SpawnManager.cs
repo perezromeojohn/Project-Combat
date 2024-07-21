@@ -79,6 +79,11 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    public void DisableSpawning()
+    {
+        enabled = false;
+    }
+
     public void SpawnMobs()
     {
         if (instantiatedEnemiesParent.transform.childCount >= maxUnitCap)

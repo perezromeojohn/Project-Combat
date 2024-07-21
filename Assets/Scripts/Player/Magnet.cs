@@ -25,4 +25,9 @@ public class Magnet : MonoBehaviour
             }
         }
     }
+
+    public void DisableMagnet()
+    {
+        enabled = false;
+    }
 }

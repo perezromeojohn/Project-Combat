@@ -137,15 +137,20 @@ public class Behavior : MonoBehaviour
         SetHealthUI();
         if (health <= 0f)
         {
-            KillCount.AddKill();
-            Animator enemyAnimator = GetComponent<Animator>();
-            enemyAnimator.SetBool("isHealthZero", true);
-            enemyHealthBarUI.enabled = false;
-            onDeathStart.Invoke();
-            enemyHealthBar.GetComponent<SpriteRenderer>().enabled = false;
-            GetComponent<Collider2D>().enabled = false;
-            GetComponent<Rigidbody2D>().simulated = false;
+            MobDeath();
         }
+    }
+
+    public void MobDeath()
+    {
+        KillCount.AddKill();
+        Animator enemyAnimator = GetComponent<Animator>();
+        enemyAnimator.SetBool("isHealthZero", true);
+        enemyHealthBarUI.enabled = false;
+        onDeathStart.Invoke();
+        enemyHealthBar.GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().simulated = false;
     }
 
     void Update()

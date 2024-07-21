@@ -36,12 +36,17 @@ public class CharacterMovement : MonoBehaviour
     [Header("Player Attacking")]
 
     [SerializeField] private GameObject hand;
+    [SerializeField] private GameObject hair;
     [SerializeField] private Animator swordAnimator;
     private float attackTimer = 0f;
+
+    [Header("Player Skills")]
+    [SerializeField] GameObject skilHolder;
 
 
     public bool isAttacked = false;
     private bool isHit = false;
+    private bool isDead = false;
     public float damageTaken = 0f;
     public GameObject debris;
 
@@ -58,6 +63,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return;
         Attack();
         GetInput();
 
@@ -72,6 +78,7 @@ public class CharacterMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isDead) return;
         switch (state)
         {
             case State.Normal:
@@ -210,6 +217,24 @@ public class CharacterMovement : MonoBehaviour
                 rollFrameCooldown.transform.localScale = new Vector3(1f, 1f, 1f);
             });
         }
+    }
+
+    public void DeathAnimation()
+    {
+        playerStats.movementSpeed = 0f;
+        skilHolder.SetActive(false);
+        GetComponent<BoxCollider2D>().enabled = false;
+        StartCoroutine(DeathCutscene());
+    }
+
+    IEnumerator DeathCutscene()
+    {
+        yield return new WaitForSeconds(.5f);
+        transform.position = new Vector3(transform.position.x, 50f, transform.position.z);
+        hair.SetActive(false);
+        hand.SetActive(false);
+        playerAnimator.SetBool("isDead", true);
+        isDead = true;
     }
 
     IEnumerator PlayerHit()
