@@ -32,7 +32,6 @@ public class PerkManager : MonoBehaviour
     private List<object> selectedPerks = new List<object>();
     private const int maxPerkLevel = 5;
     private const int maxPerkToCollect = 8;
-    private const int maxStatToCollect = 10;
     public float currentPerkCount = 0;
     public float currentStatCount = 0;
     public Dictionary<string, int> playerPerks = new Dictionary<string, int>();
@@ -187,9 +186,18 @@ public class PerkManager : MonoBehaviour
         selectedPerks.Clear();
         List<object> availableUpgrades = new List<object>();
         
-        availableUpgrades.AddRange(perkList.Where(p => !playerPerks.ContainsKey(p.perkName) || playerPerks[p.perkName] < maxPerkLevel));
-        availableUpgrades.AddRange(statUpgrades.Where(s => !playerPerks.ContainsKey(s.statName) || playerPerks[s.statName] < maxPerkLevel));
+        if (currentPerkCount >= maxPerkToCollect)
+        {
+            // Only add existing perks and stats that are not at max level
+            availableUpgrades.AddRange(perkList.Where(p => playerPerks.ContainsKey(p.perkName) && playerPerks[p.perkName] < maxPerkLevel));
+        }
+        else
+        {
+            // Add all perks and stats that are not at max level
+            availableUpgrades.AddRange(perkList.Where(p => !playerPerks.ContainsKey(p.perkName) || playerPerks[p.perkName] < maxPerkLevel));
+        }
 
+        availableUpgrades.AddRange(statUpgrades.Where(s => !playerPerks.ContainsKey(s.statName) || playerPerks[s.statName] < maxPerkLevel));
         while (selectedPerks.Count < 3 && availableUpgrades.Count > 0)
         {
             int randomIndex = UnityEngine.Random.Range(0, availableUpgrades.Count);
