@@ -41684,6 +41684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
   moveDirection: {x: 0, y: 0, z: 0}
+  virtualCamera: {fileID: 354113241}
   rollFrame: {fileID: 1962156354}
   swordCollider: {fileID: 668930560}
   isInvincible: 0
@@ -41691,6 +41692,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 798174916}
   hairAnimator: {fileID: 265667139}
   hand: {fileID: 2109503247}
+  weapon: {fileID: 668930554}
   hair: {fileID: 265667137}
   swordAnimator: {fileID: 668930557}
   skilHolder: {fileID: 1642397501}
@@ -41772,6 +41774,18 @@ MonoBehaviour:
       - m_Target: {fileID: 471695770}
         m_TargetAssemblyTypeName: DisableInGameUI, Assembly-CSharp
         m_MethodName: DisableUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 37897774}
+        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
+        m_MethodName: EndGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -71189,68 +71203,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1393158274
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1471945102}
-    m_Modifications:
-    - target: {fileID: 2912452842958476534, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_Name
-      value: Chicken
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.192
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.106
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
---- !u!4 &1393158275 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7947800469290634671, guid: 1afbbb77b43926e4caa691f6b5c8b86a, type: 3}
-  m_PrefabInstance: {fileID: 1393158274}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1398990821
 GameObject:
   m_ObjectHideFlags: 0
@@ -71738,7 +71690,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 798174911}
-  - {fileID: 1393158275}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1472029981
@@ -95549,7 +95500,7 @@ MonoBehaviour:
   perkMenu: {fileID: 1772290616}
   timeManager: {fileID: 37897774}
   perkMenuAnimator: {fileID: 1772290618}
-  perkPanel: {fileID: 894697421}
+  perkPanel: {fileID: 0}
   perkFrame: {fileID: 1848258994800905578, guid: 0c6e6243e8789ba43ab643364454e5ac, type: 3}
   hotBarFrame:
   - {fileID: 1848258993261589231}

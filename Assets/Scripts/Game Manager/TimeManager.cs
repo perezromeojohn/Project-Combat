@@ -12,6 +12,8 @@ public class TimeManager : MonoBehaviour
     public GameObject perkScreen;
     public GameObject topFrame;
 
+    private bool gameEnded = false;
+
     void Start()
     {
         UpdateTimerDisplay();
@@ -19,27 +21,29 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
-        timeElapsed += Time.deltaTime;
-        UpdateTimerDisplay();
-
-        EnsurePause();
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!gameEnded)
         {
-            // if perkScreen is active, close it
-            if (!perkScreen.activeSelf)
+            timeElapsed += Time.deltaTime;
+            UpdateTimerDisplay();
+            EnsurePause();
+
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (isPaused)
+                // if perkScreen is active, close it
+                if (!perkScreen.activeSelf)
                 {
-                    ResumeGame();
-                    pauseScreen.SetActive(false);
-                    topFrame.SetActive(true);
-                }
-                else
-                {
-                    PauseGame();
-                    pauseScreen.SetActive(true);
-                    topFrame.SetActive(false);
+                    if (isPaused)
+                    {
+                        ResumeGame();
+                        pauseScreen.SetActive(false);
+                        topFrame.SetActive(true);
+                    }
+                    else
+                    {
+                        PauseGame();
+                        pauseScreen.SetActive(true);
+                        topFrame.SetActive(false);
+                    }
                 }
             }
         }
@@ -53,6 +57,12 @@ public class TimeManager : MonoBehaviour
 
         // Update the timer text
         timerText.text = string.Format("{0}:{1:00}", minutes, seconds);
+    }
+
+    public void EndGame()
+    {
+        gameEnded = true;
+        Debug.Log("Game ended. Time elapsed: " + timeElapsed);
     }
 
     public float GetTimeElapsed()

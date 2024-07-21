@@ -17,6 +17,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Player Movement")]
     private Rigidbody2D rb;
     [SerializeField] private Vector3 moveDirection;
+    [SerializeField] private Cinemachine.CinemachineVirtualCamera virtualCamera;
 
     [Header("Player Dodge Roll")]
     public GameObject rollFrame;
@@ -36,6 +37,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Player Attacking")]
 
     [SerializeField] private GameObject hand;
+    [SerializeField] private GameObject weapon;
     [SerializeField] private GameObject hair;
     [SerializeField] private Animator swordAnimator;
     private float attackTimer = 0f;
@@ -222,6 +224,7 @@ public class CharacterMovement : MonoBehaviour
     public void DeathAnimation()
     {
         playerStats.movementSpeed = 0f;
+        weapon.SetActive(false);
         skilHolder.SetActive(false);
         GetComponent<BoxCollider2D>().enabled = false;
         StartCoroutine(DeathCutscene());
@@ -231,6 +234,8 @@ public class CharacterMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         transform.position = new Vector3(transform.position.x, 50f, transform.position.z);
+        virtualCamera.m_Lens.OrthographicSize = 0.8f;
+        virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineFramingTransposer>().m_ScreenY = 0.35f;
         hair.SetActive(false);
         hand.SetActive(false);
         playerAnimator.SetBool("isDead", true);

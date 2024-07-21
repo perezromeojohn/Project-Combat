@@ -102,10 +102,17 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("Player is dedo like deedee");
         }
-        else if (health <= 2)
+        else if (health == 2)
         {
             orthographicSize.Active = true;
             timescaleModifier.Active = true;
+        }
+        else if (health == 1)
+        {
+            orthographicSize.Active = true;
+            timescaleModifier.Active = true;
+            
+            orthographicSize.RemapOrthographicSizeOne = .7f;
         }
         else
         {
