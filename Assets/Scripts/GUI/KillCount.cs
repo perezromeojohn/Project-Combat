@@ -44,4 +44,13 @@ public class KillCount : MonoBehaviour
             killCountText.text = "x " + totalKills.ToString();
         }
     }
+
+    public static float GetTotalKills()
+    {
+        if (instance != null)
+        {
+            return instance.totalKills;
+        }
+        return 0;
+    }
 }

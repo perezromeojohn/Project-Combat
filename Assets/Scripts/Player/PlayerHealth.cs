@@ -25,14 +25,14 @@ public class PlayerHealth : MonoBehaviour
     public UnityEvent OnPlayerHit;
     public UnityEvent OnPlayerDeath;
 
-    void Update()
-    {
-        // if I press N deal 20 damage
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            TakeDamage(20);
-        }
-    }
+    // void Update()
+    // {
+    //     // if I press N deal 20 damage
+    //     if (Input.GetKeyDown(KeyCode.N))
+    //     {
+    //         TakeDamage(20);
+    //     }
+    // }
 
     // on start, print player health
     void Start()

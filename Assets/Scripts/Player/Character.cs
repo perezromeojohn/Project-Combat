@@ -45,6 +45,9 @@ public class CharacterMovement : MonoBehaviour
     [Header("Player Skills")]
     [SerializeField] GameObject skilHolder;
 
+    [Header("Game Over")]
+    [SerializeField] private GameOver gameOver;
+
 
     public bool isAttacked = false;
     private bool isHit = false;
@@ -233,9 +236,10 @@ public class CharacterMovement : MonoBehaviour
     IEnumerator DeathCutscene()
     {
         yield return new WaitForSeconds(.5f);
+        gameOver.UpdateTexts();
         transform.position = new Vector3(transform.position.x, 50f, transform.position.z);
-        virtualCamera.m_Lens.OrthographicSize = 0.8f;
-        virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineFramingTransposer>().m_ScreenY = 0.35f;
+        virtualCamera.m_Lens.OrthographicSize = 0.5f;
+        virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineFramingTransposer>().m_ScreenY = 0.4f;
         hair.SetActive(false);
         hand.SetActive(false);
         playerAnimator.SetBool("isDead", true);

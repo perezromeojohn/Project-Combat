@@ -41,10 +41,7 @@ public class Behavior : MonoBehaviour
 
     private TimeManager timeManager;
     private float currentLevel = 1;
-    private float healthMultiplier = 1.5f;
-
-    // kill count
-    private KillCount killCount;
+    private float healthMultiplier = 1.2f;
 
 
     private void Awake()
