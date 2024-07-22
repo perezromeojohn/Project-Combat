@@ -61,18 +61,18 @@ public class PerkManager : MonoBehaviour
         }
     }
 
-    // void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.J))
-    //     {
-    //         ShowAllPerkButtons();
-    //     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            ShowAllPerkButtons();
+        }
 
-    //     if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.Q))
-    //     {
-    //         PrintPerks();
-    //     }
-    // }
+        if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.Q))
+        {
+            PrintPerks();
+        }
+    }
 
     void BindSkills()
     {
