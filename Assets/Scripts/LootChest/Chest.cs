@@ -11,6 +11,7 @@ public class Chest : MonoBehaviour
 
     private BoxCollider2D boxCollider2D;
     public MMF_Player feedbacks;
+    public bool isCollected = false;
 
     void Start()
     {
@@ -35,8 +36,9 @@ public class Chest : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isCollected)
         {
+            isCollected = true;
             feedbacks.PlayFeedbacks();
         }
     }
