@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using MoreMountains.Feedbacks;
+using TMPro;
 using UnityEngine;
 
 public class Chest : MonoBehaviour
@@ -8,6 +10,8 @@ public class Chest : MonoBehaviour
     [SerializeField] private StatUpgrade[] stats;
     [SerializeField] private StatUpgrade chosenStat;
     [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private SpriteRenderer statIcon; // a gameobject with a sprite renderer to show the stat icon
+    [SerializeField] private TextMeshPro statNameText; // a gameobject with a text mesh pro to show the stat name
 
     private BoxCollider2D boxCollider2D;
     public MMF_Player feedbacks;
@@ -17,6 +21,29 @@ public class Chest : MonoBehaviour
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
         chosenStat = stats[Random.Range(0, stats.Length)];
+        statNameText.text = "+" + chosenStat.statName;
+        UpdateStatIcon();
+    }
+
+    void UpdateStatIcon()
+    {
+        if (chosenStat != null && statIcon != null)
+        {
+            string iconPath = "Stat Icons/" + chosenStat.statDisplayName;
+            Sprite newSprite = Resources.Load<Sprite>(iconPath);
+            if (newSprite != null)
+            {
+                statIcon.sprite = newSprite;
+            }
+            else
+            {
+                Debug.LogWarning("Sprite not found for stat: " + chosenStat.statName);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Chosen stat or stat icon is null");
+        }
     }
 
     void IncreaseStats()
@@ -27,39 +54,35 @@ public class Chest : MonoBehaviour
         {
             if (chosenStat.statName == stats[i].statName)
             {
-                if (chosenStat.statName == "movementSpeed")
+                if (chosenStat.statName == "Movement Speed")
                 {
                     playerStats.movementSpeed += playerStats.movementSpeed * chosenStat.baseIncreaseAmount;
                 }
-                else if (chosenStat.statName == "magnetRange")
+                else if (chosenStat.statName == "Magnet Range")
                 {
                     playerStats.magnetRange += playerStats.magnetRange * chosenStat.baseIncreaseAmount;
                 }
-                else if (chosenStat.statName == "damage")
+                else if (chosenStat.statName == "Damage")
                 {
                     playerStats.damage += playerStats.damage * chosenStat.baseIncreaseAmount;
                 }
-                else if (chosenStat.statName == "critChance")
+                else if (chosenStat.statName == "Crit Chance")
                 {
                     playerStats.critChance += playerStats.critChance * chosenStat.baseIncreaseAmount;
                 }
-                else if (chosenStat.statName == "critDamage")
+                else if (chosenStat.statName == "Crit Damage")
                 {
                     playerStats.critDamage += playerStats.critDamage * chosenStat.baseIncreaseAmount;
                 }
-                else if (chosenStat.statName == "attackSpeed")
-                {
-                    playerStats.attackSpeed += playerStats.attackSpeed * chosenStat.baseIncreaseAmount;
-                }
-                else if (chosenStat.statName == "knockbackStrength")
+                else if (chosenStat.statName == "Knockback Strength")
                 {
                     playerStats.knockbackStrength += playerStats.knockbackStrength * chosenStat.baseIncreaseAmount;
                 }
-                else if (chosenStat.statName == "rollSpeed")
+                else if (chosenStat.statName == "Roll Speed")
                 {
                     playerStats.rollSpeed += playerStats.rollSpeed * chosenStat.baseIncreaseAmount;
                 }
-                else if (chosenStat.statName == "rollCooldown")
+                else if (chosenStat.statName == "Roll Cooldown")
                 {
                     playerStats.rollCooldown += playerStats.rollCooldown * chosenStat.baseIncreaseAmount;
                 }
