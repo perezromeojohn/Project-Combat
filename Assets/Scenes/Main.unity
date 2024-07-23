@@ -5643,7 +5643,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37897772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20314c50abf37004c829c5e4e6c7976b, type: 3}
   m_Name: 
@@ -138254,7 +138254,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3048dc7ec2f014847bf3b1a7bbd200e2, type: 2}
   - {fileID: 11400000, guid: be5724a25b2b4234aa236c644d4588b5, type: 2}
   - {fileID: 11400000, guid: e6ccef17e4fa52546aefacc63626f091, type: 2}
-  - {fileID: 11400000, guid: 6b10a8320a2f7334b803f6fcf67fa834, type: 2}
   - {fileID: 11400000, guid: 2204f44f860727a4391de092d576a16c, type: 2}
   chosenStat: {fileID: 0}
   playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
