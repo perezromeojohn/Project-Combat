@@ -348,8 +348,11 @@ public class PerkManager : MonoBehaviour
                 inGamePlayerStats.maxHealth += statUpgrade.baseIncreaseAmount;
                 playerHealth.UpdateMaxHealth(statUpgrade.baseIncreaseAmount);
                 break;
-            case "Damage":
-                inGamePlayerStats.damage += statUpgrade.baseIncreaseAmount;
+            case "Physical Damage":
+                inGamePlayerStats.physicalDamage += statUpgrade.baseIncreaseAmount;
+                break;
+            case "Magic Damage":
+                inGamePlayerStats.magicDamage += statUpgrade.baseIncreaseAmount;
                 break;
             case "Crit Chance":
                 inGamePlayerStats.critChance += statUpgrade.baseIncreaseAmount;

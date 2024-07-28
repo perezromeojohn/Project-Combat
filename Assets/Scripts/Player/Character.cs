@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
 
     [Header("Player Stats")]
     public PlayerStats playerStats;
+    public CharacterConfig characterConfig;
 
     [Header("Player Movement")]
     private Rigidbody2D rb;
@@ -23,24 +24,17 @@ public class CharacterMovement : MonoBehaviour
     public GameObject rollFrame;
     private Vector3 rollDirection;
     private float rollSpeed;
-    [SerializeField] private CapsuleCollider2D swordCollider;
     public bool isInvincible = false;
     private State state;
     private float rollTimer;
     public GameObject dashSmoke;
 
     [Header("Player Animations")]
-
-    [SerializeField] private Animator playerAnimator;
-    [SerializeField] private Animator hairAnimator;
-    
-    [Header("Player Attacking")]
-
-    [SerializeField] private GameObject hand;
-    [SerializeField] private GameObject weapon;
+    [SerializeField] private SpriteRenderer characterSpriteRenderer; // Added character sprite renderer
+    [SerializeField] private SpriteRenderer hairSprite;
+    private Animator playerAnimator;
+    private Animator hairAnimator;
     [SerializeField] private GameObject hair;
-    [SerializeField] private Animator swordAnimator;
-    private float attackTimer = 0f;
 
     [Header("Player Skills")]
     [SerializeField] GameObject skilHolder;
@@ -64,15 +58,21 @@ public class CharacterMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         state = State.Normal;
+
+        // Initialize the animators
+        playerAnimator = GetComponent<Animator>();
+        hairAnimator = hair.GetComponent<Animator>();
+
+        // Set the animators to the characterConfig animators
+        playerAnimator.runtimeAnimatorController = characterConfig.characterAnimator;
+        hairAnimator.runtimeAnimatorController = characterConfig.hairAnimator;
     }
 
     void Update()
     {
         if (isDead) return;
-        Attack();
         GetInput();
 
-        swordAnimator.enabled = true;
         playerAnimator.enabled = true;
         hairAnimator.enabled = true;
         GetComponent<BoxCollider2D>().enabled = true;
@@ -103,37 +103,29 @@ public class CharacterMovement : MonoBehaviour
                 playerAnimator.SetBool("isRolling", false);
                 hairAnimator.SetBool("isRolling", false);
 
-                // set hand gameobject to active
-                hand.SetActive(true);
+                // Flip the sprite renderer based on the movement direction
+                if (moveDirection.x > 0)
+                {
+                    characterSpriteRenderer.flipX = false;
+                    hairSprite.flipX = false;
+                }
+                else if (moveDirection.x < 0)
+                {
+                    characterSpriteRenderer.flipX = true;
+                    hairSprite.flipX = true;
+                }
 
                 break;
             case State.Rolling:
                 rb.velocity = rollDirection * rollSpeed;
                 playerAnimator.SetBool("isRolling", true);
                 hairAnimator.SetBool("isRolling", true);
-                hand.SetActive(false);
-                swordCollider.enabled = false;
                 break;
         }
 
         if (rollTimer > 0)
         {
             rollTimer -= Time.deltaTime;
-        }
-    }
-
-    void Attack()
-    {
-        attackTimer += Time.deltaTime;
-
-        if (attackTimer >= 1f / playerStats.attackSpeed)
-        {
-            if (swordAnimator.GetBool("isAttacking") == false)
-            {
-                swordAnimator.SetBool("isAttacking", true);
-            }
-
-            attackTimer = 0f;
         }
     }
 
@@ -169,7 +161,6 @@ public class CharacterMovement : MonoBehaviour
             case State.Rolling:
                 float rollSpeedDropMultiplier = 5f;
                 rollSpeed -= rollSpeed * rollSpeedDropMultiplier * Time.deltaTime;
-                // set animation of player and hair to roll, if not moving, set it both to idle
 
                 float rollSpeedMinimum = 1f;
                 if (rollSpeed < rollSpeedMinimum)
@@ -192,7 +183,8 @@ public class CharacterMovement : MonoBehaviour
             isInvincible = true;
             GameObject dashSmokeInstance = Instantiate(dashSmoke, transform.position, Quaternion.identity);
             dashSmokeInstance.transform.SetParent(debris.transform);
-            // get the spriterendered and flip it depending on the direction the player is going
+
+            // Flip the sprite renderer of dashSmoke based on the roll direction
             if (rollDirection.x > 0)
             {
                 dashSmokeInstance.GetComponent<SpriteRenderer>().flipX = false;
@@ -201,6 +193,7 @@ public class CharacterMovement : MonoBehaviour
             {
                 dashSmokeInstance.GetComponent<SpriteRenderer>().flipX = true;
             }
+
             rollFrame.SetActive(true);
             DodgeRollFrameCooldown();
         }
@@ -227,7 +220,6 @@ public class CharacterMovement : MonoBehaviour
     public void DeathAnimation()
     {
         playerStats.movementSpeed = 0f;
-        weapon.SetActive(false);
         skilHolder.SetActive(false);
         GetComponent<BoxCollider2D>().enabled = false;
         StartCoroutine(DeathCutscene());
@@ -241,7 +233,6 @@ public class CharacterMovement : MonoBehaviour
         virtualCamera.m_Lens.OrthographicSize = 0.5f;
         virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineFramingTransposer>().m_ScreenY = 0.4f;
         hair.SetActive(false);
-        hand.SetActive(false);
         playerAnimator.SetBool("isDead", true);
         isDead = true;
     }

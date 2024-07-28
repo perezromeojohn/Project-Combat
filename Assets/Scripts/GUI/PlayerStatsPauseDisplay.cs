@@ -30,16 +30,16 @@ public class PlayerStatsPauseDisplay : MonoBehaviour
                         valueText.text = playerStats.magnetRange.ToString();
                         break;
                     case 3:
-                        valueText.text = playerStats.damage.ToString();
+                        valueText.text = playerStats.physicalDamage.ToString();
                         break;
                     case 4:
-                        valueText.text = playerStats.critChance.ToString() + "%";
+                        valueText.text = playerStats.magicDamage.ToString() + "%";
                         break;
                     case 5:
-                        valueText.text = playerStats.critDamage.ToString() + "%";
+                        valueText.text = playerStats.critChance.ToString() + "%";
                         break;
                     case 6:
-                        valueText.text = playerStats.attackSpeed.ToString() + "%";
+                        valueText.text = playerStats.critDamage.ToString() + "%";
                         break;
                     case 7:
                         valueText.text = playerStats.knockbackStrength.ToString();

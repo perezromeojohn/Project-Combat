@@ -10,10 +10,10 @@ public class PlayerStats : ScriptableObject
     public float maxHealth;
     public float magnetRange;
     [Header("Player Attacking")]
-    public float damage;
+    public float physicalDamage;
+    public float magicDamage;
     public float critChance;
     public float critDamage;
-    public float attackSpeed;
     public float knockbackStrength;
     [Header("Player Mobility")]
     public float rollSpeed;

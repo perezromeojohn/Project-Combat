@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1c799a9f3765842adde7a1afafb767, type: 3}
   m_Name: Kirk's Sword
   m_EditorClassIdentifier: 
-  statName: Damage
+  statName: Physical Damage
   statDisplayName: Kirk's Sword
   statDescriptions:
   - dog

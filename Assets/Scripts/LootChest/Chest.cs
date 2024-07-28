@@ -62,9 +62,13 @@ public class Chest : MonoBehaviour
                 {
                     playerStats.magnetRange += playerStats.magnetRange * chosenStat.baseIncreaseAmount;
                 }
-                else if (chosenStat.statName == "Damage")
+                else if (chosenStat.statName == "Magic Damage")
                 {
-                    playerStats.damage += playerStats.damage * chosenStat.baseIncreaseAmount;
+                    playerStats.magicDamage += playerStats.magicDamage * chosenStat.baseIncreaseAmount;
+                }
+                else if (chosenStat.statName == "Physical Damage")
+                {
+                    playerStats.physicalDamage += playerStats.physicalDamage * chosenStat.baseIncreaseAmount;
                 }
                 else if (chosenStat.statName == "Crit Chance")
                 {
