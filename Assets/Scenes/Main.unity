@@ -96765,6 +96765,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 78d3e504664c752479b9e04a99ce2a1c, type: 2}
   - {fileID: 11400000, guid: 3aa01d677dd23e44ab90a912d86a0a5a, type: 2}
   - {fileID: 11400000, guid: 3712136824e0bdd4bb8a20f9ffb55e62, type: 2}
+  - {fileID: 11400000, guid: a5cec8b43d2e73540a2f9b57e4a8810c, type: 2}
   perkGameObjects:
   - {fileID: 7890587839991812584, guid: 8efe44c03bf445e4995e6813465a8d3a, type: 3}
   - {fileID: 3187159651447736569, guid: c6928b9a98b526a4788e0cbfda84dbc2, type: 3}
@@ -96775,6 +96776,7 @@ MonoBehaviour:
   - {fileID: 7270528533959753394, guid: d419547cf9f657841829e32d690ffe2c, type: 3}
   - {fileID: 8659131076110835283, guid: 2b447bf59d2e7444c87b65bdf5cee926, type: 3}
   - {fileID: 4887161630743398603, guid: 498de4478b1030143b879c5b49a14a64, type: 3}
+  - {fileID: 2607911195569571290, guid: 7ad5fd8913d97c346920440ac86a34d3, type: 3}
   statUpgrades:
   - {fileID: 11400000, guid: be5724a25b2b4234aa236c644d4588b5, type: 2}
   - {fileID: 11400000, guid: 6b10a8320a2f7334b803f6fcf67fa834, type: 2}

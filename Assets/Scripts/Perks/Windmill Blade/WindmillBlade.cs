@@ -37,7 +37,7 @@ public class WindmillBlade : MonoBehaviour
             }
             else
             {
-                Debug.Log("Eggbomb not found");
+                Debug.Log("Windmill Blade not found");
             }
         }
     }
