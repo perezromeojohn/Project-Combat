@@ -384,7 +384,6 @@ public class PerkManager : MonoBehaviour
 
         // active
         hotBarFrame.transform.Find("Icon").gameObject.SetActive(true);
-        // hotBarFrame.transform.Find("Cooldown").gameObject.SetActive(true);
         hotBarFrame.transform.Find("Level").gameObject.SetActive(true);
         hotBarFrame.transform.Find("Cooldown").gameObject.SetActive(true);
     }

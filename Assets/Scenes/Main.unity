@@ -41736,6 +41736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
   characterConfig: {fileID: 11400000, guid: 48be89b419dd42d488022b363601dae4, type: 2}
+  perkManager: {fileID: 1773679504}
   moveDirection: {x: 0, y: 0, z: 0}
   virtualCamera: {fileID: 354113241}
   rollFrame: {fileID: 1962156354}
@@ -79517,7 +79518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -75.538086}
+  m_AnchoredPosition: {x: 0, y: -75.538055}
   m_SizeDelta: {x: 0, y: -151.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1623665700

@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Player Stats")]
     public PlayerStats playerStats;
     public CharacterConfig characterConfig;
+    public PerkManager perkManager;
 
     [Header("Player Movement")]
     private Rigidbody2D rb;
@@ -52,6 +53,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         rollTimer = 1f; // Initialize the Dodge Roll cooldown timer
+        Invoke("AddPerkToPlayer", 0.1f);
     }
 
     void Awake()
@@ -247,5 +249,11 @@ public class CharacterMovement : MonoBehaviour
             damageTaken = 0f;
             isHit = false;
         }
+    }
+
+    // for .2 sec, add the perk
+    void AddPerkToPlayer()
+    {
+        perkManager.AddPerkToPlayer(characterConfig.initialPerk);
     }
 }

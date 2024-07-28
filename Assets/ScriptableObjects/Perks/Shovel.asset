@@ -21,3 +21,4 @@ MonoBehaviour:
   - Fires level 4
   - Fires level 5
   perkCooldown: 2
+  uniquePerk: 1

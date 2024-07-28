@@ -7,7 +7,7 @@ public class Shovel : MonoBehaviour
     private PerkManager perkManager;
     public Perks perk;
 
-    [Header("Fish Missile Components")]
+    [Header("Shovel Components")]
     private float skillProjectile = 3;
     private float skillDamage = 10;
     private float cooldown = 0;
