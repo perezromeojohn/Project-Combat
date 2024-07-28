@@ -8,15 +8,16 @@ public class Shovel : MonoBehaviour
     public Perks perk;
 
     [Header("Fish Missile Components")]
-    public float skillProjectile = 3;
+    private float skillProjectile = 3;
     private float skillDamage = 10;
     private float cooldown = 0;
     private float calculatedDamage;
     public float damageMultiplier = 1.2f;
-    private float maxDistance = 1f;
+    private float maxDistance = .5f;
     private float maxSpeedMultiplier = 3f;
     public float speedIncreaseRate = 1f;
     public float travelDuration = .2f;
+    public bool inverseSpawn = false; // Set to true to enable inverse spawn
     private SkillCooldown cooldownScript;
     public GameObject projectilePrefab;
     private Rigidbody2D playerRb;
@@ -59,16 +60,17 @@ public class Shovel : MonoBehaviour
         switch(skillLevel)
         {
             case 2:
-                skillProjectile = 5;
                 break;
             case 3:
-                skillProjectile = 7;
+                skillProjectile = 5;
+                maxDistance = .7f;
                 break;
             case 4:
-                skillProjectile = 9;
+                inverseSpawn = true;
+                maxDistance = 1f;
                 break;
             case 5:
-                skillProjectile = 11;
+                skillProjectile = 7;
                 break;
         }
         CastSkill(Mathf.Floor(calculatedDamage), skillProjectile);
@@ -102,6 +104,7 @@ public class Shovel : MonoBehaviour
             float currentAngle = startAngle + (i * adjustedAngleSpread);
             Vector2 rotatedDirection = new Vector2(Mathf.Cos(currentAngle), Mathf.Sin(currentAngle));
 
+            // Normal projectile
             GameObject shovel = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             ShovelAttack shovelProjectile = shovel.GetComponent<ShovelAttack>();
             GameObject shovelProjectileSpriteRenderer = shovel.transform.GetChild(0).gameObject;
@@ -110,12 +113,30 @@ public class Shovel : MonoBehaviour
             float rotationAngle = currentAngle * Mathf.Rad2Deg - 45;
             shovelProjectileSpriteRenderer.transform.rotation = Quaternion.Euler(0, 0, rotationAngle);
 
-            // Use the same spread angle but adjust the distance
             Vector2 spawnPosition = (Vector2)transform.position + rotatedDirection * adjustedMaxDistance;
 
-            LeanTween.move(shovel, spawnPosition, 1f)
+            LeanTween.move(shovel, spawnPosition, .5f)
                 .setEaseOutCirc()
                 .setOnComplete(() => StartCoroutine(ReturnToPlayer(shovel.transform.position, shovel)));
+
+            // Inverse projectile if inverseSpawn is true
+            if (inverseSpawn)
+            {
+                Vector2 inverseDirection = -rotatedDirection;
+                GameObject inverseShovel = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                ShovelAttack inverseShovelProjectile = inverseShovel.GetComponent<ShovelAttack>();
+                GameObject inverseShovelProjectileSpriteRenderer = inverseShovel.transform.GetChild(0).gameObject;
+                inverseShovelProjectile.damage = damage;
+
+                float inverseRotationAngle = currentAngle * Mathf.Rad2Deg + 135;
+                inverseShovelProjectileSpriteRenderer.transform.rotation = Quaternion.Euler(0, 0, inverseRotationAngle);
+
+                Vector2 inverseSpawnPosition = (Vector2)transform.position + inverseDirection * adjustedMaxDistance;
+
+                LeanTween.move(inverseShovel, inverseSpawnPosition, .5f)
+                    .setEaseOutCirc()
+                    .setOnComplete(() => StartCoroutine(ReturnToPlayer(inverseShovel.transform.position, inverseShovel)));
+            }
 
             yield return new WaitForSeconds(delayBetweenShovels);
         }
