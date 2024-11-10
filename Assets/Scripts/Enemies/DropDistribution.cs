@@ -20,7 +20,7 @@ public class DropDistribution : MonoBehaviour
         var pos = transform.position;
         var randomX = Random.Range(-.1f, .1f);
         var randomY = Random.Range(-.1f, .1f);
-        int dropChance = Random.Range(0, 100);
+        int dropChance = Random.Range(0, 500);
         if (dropChance <= itemDropPercentage)
         {
             if (drops.Length == 0)
