@@ -10,7 +10,7 @@ public class EggBomb : MonoBehaviour
 
     [Header("Egg Bomb Components")]
     private int skillProjectile = 1;
-    private float skillDamage = 10;
+    private readonly float skillDamage = 10;
     private float cooldown = 0;
     private float calculatedDamage;
     public float damageMultiplier = 1.2f;
@@ -46,9 +46,21 @@ public class EggBomb : MonoBehaviour
     {
         // Calculate the damage multiplier based on the skill level
         float damageMultiplier = 1f + (0.2f * (skillLevel - 1));
-
         // Calculate the damage using the base damage and the calculated damage multiplier
         calculatedDamage = skillDamage * damageMultiplier;
+
+        // Add the player's physical damage to the calculated damage
+        float playerPhysicalDamage = perkManager.inGamePlayerStats.physicalDamage;
+        calculatedDamage += playerPhysicalDamage;
+
+        // Calculate critical hit
+        float critChance = perkManager.inGamePlayerStats.critChance;
+        float critDamage = perkManager.inGamePlayerStats.critDamage;
+        if (Random.value <= critChance)
+        {
+            calculatedDamage *= critDamage;
+            Debug.Log("Critical hit!");
+        }
 
         // Additional logic for other properties based on the skill level
         switch(skillLevel)
@@ -83,10 +95,8 @@ public class EggBomb : MonoBehaviour
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             EggLob eggLob = projectile.GetComponent<EggLob>();
             EggAnim eggAnim = projectile.transform.GetChild(0).GetComponent<EggAnim>();
-
             eggAnim.damage = damage;
             eggLob.defaultRandomRange = projRange;
-
             yield return new WaitForSeconds(delayBetweenProjectiles);
         }
     }

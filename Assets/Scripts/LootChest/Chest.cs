@@ -62,9 +62,13 @@ public class Chest : MonoBehaviour
                 {
                     playerStats.magnetRange += playerStats.magnetRange * chosenStat.baseIncreaseAmount;
                 }
-                else if (chosenStat.statName == "Magic Damage")
+                else if (chosenStat.statName == "Max Health")
                 {
-                    playerStats.magicDamage += playerStats.magicDamage * chosenStat.baseIncreaseAmount;
+                    playerStats.maxHealth += playerStats.maxHealth * chosenStat.baseIncreaseAmount;
+                }
+                else if (chosenStat.statName == "Luck")
+                {
+                    playerStats.luck += playerStats.luck * chosenStat.baseIncreaseAmount;
                 }
                 else if (chosenStat.statName == "Physical Damage")
                 {
@@ -77,18 +81,6 @@ public class Chest : MonoBehaviour
                 else if (chosenStat.statName == "Crit Damage")
                 {
                     playerStats.critDamage += playerStats.critDamage * chosenStat.baseIncreaseAmount;
-                }
-                else if (chosenStat.statName == "Knockback Strength")
-                {
-                    playerStats.knockbackStrength += playerStats.knockbackStrength * chosenStat.baseIncreaseAmount;
-                }
-                else if (chosenStat.statName == "Roll Speed")
-                {
-                    playerStats.rollSpeed += playerStats.rollSpeed * chosenStat.baseIncreaseAmount;
-                }
-                else if (chosenStat.statName == "Roll Cooldown")
-                {
-                    playerStats.rollCooldown += playerStats.rollCooldown * chosenStat.baseIncreaseAmount;
                 }
             }
         }

@@ -15,10 +15,7 @@ MonoBehaviour:
   movementSpeed: 1
   maxHealth: 12
   magnetRange: 0.3
-  damage: 5
+  physicalDamage: 3
+  luck: 0
   critChance: 20
   critDamage: 12
-  attackSpeed: 1
-  knockbackStrength: 8
-  rollSpeed: 5
-  rollCooldown: 1

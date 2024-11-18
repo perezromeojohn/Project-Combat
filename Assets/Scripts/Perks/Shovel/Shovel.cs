@@ -56,6 +56,19 @@ public class Shovel : MonoBehaviour
         // Calculate the damage using the base damage and the calculated damage multiplier
         calculatedDamage = skillDamage * damageMultiplier;
 
+        // Add the player's physical damage to the calculated damage
+        float playerPhysicalDamage = perkManager.inGamePlayerStats.physicalDamage;
+        calculatedDamage += playerPhysicalDamage;
+
+        // Calculate critical hit
+        float critChance = perkManager.inGamePlayerStats.critChance;
+        float critDamage = perkManager.inGamePlayerStats.critDamage;
+        if (Random.value <= critChance)
+        {
+            calculatedDamage *= critDamage;
+            Debug.Log("Critical hit!");
+        }
+
         // Additional logic for other properties based on the skill level
         switch(skillLevel)
         {

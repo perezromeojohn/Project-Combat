@@ -351,9 +351,6 @@ public class PerkManager : MonoBehaviour
             case "Physical Damage":
                 inGamePlayerStats.physicalDamage += statUpgrade.baseIncreaseAmount;
                 break;
-            case "Magic Damage":
-                inGamePlayerStats.magicDamage += statUpgrade.baseIncreaseAmount;
-                break;
             case "Crit Chance":
                 inGamePlayerStats.critChance += statUpgrade.baseIncreaseAmount;
                 break;
@@ -365,6 +362,9 @@ public class PerkManager : MonoBehaviour
                 break;
             case "Movement Speed":
                 inGamePlayerStats.movementSpeed += statUpgrade.baseIncreaseAmount;
+                break;
+            case "Luck":
+                inGamePlayerStats.luck += statUpgrade.baseIncreaseAmount;
                 break;
             // Add other stats as needed
         }

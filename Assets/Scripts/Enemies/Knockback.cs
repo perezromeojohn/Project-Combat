@@ -13,7 +13,7 @@ public class Knockback : MonoBehaviour
 
     private void Start()
     {
-        strength = playerStats.knockbackStrength;
+        strength = .3f;
         rb = GetComponent<Rigidbody2D>();
         // find with tag
         player = GameObject.FindWithTag("Player");

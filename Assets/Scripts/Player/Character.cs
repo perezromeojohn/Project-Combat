@@ -179,9 +179,9 @@ public class CharacterMovement : MonoBehaviour
         {
             if (moveDirection == Vector3.zero) return; // If moveDirection is zero, return
             rollDirection = moveDirection;
-            rollSpeed = playerStats.rollSpeed;
+            rollSpeed = 5f;
             state = State.Rolling;
-            rollTimer = playerStats.rollCooldown; // Set the Dodge Roll cooldown timer
+            rollTimer = 1; // Set the Dodge Roll cooldown timer
             isInvincible = true;
             GameObject dashSmokeInstance = Instantiate(dashSmoke, transform.position, Quaternion.identity);
             dashSmokeInstance.transform.SetParent(debris.transform);

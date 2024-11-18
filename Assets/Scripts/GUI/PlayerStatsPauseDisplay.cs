@@ -33,7 +33,7 @@ public class PlayerStatsPauseDisplay : MonoBehaviour
                         valueText.text = playerStats.physicalDamage.ToString();
                         break;
                     case 4:
-                        valueText.text = playerStats.magicDamage.ToString() + "%";
+                        valueText.text = playerStats.luck.ToString();
                         break;
                     case 5:
                         valueText.text = playerStats.critChance.ToString() + "%";
@@ -41,16 +41,6 @@ public class PlayerStatsPauseDisplay : MonoBehaviour
                     case 6:
                         valueText.text = playerStats.critDamage.ToString() + "%";
                         break;
-                    case 7:
-                        valueText.text = playerStats.knockbackStrength.ToString();
-                        break;
-                    case 8:
-                        valueText.text = playerStats.rollSpeed.ToString();
-                        break;
-                    case 9:
-                        valueText.text = playerStats.rollCooldown.ToString();
-                        break;
-                    // Add cases for other stats as needed
                 }
             }
         }
