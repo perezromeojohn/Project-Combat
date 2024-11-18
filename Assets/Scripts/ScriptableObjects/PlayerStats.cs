@@ -12,5 +12,5 @@ public class PlayerStats : ScriptableObject
     public float physicalDamage;
     public float luck;
     public float critChance;
-    public float critDamage;
+    public float rollCooldown;
 }

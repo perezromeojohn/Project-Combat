@@ -96,13 +96,11 @@ public class PerkManager : MonoBehaviour
         if (playerPerks.ContainsKey(perk.perkName))
         {
             perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = perk.perkDescriptions[playerPerks[perk.perkName]];
-            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "";
             float nextLevel = playerPerks[perk.perkName] + 1;
-            perkButtons[index].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. " + nextLevel; 
+            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "Lvl. " + nextLevel; 
         } else {
             perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = perk.perkDescriptions[0];
-            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "<color=#FFB4A0>Cooldown: </color><color=#FFB023><b>" + perk.perkCooldown + "</b></color> <color=#FFFFFF>seconds</color>";
-            perkButtons[index].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. 1";
+            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "Lvl. 1";
         }
         perkButtons[index].transform.GetChild(6).GetComponent<Image>().sprite = Resources.Load<Sprite>("Perk Icons/" + perk.perkDisplayName) as Sprite;
         perkButtons[index].name = perk.perkName;
@@ -111,22 +109,38 @@ public class PerkManager : MonoBehaviour
     void BindStat(StatUpgrade statUpgrade, int index)
     {
         perkButtons[index].transform.GetChild(9).GetComponent<TextMeshProUGUI>().text = statUpgrade.statDisplayName;
-        if (playerPerks.ContainsKey(statUpgrade.statName))
+        float increaseAmount = statUpgrade.baseIncreaseAmount;
+        string statName = statUpgrade.statName;
+    
+        if (playerPerks.ContainsKey(statName))
         {
-            int currentLevel = playerPerks[statUpgrade.statName];
-            perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = statUpgrade.statDescriptions[currentLevel];
-            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "";
+            int currentLevel = playerPerks[statName];
+            float currentValue = increaseAmount * (currentLevel + 1);
+            if (statName == "Roll Cooldown")
+            {
+                perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = $"Decrease current cooldown roll time by {currentValue}";
+            }
+            else
+            {
+                perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = $"Increase current {statName} by {currentValue}";
+            }
             float nextLevel = currentLevel + 1;
-            perkButtons[index].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. " + nextLevel;
+            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "Lvl. " + nextLevel;
         }
         else
         {
-            perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = statUpgrade.statDescriptions[0];
-            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "<color=#FFB4A0>Increase: </color><color=#FFB023><b>" + statUpgrade.baseIncreaseAmount + "</b></color>";
-            perkButtons[index].transform.GetChild(12).GetComponent<TextMeshProUGUI>().text = "Lvl. 1";
+            if (statName == "Roll Cooldown")
+            {
+                perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = $"Decrease current cooldown roll time by {increaseAmount}";
+            }
+            else
+            {
+                perkButtons[index].transform.GetChild(10).GetComponent<TextMeshProUGUI>().text = $"Increase current {statName} by {increaseAmount}";
+            }
+            perkButtons[index].transform.GetChild(11).GetComponent<TextMeshProUGUI>().text = "Lvl. 1";
         }
         perkButtons[index].transform.GetChild(6).GetComponent<Image>().sprite = Resources.Load<Sprite>("Stat Icons/" + statUpgrade.statDisplayName) as Sprite;
-        perkButtons[index].name = statUpgrade.statName;
+        perkButtons[index].name = statName;
     }
 
     void BindButtons()
@@ -354,8 +368,8 @@ public class PerkManager : MonoBehaviour
             case "Crit Chance":
                 inGamePlayerStats.critChance += statUpgrade.baseIncreaseAmount;
                 break;
-            case "Crit Damage":
-                inGamePlayerStats.critDamage += statUpgrade.baseIncreaseAmount;
+            case "Roll Cooldown":
+                inGamePlayerStats.rollCooldown -= statUpgrade.baseIncreaseAmount;
                 break;
             case "Magnet Range":
                 inGamePlayerStats.magnetRange += statUpgrade.baseIncreaseAmount;

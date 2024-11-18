@@ -17,5 +17,5 @@ MonoBehaviour:
   magnetRange: 0.3
   physicalDamage: 3
   luck: 0
-  critChance: 20
-  critDamage: 12
+  critChance: 10
+  rollCooldown: 1

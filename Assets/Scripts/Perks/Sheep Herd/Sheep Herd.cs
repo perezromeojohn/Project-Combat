@@ -44,6 +44,20 @@ public class SheepHerd : MonoBehaviour
     {
         float damageMultiplier = 1f + (0.2f * (skillLevel - 1));
         calculatedDamage = skillDamage * damageMultiplier;
+
+        // Add the player's physical damage to the calculated damage
+        float playerPhysicalDamage = perkManager.inGamePlayerStats.physicalDamage;
+        calculatedDamage += playerPhysicalDamage;
+
+        // Calculate critical hit
+        float critChance = perkManager.inGamePlayerStats.critChance;
+        float randomValue = Random.value * 100;
+        if (randomValue <= critChance)
+        {
+            calculatedDamage *= 2;
+            Debug.Log("Critical hit!");
+        }
+
         switch(skillLevel)
         {
             case 2:

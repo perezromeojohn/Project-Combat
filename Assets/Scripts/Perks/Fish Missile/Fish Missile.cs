@@ -55,10 +55,10 @@ public class FishMissile : MonoBehaviour
 
         // Calculate critical hit
         float critChance = perkManager.inGamePlayerStats.critChance;
-        float critDamage = perkManager.inGamePlayerStats.critDamage;
-        if (Random.value <= critChance)
+        float randomValue = Random.value * 100;
+        if (randomValue <= critChance)
         {
-            calculatedDamage *= critDamage;
+            calculatedDamage *= 2;
             Debug.Log("Critical hit!");
         }
 

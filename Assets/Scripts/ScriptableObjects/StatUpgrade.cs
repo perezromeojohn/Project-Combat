@@ -8,6 +8,5 @@ public class StatUpgrade : ScriptableObject
     [Header("Stat Information")]
     public string statName;
     public string statDisplayName;
-    public string[] statDescriptions;
     public float baseIncreaseAmount;
 }

@@ -50,6 +50,19 @@ public class WindmillBlade : MonoBehaviour
         // Calculate the damage using the base damage and the calculated damage multiplier
         calculatedDamage = skillDamage * damageMultiplier;
 
+        // Add the player's physical damage to the calculated damage
+        float playerPhysicalDamage = perkManager.inGamePlayerStats.physicalDamage;
+        calculatedDamage += playerPhysicalDamage;
+
+        // Calculate critical hit
+        float critChance = perkManager.inGamePlayerStats.critChance;
+        float randomValue = Random.value * 100;
+        if (randomValue <= critChance)
+        {
+            calculatedDamage *= 2;
+            Debug.Log("Critical hit!");
+        }
+
         // Additional logic for other properties based on the skill level
         switch(skillLevel)
         {

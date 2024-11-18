@@ -10,14 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb1c799a9f3765842adde7a1afafb767, type: 3}
-  m_Name: Quench
+  m_Name: Rolling Cog
   m_EditorClassIdentifier: 
-  statName: Crit Damage
-  statDisplayName: Quench
-  statDescriptions:
-  - dog
-  - dogg
-  - doggeriones
-  - fuckoers
-  - yaesiur
-  baseIncreaseAmount: 20
+  statName: Roll Cooldown
+  statDisplayName: Rolling Cog
+  baseIncreaseAmount: 0.1

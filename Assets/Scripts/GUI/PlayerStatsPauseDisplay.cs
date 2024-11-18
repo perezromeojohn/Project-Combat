@@ -39,7 +39,7 @@ public class PlayerStatsPauseDisplay : MonoBehaviour
                         valueText.text = playerStats.critChance.ToString() + "%";
                         break;
                     case 6:
-                        valueText.text = playerStats.critDamage.ToString() + "%";
+                        valueText.text = playerStats.rollCooldown.ToString("F1");
                         break;
                 }
             }

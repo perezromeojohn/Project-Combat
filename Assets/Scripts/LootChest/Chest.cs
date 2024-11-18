@@ -78,9 +78,9 @@ public class Chest : MonoBehaviour
                 {
                     playerStats.critChance += playerStats.critChance * chosenStat.baseIncreaseAmount;
                 }
-                else if (chosenStat.statName == "Crit Damage")
+                else if (chosenStat.statName == "Roll Cooldown")
                 {
-                    playerStats.critDamage += playerStats.critDamage * chosenStat.baseIncreaseAmount;
+                    playerStats.rollCooldown += playerStats.rollCooldown * chosenStat.baseIncreaseAmount;
                 }
             }
         }

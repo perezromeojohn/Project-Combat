@@ -45,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
         orthographicSize.Active = false;
         timescaleModifier.Active = false;
 
-        Debug.Log(maxHealth);
+        // Debug.Log(maxHealth);
     }
 
     public void UpdateMaxHealth(float addedHealth) // update health as soon as player upgrades health
