@@ -15,6 +15,7 @@ public class CharacterMovement : MonoBehaviour
     public PlayerStats playerStats;
     public CharacterConfig characterConfig;
     public PerkManager perkManager;
+    public KillAllMobs killAllMobs;
 
     [Header("Player Movement")]
     private Rigidbody2D rb;
@@ -236,6 +237,7 @@ public class CharacterMovement : MonoBehaviour
         hair.SetActive(false);
         playerAnimator.SetBool("isDead", true);
         isDead = true;
+        killAllMobs.KillAll();
     }
 
     IEnumerator PlayerHit()

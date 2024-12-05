@@ -32904,8 +32904,8 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-        RemapOrthographicSizeZero: 1.4
-        RemapOrthographicSizeOne: 1.2
+        RemapOrthographicSizeZero: 1.2
+        RemapOrthographicSizeOne: 1.4
     - rid: 5079079129168740372
       type: {class: MMF_Events, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
@@ -60082,6 +60082,7 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: d14514434d084a84db8a21151cd9074f, type: 2}
   characterConfig: {fileID: 11400000, guid: 48be89b419dd42d488022b363601dae4, type: 2}
   perkManager: {fileID: 1773679504}
+  killAllMobs: {fileID: 37897778}
   moveDirection: {x: 0, y: 0, z: 0}
   virtualCamera: {fileID: 354113241}
   rollFrame: {fileID: 1962156354}
@@ -60122,18 +60123,6 @@ MonoBehaviour:
       - m_Target: {fileID: 798174917}
         m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
         m_MethodName: DeathAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 37897778}
-        m_TargetAssemblyTypeName: KillAllMobs, Assembly-CSharp
-        m_MethodName: KillAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

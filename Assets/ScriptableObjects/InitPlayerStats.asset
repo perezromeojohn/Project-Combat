@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: InitPlayerStats
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  maxHealth: 12
+  maxHealth: 2
   magnetRange: 0.3
   physicalDamage: 3
   luck: 0
