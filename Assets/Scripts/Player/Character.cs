@@ -231,7 +231,6 @@ public class CharacterMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         gameOver.UpdateTexts();
-        transform.position = new Vector3(transform.position.x, 50f, transform.position.z);
         virtualCamera.m_Lens.OrthographicSize = 0.5f;
         virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineFramingTransposer>().m_ScreenY = 0.4f;
         hair.SetActive(false);

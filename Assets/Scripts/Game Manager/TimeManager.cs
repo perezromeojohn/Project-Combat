@@ -11,6 +11,7 @@ public class TimeManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject perkScreen;
     public GameObject topFrame;
+    public Animator transitionAnimator;
 
     private bool gameEnded = false;
 
@@ -84,7 +85,7 @@ public class TimeManager : MonoBehaviour
 
     public void Retry()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        transitionAnimator.SetBool("retry", true);
     }
 
     private void EnsurePause()
