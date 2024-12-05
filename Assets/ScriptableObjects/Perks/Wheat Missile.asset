@@ -16,8 +16,9 @@ MonoBehaviour:
   perkDisplayName: Wheat Missile
   perkDescriptions:
   - Call down the might of the Wheat God and call for an airstrike
-  - Fires level 2
-  - Fires level 3
-  - Fires level 4
-  - Fires level 5
+  - 'Slightly increases the range '
+  - Adds 2 more wheat projectile
+  - 'Slightly increases the range '
+  - Adds 2 more wheat projectile
   perkCooldown: 2
+  uniquePerk: 0

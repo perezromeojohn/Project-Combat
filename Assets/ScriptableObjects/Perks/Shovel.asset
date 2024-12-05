@@ -15,10 +15,10 @@ MonoBehaviour:
   perkName: Shovel
   perkDisplayName: Shovel
   perkDescriptions:
-  - Shovel
-  - Fires level 2
-  - Fires level 3
-  - Fires level 4
-  - Fires level 5
+  - Gab's trusty tool. Fires 3 shovels to the direction of your cursor
+  - Slightly increases the damage
+  - Adds 2 more shovel projectiles and slightly extends its range
+  - Fires more shovel to the opposite of the player cursor direction
+  - Adds 2 more shovel projectiles
   perkCooldown: 2
   uniquePerk: 1

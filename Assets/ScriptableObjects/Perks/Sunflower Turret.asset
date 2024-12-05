@@ -16,8 +16,10 @@ MonoBehaviour:
   perkDisplayName: Sunflower Turret
   perkDescriptions:
   - Summon a Sunflower that shoots a rotating flower
-  - Fires level 2
-  - Fires level 3
-  - Fires level 4
-  - Fires level 5
+  - 'Adds 1 more sunflower head projectile '
+  - Adds 1 more sunflower head projectile and slightly increases speed
+  - Adds 1 more sunflower head projectile and slightly increases speed
+  - Adds 1 more sunflower head projectile and slightly increases speed. Increases
+    turret life span
   perkCooldown: 25
+  uniquePerk: 0

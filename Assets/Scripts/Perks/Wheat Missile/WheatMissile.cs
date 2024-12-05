@@ -9,7 +9,7 @@ public class WheatMissile : MonoBehaviour
     private SkillCooldown cooldownScript;
 
     [Header("Wheat Missile Components")]
-    private int skillProjectile = 5;
+    private int skillProjectile = 3;
     private float skillDamage = 10;
     private float cooldown = 0;
     private float calculatedDamage;
@@ -70,13 +70,13 @@ public class WheatMissile : MonoBehaviour
                 range = .5f;
                 break;
             case 3:
-                skillProjectile = 7;
+                skillProjectile = 5;
                 break;
             case 4:
                 range = .7f;
                 break;
             case 5:
-                skillProjectile = 10;
+                skillProjectile = 7;
                 break;
         }
         CastSkill(Mathf.Floor(calculatedDamage), skillProjectile, range);

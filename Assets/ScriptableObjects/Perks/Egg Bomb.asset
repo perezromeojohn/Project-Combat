@@ -16,8 +16,9 @@ MonoBehaviour:
   perkDisplayName: Egg Bomb
   perkDescriptions:
   - Summon eggs that explode upon impact
-  - Fires level 2
-  - Fires level 3
-  - Fires level 4
-  - Fires level 5
+  - Slightly increases the range of the Egg
+  - Adds 1 more projectile
+  - Slightly increases the range of the Egg and adds 1 more projectile
+  - Adds 1 more projectile. Totalling of 4.
   perkCooldown: 3
+  uniquePerk: 0

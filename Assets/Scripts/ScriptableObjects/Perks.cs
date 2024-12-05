@@ -13,5 +13,4 @@ public class Perks : ScriptableObject
     public string[] perkDescriptions;
     public float perkCooldown;
     public bool uniquePerk;
-
 }

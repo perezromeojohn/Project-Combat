@@ -14,10 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statName: Movement Speed
   statDisplayName: Justin's Boots
-  statDescriptions:
-  - dog
-  - dogg
-  - doggeriones
-  - fuckoers
-  - yaesiur
-  baseIncreaseAmount: 0.5
+  baseIncreaseAmount: 0.1

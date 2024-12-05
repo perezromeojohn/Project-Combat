@@ -16,8 +16,10 @@ MonoBehaviour:
   perkDisplayName: Poison Cloud
   perkDescriptions:
   - Consume a toadstool mushroom to breathe out a cloud of poison
-  - Fires level 2
-  - Fires level 3
-  - Fires level 4
-  - Fires level 5
+  - Slightly increases the damage per each cloud
+  - Slightly increases the range of the Poison Cloud
+  - Slightly increases the damage per each cloud
+  - Slightly increases the damage, increases range, and extended the duration of
+    the Poison Cloud
   perkCooldown: 10
+  uniquePerk: 0

@@ -15,10 +15,10 @@ MonoBehaviour:
   perkName: FishMissile
   perkDisplayName: Fish Missile
   perkDescriptions:
-  - Fishy fish fucks
-  - Fires level 2
-  - Fires level 3
-  - Fires level 4
-  - Fires level 5
-  isSkill: 1
+  - Fires a single Fish Missile towards your cursor
+  - Fish Missile can pierce by 1
+  - Adds 1 more Fish Missile projectile
+  - Fish Missile can pierce by 2
+  - Adds 1 more Fish Missile projectile and can now pierce by 3
   perkCooldown: 3
+  uniquePerk: 0

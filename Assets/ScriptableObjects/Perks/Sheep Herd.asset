@@ -17,8 +17,9 @@ MonoBehaviour:
   perkDescriptions:
   - From Gab's Farms, summon a herd of sheep at the nearest enemy and rams them,
     dealing damage
-  - Fires level 2
-  - Fires level 3
-  - Fires level 4
-  - Fires level 5
+  - Adds one more sheep to the herd. Totalling 2
+  - Adds one more sheep to the herd. Totalling 3
+  - Adds one more sheep to the herd. Totalling 4
+  - Adds one more sheep to the herd. Totalling 5
   perkCooldown: 5
+  uniquePerk: 0

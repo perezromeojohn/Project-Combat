@@ -17,8 +17,9 @@ MonoBehaviour:
   perkDescriptions:
   - From Gab's Farms, summon a carrot that rotates around you and deals damage to
     whatever it hits
-  - Fires level 2
-  - Fires level 3
-  - Fires level 4
-  - Fires level 5
+  - Slightly increases the rotation speed of the carrot
+  - Adds one more carrot
+  - Slightly increases the rotation speed of the carrot
+  - Significantly increases the rotation speed of the carrot
   perkCooldown: 5
+  uniquePerk: 0

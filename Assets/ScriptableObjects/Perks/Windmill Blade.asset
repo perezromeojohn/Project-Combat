@@ -16,8 +16,9 @@ MonoBehaviour:
   perkDisplayName: Windmill Blade
   perkDescriptions:
   - From Gab's Farms, throw a spinning Windmill Blade like a boomerang
-  - Fires level 2
-  - Fires level 3
-  - Fires level 4
-  - Fires level 5
+  - Slightly increases the damage
+  - Adds 1 more windmill blade projectile
+  - Adds 1 more windmill blade projectile and increases the range
+  - Adds 1 more windmill blade projectile
   perkCooldown: 3
+  uniquePerk: 0
