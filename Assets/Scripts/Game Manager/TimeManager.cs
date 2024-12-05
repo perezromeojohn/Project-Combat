@@ -35,8 +35,6 @@ public class TimeManager : MonoBehaviour
                     if (isPaused)
                     {
                         ResumeGame();
-                        pauseScreen.SetActive(false);
-                        topFrame.SetActive(true);
                     }
                     else
                     {
@@ -80,6 +78,13 @@ public class TimeManager : MonoBehaviour
     {
         Time.timeScale = 1;
         isPaused = false;
+        pauseScreen.SetActive(false);
+        topFrame.SetActive(true);
+    }
+
+    public void Retry()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
     private void EnsurePause()
