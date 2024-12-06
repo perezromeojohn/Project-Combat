@@ -15,6 +15,7 @@ MonoBehaviour:
   sceneDatas_byGuid:
     keys:
     - fe305b3c01ba9e644a5470fce9dd9a24
+    - 69a97915892844849bb1024d2605a254
     values:
     - goDatas_byGlobalId:
         keys:
@@ -40,3 +41,9 @@ MonoBehaviour:
           iconNameOrGuid: Canvas Icon
         - colorIndex: 8
           iconNameOrGuid: StandaloneInputModule Icon
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-69a97915892844849bb1024d2605a254-1369172260-0
+        values:
+        - colorIndex: 9
+          iconNameOrGuid: 
