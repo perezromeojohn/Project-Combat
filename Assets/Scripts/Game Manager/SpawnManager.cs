@@ -48,9 +48,9 @@ public class SpawnManager : MonoBehaviour
         spawnRules.Add(new SpawnRule { spawnTime = 150, batchSpawnAmount = 15, enemyTypes = new List<string> { "Grizzly", "Yellow Skellie" } });
         spawnRules.Add(new SpawnRule { spawnTime = 180, batchSpawnAmount = 15, enemyTypes = new List<string> { "Bandit Gobbie", "Red Gobbie" } });
         spawnRules.Add(new SpawnRule { spawnTime = 240, batchSpawnAmount = 20, enemyTypes = new List<string> { "Boo" } });
-        spawnRules.Add(new SpawnRule { spawnTime = 360, batchSpawnAmount = 20, enemyTypes = new List<string> { "Trunky", "Skellie" } });
-        spawnRules.Add(new SpawnRule { spawnTime = 420, batchSpawnAmount = 20, enemyTypes = new List<string> { "Gobbie", "Skellie", "Trunky", "Blue Skellie", "Boo" } });
-        spawnRules.Add(new SpawnRule { spawnTime = 500, batchSpawnAmount = 30, enemyTypes = new List<string> { "Grizzly", "Skellie", "Trunky", "Blue Skellie", "Boo" } });
+        spawnRules.Add(new SpawnRule { spawnTime = 320, batchSpawnAmount = 20, enemyTypes = new List<string> { "Trunky", "Skellie" } });
+        spawnRules.Add(new SpawnRule { spawnTime = 360, batchSpawnAmount = 20, enemyTypes = new List<string> { "Gobbie", "Skellie", "Trunky", "Blue Skellie", "Boo" } });
+        spawnRules.Add(new SpawnRule { spawnTime = 420, batchSpawnAmount = 30, enemyTypes = new List<string> { "Grizzly", "Skellie", "Trunky", "Blue Skellie", "Boo" } });
 
         if (playArea != null)
         {

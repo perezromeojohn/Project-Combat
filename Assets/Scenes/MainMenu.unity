@@ -4784,7 +4784,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 20.55
   m_fontSizeMax: 57.44
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -9186,6 +9186,14 @@ PrefabInstance:
     - target: {fileID: 9144540493384991192, guid: 09ee501c197b44229b8de422eb1cbfc3, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 12.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144540493384991192, guid: 09ee501c197b44229b8de422eb1cbfc3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.6924707
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144540493384991192, guid: 09ee501c197b44229b8de422eb1cbfc3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9144540493384991193, guid: 09ee501c197b44229b8de422eb1cbfc3, type: 3}
       propertyPath: m_Materials.Array.size

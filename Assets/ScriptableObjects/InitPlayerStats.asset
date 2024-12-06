@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babe4eda6b6ef6345a9f772287e62708, type: 3}
   m_Name: InitPlayerStats
   m_EditorClassIdentifier: 
-  movementSpeed: 0.7
+  movementSpeed: 0.8
   maxHealth: 12
   magnetRange: 0.3
   physicalDamage: 3

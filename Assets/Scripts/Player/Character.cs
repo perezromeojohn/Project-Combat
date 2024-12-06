@@ -180,7 +180,7 @@ public class CharacterMovement : MonoBehaviour
         {
             if (moveDirection == Vector3.zero) return; // If moveDirection is zero, return
             rollDirection = moveDirection;
-            rollSpeed = 5f;
+            rollSpeed = 4f;
             state = State.Rolling;
             rollTimer = playerStats.rollCooldown;
             isInvincible = true;
