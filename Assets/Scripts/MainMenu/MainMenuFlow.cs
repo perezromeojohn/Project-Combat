@@ -6,6 +6,7 @@ public class MainMenuFlow : MonoBehaviour
 {
     public bool canPressSpaceBar = false;
     public Animator mainMenuAnimator;
+    public AudioSource startSound;
 
     // Update is called once per frame
     void Update()
@@ -14,6 +15,7 @@ public class MainMenuFlow : MonoBehaviour
         {
             mainMenuAnimator.SetBool("isSpaceBarPressed", true);
             canPressSpaceBar = false;
+            startSound.Play();
         }
     }
 
