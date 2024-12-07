@@ -11,6 +11,7 @@ public class RedGobbie : MonoBehaviour
     public EnemyStates currentState = EnemyStates.Moving;
     public GameObject projectile;
     private Rigidbody2D rb;
+    public AudioSource attackSound;
 
     void Start()
     {
@@ -103,6 +104,8 @@ public class RedGobbie : MonoBehaviour
     // animation events
     void SpawnProjectile()
     {
+        attackSound.pitch = Random.Range(0.8f, 1.2f);
+        attackSound.Play();
         GameObject projectileInstance = Instantiate(projectile, transform.position, Quaternion.identity);
         Vector2 direction = player.transform.position - transform.position;
         LeanTween.move(projectileInstance, (Vector2)transform.position + direction.normalized * 3, 3f)

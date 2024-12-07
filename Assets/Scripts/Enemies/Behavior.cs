@@ -37,7 +37,7 @@ public class Behavior : MonoBehaviour
     [Header("Enemy Hit Feedback")]
     public GameObject hitParticles;
     private DamageNumbers damageNumbers;
-
+    private AudioSource hitSound;
 
     private TimeManager timeManager;
     private float currentLevel = 1;
@@ -63,6 +63,9 @@ public class Behavior : MonoBehaviour
         {
             isHit = true;
             onHit.Invoke();
+            // play hit sound with random pitch
+            hitSound.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+            hitSound.Play();
             TakeDamage(damageTaken);
             damageNumbers.DamageValues(transform, damageTaken);
             // Instantiate(hitParticles, transform.position, Quaternion.identity);
@@ -92,6 +95,7 @@ public class Behavior : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform; // we are referencing the player's transform, not the last position of the player
         
         enemySprite = GetComponent<SpriteRenderer>();
+        hitSound = GetComponent<AudioSource>();
 
         gameObject.name = enemy.enemyName;
         // set mainEnemyHealthBar position to the healthbarUIOffset
