@@ -47,7 +47,7 @@ public class WheatProjectile : MonoBehaviour
             // Stop the wheat trail and play the explosion effect after a 1-second delay
             StartCoroutine(DelayBeforeExplosion());
             wheatTrail.Stop();
-            envorimentalCameraShakeFeedback.PlayFeedbacks();
+            // envorimentalCameraShakeFeedback.PlayFeedbacks();
             wheatImpactSound.pitch = Random.Range(0.8f, 1.2f);
             wheatImpactSound.Play();
         });
