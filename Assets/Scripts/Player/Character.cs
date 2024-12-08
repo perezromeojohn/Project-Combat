@@ -30,6 +30,7 @@ public class CharacterMovement : MonoBehaviour
     private State state;
     private float rollTimer;
     public GameObject dashSmoke;
+    public AudioSource dashSound;
 
     [Header("Player Animations")]
     [SerializeField] private SpriteRenderer characterSpriteRenderer; // Added character sprite renderer
@@ -186,6 +187,9 @@ public class CharacterMovement : MonoBehaviour
             isInvincible = true;
             GameObject dashSmokeInstance = Instantiate(dashSmoke, transform.position, Quaternion.identity);
             dashSmokeInstance.transform.SetParent(debris.transform);
+
+            dashSound.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+            dashSound.Play();
 
             // Flip the sprite renderer of dashSmoke based on the roll direction
             if (rollDirection.x > 0)

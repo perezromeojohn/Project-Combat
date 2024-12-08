@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using MoreMountains.Feedbacks;
 using TMPro;
 using UnityEngine;
