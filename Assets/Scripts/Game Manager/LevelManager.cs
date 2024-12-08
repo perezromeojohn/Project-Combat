@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public int currentLevel = 0;
     public int currentExperienceRequirement = 13;
     public int playerExperience = 0;
+    public AudioSource levelUpSound;
 
     [Header("GUI Stuff")]
     public TextMeshProUGUI levelText;
@@ -35,6 +36,7 @@ public class LevelManager : MonoBehaviour
     private void LevelUp()
     {
         currentLevel++;
+        levelUpSound.Play();
         currentExperienceRequirement = Mathf.RoundToInt(currentExperienceRequirement * experienceMultiplier);
         playerExperience = 0;
         perkManager.ShowAllPerkButtons();
