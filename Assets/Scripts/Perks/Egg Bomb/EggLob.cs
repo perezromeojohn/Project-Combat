@@ -14,6 +14,7 @@ public class EggLob : MonoBehaviour
 
     public float searchRadius = 1f;
     public float defaultRandomRange = 0.5f;
+    public AudioSource eggExplosionSound;
 
 
     private Vector3 targetPos;
@@ -86,6 +87,7 @@ public class EggLob : MonoBehaviour
         
         eggIcon.enabled = false;
         explode.SetActive(true);
+        eggExplosionSound.Play();
         trailEffect.Stop();
     }
 

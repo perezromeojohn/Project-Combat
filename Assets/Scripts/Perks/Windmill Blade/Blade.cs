@@ -14,6 +14,7 @@ public class Blade : MonoBehaviour
     public float damage = 0f;
     public float bladeSize = 1f;
     private Vector3 targetPosition;
+    public AudioSource bladeSound;
 
     private List<Collider2D> hitEnemies = new List<Collider2D>();
 
@@ -27,6 +28,9 @@ public class Blade : MonoBehaviour
 
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
         targetPosition = player.position + new Vector3(randomDirection.x, randomDirection.y, 0) * range;
+
+        bladeSound.pitch = Random.Range(0.8f, 1.2f);
+        bladeSound.Play();
 
         StartCoroutine(ThrowBoomerang());
         StartCoroutine(ResetHitEnemiesList());

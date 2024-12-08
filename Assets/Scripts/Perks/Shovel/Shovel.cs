@@ -21,6 +21,7 @@ public class Shovel : MonoBehaviour
     private SkillCooldown cooldownScript;
     public GameObject projectilePrefab;
     private Rigidbody2D playerRb;
+    public AudioSource shovelSound;
 
     void Start()
     {
@@ -48,8 +49,10 @@ public class Shovel : MonoBehaviour
         }
     }
     
-        void ActivateSkill(int skillLevel)
+    void ActivateSkill(int skillLevel)
     {
+        shovelSound.pitch = Random.Range(0.8f, 1.2f);
+        shovelSound.Play();
         // Calculate the damage multiplier based on the skill level
         float damageMultiplier = 1f + (0.2f * (skillLevel - 1));
     

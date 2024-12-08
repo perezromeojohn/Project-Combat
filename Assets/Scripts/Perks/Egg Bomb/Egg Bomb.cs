@@ -17,6 +17,7 @@ public class EggBomb : MonoBehaviour
     public GameObject projectilePrefab;
     public float delayBetweenProjectiles = 0.3f;
     public float range = 0.5f;
+    public AudioSource eggBombSound;
 
     void Start()
     {
@@ -92,6 +93,8 @@ public class EggBomb : MonoBehaviour
     {
         for (int i = 0; i < projectileCount; i++)
         {
+            eggBombSound.pitch = Random.Range(0.8f, 1.2f);
+            eggBombSound.Play();
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             EggLob eggLob = projectile.GetComponent<EggLob>();
             EggAnim eggAnim = projectile.transform.GetChild(0).GetComponent<EggAnim>();

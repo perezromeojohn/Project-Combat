@@ -16,6 +16,7 @@ public class FishMissile : MonoBehaviour
     private float pierce = 0;
     private SkillCooldown cooldownScript;
     public GameObject projectilePrefab;
+    public AudioSource fishMissileSound;
 
     void Start()
     {
@@ -43,6 +44,8 @@ public class FishMissile : MonoBehaviour
     
     void ActivateSkill(int skillLevel)
     {
+        fishMissileSound.pitch = Random.Range(0.8f, 1.2f);
+        fishMissileSound.Play();
         // Calculate the damage multiplier based on the skill level
         float damageMultiplier = 1f + (0.2f * (skillLevel - 1));
 
@@ -66,17 +69,18 @@ public class FishMissile : MonoBehaviour
         switch(skillLevel)
         {
             case 2:
-                pierce = 1;
-                break;
-            case 3:
-                skillProjectile = 2;
-                break;
-            case 4:
                 pierce = 2;
                 break;
-            case 5:
+            case 3:
                 skillProjectile = 3;
+                break;
+            case 4:
+                skillProjectile = 5;
                 pierce = 3;
+                break;
+            case 5:
+                skillProjectile = 7;
+                pierce = 200;
                 break;
         }
         CastSkill(Mathf.Floor(calculatedDamage), skillProjectile, pierce);

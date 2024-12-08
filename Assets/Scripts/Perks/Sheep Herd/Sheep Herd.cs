@@ -15,6 +15,7 @@ public class SheepHerd : MonoBehaviour
     private float calculatedDamage;
     public float damageMultiplier = 1.2f;
     public GameObject sheepHerd;
+    public AudioSource sheepHerdSound;
 
     void Start()
     {
@@ -42,6 +43,8 @@ public class SheepHerd : MonoBehaviour
 
     void ActivateSkill(int skillLevel)
     {
+        sheepHerdSound.pitch = Random.Range(0.8f, 1.2f);
+        sheepHerdSound.Play();
         float damageMultiplier = 1f + (0.2f * (skillLevel - 1));
         calculatedDamage = skillDamage * damageMultiplier;
 

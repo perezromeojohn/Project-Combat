@@ -12,6 +12,8 @@ public class WheatProjectile : MonoBehaviour
     [SerializeField] TrailRenderer wheatTrailRenderer;
     [SerializeField] Light2D wheatLight;
     private MMF_Player envorimentalCameraShakeFeedback;
+    public AudioSource wheatImpactSound;
+    public AudioSource wheatExplosionSound;
 
     public float damage = 0;
 
@@ -46,6 +48,8 @@ public class WheatProjectile : MonoBehaviour
             StartCoroutine(DelayBeforeExplosion());
             wheatTrail.Stop();
             envorimentalCameraShakeFeedback.PlayFeedbacks();
+            wheatImpactSound.pitch = Random.Range(0.8f, 1.2f);
+            wheatImpactSound.Play();
         });
 
         // Wait for 1 second before continuing the sequence
@@ -56,6 +60,9 @@ public class WheatProjectile : MonoBehaviour
     {
         // Wait for 1 second
         yield return new WaitForSeconds(1);
+        // Play the explosion sound
+        wheatExplosionSound.pitch = Random.Range(0.8f, 1.2f);
+        wheatExplosionSound.Play();
 
         // based on the radius. use overlapcircle all and detect all colliders within the radius that are tagged as enemy
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(circle.transform.position, explosionRadius);

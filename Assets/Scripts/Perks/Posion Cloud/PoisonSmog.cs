@@ -9,6 +9,7 @@ public class PoisonSmog : MonoBehaviour
     [SerializeField] Transform playerTransform;
     [SerializeField] public float flameThrowerRange = 1f; // Maximum range of the flamethrower
     public float duration = 0f;
+    public AudioSource flameThrowerSound;
 
     private Vector3 previousPosition;
     private bool isFlamethrowerActive = false;
@@ -96,11 +97,13 @@ public class PoisonSmog : MonoBehaviour
         isFlamethrowerActive = true;
         poisonCloud.Play();
         poisonSmog.Play();
+        flameThrowerSound.Play();
 
         yield return new WaitForSeconds(duration);
 
         poisonCloud.Stop();
         poisonSmog.Stop();
+        flameThrowerSound.Stop();
         isFlamethrowerActive = false;
     }
 }
