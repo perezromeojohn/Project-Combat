@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boo
   m_EditorClassIdentifier: 
   enemyName: Boo
-  movementSpeed: 0.7
+  movementSpeed: 0.5
   minDistanceToPlayer: 0.1
   damage: 1
   maxHealth: 5
